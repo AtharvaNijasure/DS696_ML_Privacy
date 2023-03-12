@@ -4,6 +4,7 @@ import tensorflow as tf
 from scipy import special
 from AttackInputs import AttackInputs
 import numpy as np
+from Constants import *
 
 
 from tensorflow_privacy.privacy.privacy_tests.membership_inference_attack import membership_inference_attack as mia
@@ -22,34 +23,39 @@ class AttackPipeline :
     # make this code more modular, make use of unpacking of function arguments so that the training , attacks, slicing specs , inputs, ml-privacy and tf privacy all can be included !!
 
 
-    def __init__(self, model_name, dataset_name, attacks ):
+    def __init__(self, model_name, dataset_name, attacks, format_dataset_params, model_training_params, tf_attack_input_params, ml_pr_attack_input_params ):
 
-        self.model_name = model_name
         self.dataset_name = dataset_name
 
 
 
 
-        self.dataset = DatasetRepo(dataset_name) #
+        self.dataset = DatasetRepo(dataset_name , format_dataset_params) #
 
         (x_train, y_train), (x_val, y_val) = self.dataset.get_data_for_training()
 
 
-        model = ModelParams().model_name_to_func(model_name)
+        # train the model!!!
+
+        # model = ModelParams().model_name_to_func(model_name)
+        model_func = getattr(ModelParams, model_name)
+        model = model_func(ModelParams())
 
         # training the model
         hist = model.fit(x_train, y_train,
-                         epochs=5,
-                         batch_size=64,
-                         verbose=1,
+                         epochs=model_training_params[epoch],
+                         batch_size=model_training_params[batch_size],
+                         verbose=model_training_params[verbose],
                          validation_data=(x_val, y_val))
 
         # predictions on the model
 
+        # Prepare inputs for the mia attacks
+
         print('Predict on train...')
-        logits_train = model.predict(x_train, batch_size=64)
+        logits_train = model.predict(x_train, batch_size=model_training_params[batch_size])
         print('Predict on test...')
-        logits_test = model.predict(x_val, batch_size=64)
+        logits_test = model.predict(x_val, batch_size=model_training_params[batch_size])
 
         print('Apply softmax to get probabilities from logits...')
         prob_train = special.softmax(logits_train, axis=1)

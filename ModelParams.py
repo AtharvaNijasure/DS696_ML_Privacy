@@ -12,9 +12,8 @@ class ModelParams :
 
 
     def model_name_to_func(self, model_name):
-        # if(model_name == 'cifar100_model_1')
-
-        return self.cifar100_model_1()
+        if(model_name == 'cifar100_model_1') :
+            return self.cifar100_model_1()
 
 
 
