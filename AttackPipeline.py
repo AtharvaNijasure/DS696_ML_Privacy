@@ -1,8 +1,8 @@
-import DatasetRepo
-import ModelParams
+from DatasetRepo import DatasetRepo
+from ModelParams import ModelParams
 import tensorflow as tf
 from scipy import special
-import AttackInputs
+from AttackInputs import AttackInputs
 import numpy as np
 
 
@@ -30,7 +30,7 @@ class AttackPipeline :
 
 
 
-        self.dataset = DatasetRepo(dataset_name)
+        self.dataset = DatasetRepo(dataset_name) #
 
         (x_train, y_train), (x_val, y_val) = self.dataset.get_data_for_training()
 
@@ -106,6 +106,11 @@ we need functions to
 
 4. creating the labels or the outputs 
 
+-- https://bargavjayaraman.github.io/project/evaluating-dpml/
+-- https://github.com/bargavj/EvaluatingDPML
+licenses on the git code before sending to Pallika and Virendra
+
+
 Get all of the above things done
 
 Note : once a dataset is registered here then just by giving the format, splitting parameters we will not need to make any changes with code here 
@@ -124,6 +129,7 @@ Note : this is the iteration part so try to keep the code more readable and deve
 Part 4: (AttackPipeline)
 
 Orchestrator Get required data , get models , 
+0. Get dataset, format if required 
 1. Train the required models using the data 
 2. save the model params if required 
 3. Get predictions on the models 
@@ -132,9 +138,6 @@ Orchestrator Get required data , get models ,
 
 Part 3: (AttackInputs)
 1. prepare inputs based upon model, dataset, and tf_privacy or ml_privacy_meter
-
-
-
 
 
 

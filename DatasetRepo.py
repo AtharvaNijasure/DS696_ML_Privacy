@@ -20,12 +20,18 @@ class RegisteredDataset(enum.Enum) :
 
 
 class DatasetRepo :
+    # model_name = ''
+    # dataset = ''
+    # x_train = None
+    # y_train = None
+    # x_val = None
+    # y_val = None
 
 
-
-    def __init(self , dataset ):
-        self.dataset = RegisteredDataset.value(dataset)
-        (self.x_train, self.y_train), (self.x_val, self.y_val) = self.loadData()
+    def __init__(self, dataset):
+        self.dataset = dataset
+        # self.dataset = RegisteredDataset.CIFAR100 # dataset # RegisteredDataset.CIFAR100
+        self.loadData()
         # self.format_as_per_params(params)
         self.format_outputs()
         # self.create_test_train_Split()
@@ -54,7 +60,8 @@ class DatasetRepo :
 
     def loadData(self):
         if self.dataset == RegisteredDataset.CIFAR100 :
-            return tf.keras.datasets.cifar100.load_data()
+            (self.x_train, self.y_train), (self.x_val, self.y_val) = tf.keras.datasets.cifar100.load_data()
+            return
 
 
 
