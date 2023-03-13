@@ -1,7 +1,8 @@
 from tensorflow_privacy.privacy.privacy_tests.membership_inference_attack.data_structures import AttackType
 from AttackPipeline import AttackPipeline
-from DatasetRepo import RegisteredDataset
+from DatasetRepo import *
 from Constants import *
+from ModelParams import ModelParams
 
 
 attacks = [
@@ -21,4 +22,7 @@ tf_attack_input_params = {}
 ml_pr_attack_input_params = {}
 
 
-attack_pipeline = AttackPipeline(cifar_100_model_1, RegisteredDataset.CIFAR100 , attacks,  format_dataset_params, model_training_params, tf_attack_input_params, ml_pr_attack_input_params )
+
+attack_pipeline = AttackPipeline( RegisteredDataset.CIFAR100 , format_dataset_params )
+model = attack_pipeline.get_model(cifar_100_model_1, model_training_params)
+attack_pipeline.run_attacks(model, attacks, AttackMethod.TF_PRIVACY , tf_attack_input_params)

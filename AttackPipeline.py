@@ -17,36 +17,32 @@ import tensorflow_privacy.privacy.privacy_tests.membership_inference_attack.plot
 
 
 
+
+
 class AttackPipeline :
+
+    def __init__(self, dataset_name,format_dataset_params = []):
+        self.getDataSet(dataset_name, format_dataset_params)
+
 
 
     # make this code more modular, make use of unpacking of function arguments so that the training , attacks, slicing specs , inputs, ml-privacy and tf privacy all can be included !!
-
-
-    def __init__(self, model_name, dataset_name, attacks, format_dataset_params, model_training_params, tf_attack_input_params, ml_pr_attack_input_params ):
-
-        self.dataset_name = dataset_name
-
-
-
-
-        self.dataset = DatasetRepo(dataset_name , format_dataset_params) #
-
-        (x_train, y_train), (x_val, y_val) = self.dataset.get_data_for_training()
-
-
-        # train the model!!!
-
-        # model = ModelParams().model_name_to_func(model_name)
+    def get_model(self,  model_name, model_training_params):
         model_func = getattr(ModelParams, model_name)
         model = model_func(ModelParams())
-
+        (x_train, y_train), (x_val, y_val) = self.dataset.get_data_for_training()
         # training the model
         hist = model.fit(x_train, y_train,
                          epochs=model_training_params[epoch],
                          batch_size=model_training_params[batch_size],
                          verbose=model_training_params[verbose],
                          validation_data=(x_val, y_val))
+        return model
+
+    def run_attacks(self, model, attacks, model_training_params, attach_method , attack_input_params ):
+
+
+        (x_train, y_train), (x_val, y_val) = self.dataset.get_data_for_training()
 
         # predictions on the model
 
@@ -97,6 +93,15 @@ class AttackPipeline :
     # run attacks in the array using ml-privacy-meter for now
 
     # store the results
+
+    def getDataSet(self, dataset_name,format_dataset_params ):
+        self.dataset = DatasetRepo(dataset_name, format_dataset_params)  #
+
+        return self.dataset.get_data_for_training()
+
+
+
+
 
 
 '''

@@ -3,6 +3,9 @@ import enum
 import tensorflow as tf
 
 
+class AttackMethod(enum.Enum) :
+    ML_PRIVACY = 'ml_privacy_meter'
+    TF_PRIVACY = 'tf_privacy'
 
 class RegisteredDataset(enum.Enum) :
 
@@ -28,6 +31,7 @@ class DatasetRepo :
         self.loadData()
         self.format_as_per_params(params)
         self.format_outputs()
+        # return self.get_data_for_training()
 
 
 

@@ -2,6 +2,7 @@ from symbol import decorator
 
 import tensorflow as tf
 from keras import layers
+from Constants import *
 
 class ModelParams :
 
@@ -14,6 +15,9 @@ class ModelParams :
     def model_name_to_func(self, model_name):
         if(model_name == 'cifar100_model_1') :
             return self.cifar100_model_1()
+
+
+
 
 
 
