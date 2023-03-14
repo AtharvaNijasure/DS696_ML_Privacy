@@ -5,6 +5,7 @@ from scipy import special
 from AttackInputs import AttackInputs
 import numpy as np
 from Constants import *
+import pickle
 
 
 from tensorflow_privacy.privacy.privacy_tests.membership_inference_attack import membership_inference_attack as mia
@@ -21,25 +22,55 @@ import tensorflow_privacy.privacy.privacy_tests.membership_inference_attack.plot
 
 class AttackPipeline :
 
+
+
     def __init__(self, dataset_name,format_dataset_params = []):
         self.getDataSet(dataset_name, format_dataset_params)
 
 
+    def save_model(self, model, filename):
+        # save the model to disk
+        # filename = 'finalized_model.sav'
+        pickle.dump(model, open(filename, 'wb'))
+
+    def load_model(self, filename):
+        # load the model from disk
+        loaded_model = pickle.load(open(filename, 'rb'))
+        return loaded_model
+
+    def get_model_param_tr_string(self, model_training_params):
+        ans = ""
+        for key in model_training_params.keys() :
+            ans += str(key) + "_" + str(model_training_params[key])
+
+        return ans + EXTN
+
+    def get_model_file(self, model_name, model_training_params):
+        return model_name + self.get_model_param_tr_string(model_training_params)
+
 
     # make this code more modular, make use of unpacking of function arguments so that the training , attacks, slicing specs , inputs, ml-privacy and tf privacy all can be included !!
     def get_model(self,  model_name, model_training_params):
-        model_func = getattr(ModelParams, model_name)
-        model = model_func(ModelParams())
-        (x_train, y_train), (x_val, y_val) = self.dataset.get_data_for_training()
-        # training the model
-        hist = model.fit(x_train, y_train,
-                         epochs=model_training_params[epoch],
-                         batch_size=model_training_params[batch_size],
-                         verbose=model_training_params[verbose],
-                         validation_data=(x_val, y_val))
-        return model
+        model_file = self.get_model_file(model_name, model_training_params)
+        try :
+            # return if the model with given params is already trained before
+            return  self.load_model(model_file)
+        except :
+            model_func = getattr(ModelParams, model_name)
+            model = model_func(ModelParams())
+            (x_train, y_train), (x_val, y_val) = self.dataset.get_data_for_training()
+            # training the model
+            hist = model.fit(x_train, y_train,
+                             epochs=model_training_params[epoch],
+                             batch_size=model_training_params[batch_size],
+                             verbose=model_training_params[verbose],
+                             validation_data=(x_val, y_val))
 
-    def run_attacks(self, model, attacks, model_training_params, attach_method , attack_input_params ):
+            self.save_model(model, model_name + EXTN )
+
+            return model
+
+    def run_attacks(self, model, attacks, model_training_params, attack_method , attack_input_params ):
 
 
         (x_train, y_train), (x_val, y_val) = self.dataset.get_data_for_training()
@@ -83,6 +114,15 @@ class AttackPipeline :
 
         # Print a user-friendly summary of the attacks
         print(attacks_result.summary(by_slices=True))
+        try :
+            summary_file = summary +TXT_EXTN
+            with open(summary_file, encoding="utf-8", mode = 'a' ) as f:
+                f.write("\nNew Summary :\n")
+                line = f" model params :{self.get_model_param_tr_string(model_training_params)[:3]} , summary : {attacks_result.summary(by_slices=True)}"
+                f.write(line)
+                f.close()
+        except :
+            print("Error : while saving summary in the summary file")
 
     # we have a model with pre deifned params ... even with training loss , etc
     # we train the model
