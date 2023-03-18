@@ -7,6 +7,10 @@ verbose = "verbose"
 
 
 
+# serialized model extns
+EXTN = ".sav"
+summary = "summary"
+TXT_EXTN = ".txt"
 
 # defined model names
 
