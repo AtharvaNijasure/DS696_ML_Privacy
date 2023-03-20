@@ -3,6 +3,23 @@ from symbol import decorator
 import tensorflow as tf
 from keras import layers
 from Constants import *
+import enum
+
+
+class ModelType(enum.Enum):
+    # specifically for ml-privacy-meter
+
+    Model = "Model" # abstract class
+
+    PytorchModel = "PytorchModel"
+
+    TensorflowModel = "TensorflowModel"
+
+    LanguageModel = "LanguageModel"
+
+    HuggingFaceCausalLanguageModel = "HuggingFaceCausalLanguageModel"
+
+
 
 class ModelParams :
 

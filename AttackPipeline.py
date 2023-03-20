@@ -1,5 +1,5 @@
-from DatasetRepo import DatasetRepo
-from ModelParams import ModelParams
+from DatasetRepo import *
+from ModelParams import *
 import tensorflow as tf
 from scipy import special
 from AttackInputs import AttackInputs
@@ -16,6 +16,13 @@ from tensorflow_privacy.privacy.privacy_tests.membership_inference_attack.data_s
 import tensorflow_privacy.privacy.privacy_tests.membership_inference_attack.plotting as plotting
 
 
+from privacy_meter.constants import InferenceGame
+from privacy_meter.dataset import Dataset
+from privacy_meter.information_source import InformationSource
+from privacy_meter.model import *
+from privacy_meter.audit import Audit, MetricEnum
+
+
 
 
 
@@ -24,8 +31,8 @@ class AttackPipeline :
 
 
 
-    def __init__(self, dataset_name,format_dataset_params = []):
-        self.getDataSet(dataset_name, format_dataset_params)
+    def __init__(self, dataset_name,format_dataset_params = [], num_train_points = None, num_test_points = None, num_population_points = None):
+        self.getDataSet(dataset_name, format_dataset_params, num_train_points, num_test_points, num_population_points )
 
 
     def save_model(self, model, filename):
@@ -66,18 +73,111 @@ class AttackPipeline :
                              verbose=model_training_params[verbose],
                              validation_data=(x_val, y_val))
 
-            self.save_model(model, model_name + EXTN )
+            self.save_model(model, model_name + EXTN)
 
             return model
 
     def run_attacks(self, model, attacks, model_training_params, attack_method , attack_input_params ):
 
 
-        (x_train, y_train), (x_val, y_val) = self.dataset.get_data_for_training()
 
         # predictions on the model
 
         # Prepare inputs for the mia attacks
+        if(attack_method == AttackMethod.TF_PRIVACY) :
+            self.perform_tf_privacy_attack(model , attacks, model_training_params , attack_input_params)
+
+        elif(attack_method == AttackMethod.ML_PRIVACY) :
+            self.perform_ml_privacy_attack(model , attacks, model_training_params , attack_input_params)
+
+    # we have a model with pre deifned params ... even with training loss , etc
+    # we train the model
+
+    # we have attacks array
+
+
+    # run attacks in the array using ml-privacy-meter for now
+
+    # store the results
+
+    def getDataSet(self, dataset_name,format_dataset_params , num_train_points = None, num_test_points = None , num_population_points = None):
+        self.dataset = DatasetRepo(dataset_name, format_dataset_params)  #
+        (self.x_train_all, self.y_train_all), (self.x_val_all, self.y_val_all) = self.dataset.get_data_for_training()
+        self.split_data_for_population_attack(num_train_points, num_test_points, num_population_points)
+
+
+
+        return self.dataset.get_data_for_training()
+
+    def split_data_for_population_attack(self, num_train_points = None, num_test_points = None, num_population_points = None):
+
+        if( num_train_points == None) :
+            num_train_points = 5000
+        if( num_test_points == None) :
+            num_test_points = 5000
+        if(num_population_points == None) :
+            num_population_points = 10000
+        self.x_train, self.y_train = self.x_train_all[:num_train_points], self.y_train_all[:num_train_points]
+        self.x_test, self.y_test = self.x_val_all[:num_test_points], self.y_val_all[:num_test_points]
+        self.x_population = self.x_train_all[num_train_points:(num_train_points + num_population_points)]
+        self.y_population = self.y_train_all[num_train_points:(num_train_points + num_population_points)]
+
+
+
+    def Dataset_ready(self):
+        train_ds = {'x': self.x_train, 'y': self.y_train}
+        test_ds = {'x': self.x_test, 'y': self.y_test}
+        self.target_dataset = Dataset(
+            data_dict={'train': train_ds, 'test': test_ds},
+            default_input='x', default_output='y'
+        )
+
+        # create the reference dataset
+        population_ds = {'x': self.x_population, 'y': self.y_population}
+        self.reference_dataset = Dataset(
+            # this is the default mapping that a Metric will look for
+            # in a reference dataset
+            data_dict={'train': population_ds},
+            default_input='x', default_output='y'
+        )
+        return self.target_dataset, self.reference_dataset
+
+
+
+
+    def perform_ml_privacy_attack(self, model , attacks, model_training_params = None , attack_input_params = None):
+
+        # get appropriate model class
+        target_model = None
+        if model_training_params[model_type] == ModelType.PytorchModel :
+            target_model = TensorflowModel(model_obj=model, loss_fn=attack_input_params[loss_fn])
+
+        # dataset ready
+        target_dataset, reference_dataset = self.Dataset_ready()
+
+        target_info_source = InformationSource(
+            models=[target_model],
+            datasets=[target_dataset]
+        )
+
+        reference_info_source = InformationSource(
+            models=[target_model],
+            datasets=[reference_dataset]
+        )
+        for attack in attacks :
+            if (attack == population):
+                self.audit_obj = Audit(
+                    metrics=MetricEnum.POPULATION,
+                    inference_game_type=InferenceGame.PRIVACY_LOSS_MODEL,
+                    target_info_sources=target_info_source,
+                    reference_info_sources=reference_info_source,
+                    fpr_tolerances=attack_input_params[fpr_tolerance_list]
+                )
+
+
+    def perform_tf_privacy_attack(self, model , attacks, model_training_params , attack_input_params = None):
+
+        (x_train, y_train), (x_val, y_val) = self.dataset.get_data_for_training()
 
         print('Predict on train...')
         logits_train = model.predict(x_train, batch_size=model_training_params[batch_size])
@@ -100,9 +200,11 @@ class AttackPipeline :
 
         attack_inputs = AttackInputs()
 
-        input  = attack_inputs.get_Attack_inputs(logits_train,logits_test , loss_train, loss_test,labels_train, labels_test)
+        input = attack_inputs.get_Attack_inputs(logits_train, logits_test, loss_train, loss_test, labels_train,
+                                                labels_test)
 
-        slicing_specs = attack_inputs.get_Attack_slicing_specs(True, True, True)  # pass values using unpack function arguments!!
+        slicing_specs = attack_inputs.get_Attack_slicing_specs(True, True,
+                                                               True)  # pass values using unpack function arguments!!
 
         attacks_result = mia.run_attacks(input,
                                          slicing_specs,
@@ -114,30 +216,17 @@ class AttackPipeline :
 
         # Print a user-friendly summary of the attacks
         print(attacks_result.summary(by_slices=True))
-        try :
-            summary_file = summary +TXT_EXTN
-            with open(summary_file, encoding="utf-8", mode = 'a' ) as f:
+        try:
+            summary_file = summary + TXT_EXTN
+            with open(summary_file, encoding="utf-8", mode='a') as f:
                 f.write("\nNew Summary :\n")
                 line = f" model params :{self.get_model_param_tr_string(model_training_params)[:3]} , summary : {attacks_result.summary(by_slices=True)}"
                 f.write(line)
                 f.close()
-        except :
+        except:
             print("Error : while saving summary in the summary file")
 
-    # we have a model with pre deifned params ... even with training loss , etc
-    # we train the model
 
-    # we have attacks array
-
-
-    # run attacks in the array using ml-privacy-meter for now
-
-    # store the results
-
-    def getDataSet(self, dataset_name,format_dataset_params ):
-        self.dataset = DatasetRepo(dataset_name, format_dataset_params)  #
-
-        return self.dataset.get_data_for_training()
 
 
 
