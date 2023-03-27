@@ -48,7 +48,7 @@ class AttackPipeline :
     def get_model_param_tr_string(self, model_training_params):
         ans = ""
         for key in model_training_params.keys() :
-            ans += str(key) + "_" + str(model_training_params[key])
+            ans += str(key) + "_" + str(model_training_params[key]).replace(".","")
 
         return ans + EXTN
 
@@ -110,13 +110,14 @@ class AttackPipeline :
         return self.dataset.get_data_for_training()
 
     def split_data_for_population_attack(self, num_train_points = None, num_test_points = None, num_population_points = None):
-
+        l_tr = len(self.x_train_all)
+        l_te = len(self.x_val_all)
         if( num_train_points == None) :
-            num_train_points = 5000
+            num_train_points = l_tr/2
         if( num_test_points == None) :
-            num_test_points = 5000
-        if(num_population_points == None) :
-            num_population_points = 10000
+            num_test_points = l_te/2
+        if(num_population_points == None or num_population_points > num_train_points + num_test_points) :
+            num_population_points = num_train_points + num_test_points
         self.x_train, self.y_train = self.x_train_all[:num_train_points], self.y_train_all[:num_train_points]
         self.x_test, self.y_test = self.x_val_all[:num_test_points], self.y_val_all[:num_test_points]
         self.x_population = self.x_train_all[num_train_points:(num_train_points + num_population_points)]
@@ -173,6 +174,15 @@ class AttackPipeline :
                     reference_info_sources=reference_info_source,
                     fpr_tolerances=attack_input_params[fpr_tolerance_list]
                 )
+                self.metrics(audit_obj=self.audit_obj, verbose=True)
+
+    def metrics(self, audit_obj , verbose=False):
+        audit_obj.prepare()
+        audit_results = audit_obj.run()[0]
+
+        if verbose == True:
+            for result in audit_results:
+                print(result)
 
 
     def perform_tf_privacy_attack(self, model , attacks, model_training_params , attack_input_params = None):

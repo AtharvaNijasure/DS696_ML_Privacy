@@ -1,6 +1,10 @@
 # Central repo for all datasets
 import enum
 import tensorflow as tf
+import pandas as pd
+
+import seaborn as sns
+
 
 
 class AttackMethod(enum.Enum) :
@@ -10,16 +14,17 @@ class AttackMethod(enum.Enum) :
 class RegisteredDataset(enum.Enum) :
 
     CIFAR100 = 'cifar100'
-    # CIFAR10 = 'cifar10'
-    # NG20 = '20ng'
-    # MNIST = 'mnist'
-    # ADULT_INCOME = 'AdultIncome'
-    # TITANIC = 'titanic'
-    # PURCHASE100 = 'purchase100'
+    CIFAR10 = 'cifar10'
+    MNIST = 'mnist'
+    # Tabular
+    ADULT_INCOME = 'AdultIncome'
+    TITANIC = 'titanic'
+    PURCHASE100 = 'purchase100'
     # TEXAS100 = 'texas100'
+    # #Text
     # MOVIELENS = 'movielens'
-    # IMDB = 'imdb'
-
+    IMDB = 'imdb'
+    # NG20 = '20ng'
 
 
 class DatasetRepo :
@@ -28,7 +33,7 @@ class DatasetRepo :
     def __init__(self, dataset, params):
         self.dataset = dataset
         # self.dataset = RegisteredDataset.CIFAR100 # dataset # RegisteredDataset.CIFAR100
-        self.loadData()
+        self.loadData(params)
         self.format_as_per_params(params)
         self.format_outputs()
         # return self.get_data_for_training()
@@ -45,7 +50,8 @@ class DatasetRepo :
 
     # create a clause for each new enrolled dataset
     def format_outputs(self):
-        if(self.dataset == RegisteredDataset.CIFAR100) :
+        one_hots = [RegisteredDataset.CIFAR100 , RegisteredDataset.CIFAR10, RegisteredDataset.MNIST]
+        if(self.dataset in one_hots) :
             # preparing the outputs / labels
             self.y_train = tf.one_hot(self.y_train,
                                  depth=self.y_train.max() + 1,
@@ -57,13 +63,68 @@ class DatasetRepo :
             self.y_train = tf.squeeze(self.y_train)
             self.y_val = tf.squeeze(self.y_val)
             return
+        elif(self.dataset == RegisteredDataset.TITANIC) :
+            rel_path = "./datasets/titanic/"
 
 
 
-    def loadData(self):
+            return
+
+
+
+    def loadData(self, params):
         if self.dataset == RegisteredDataset.CIFAR100 :
             (self.x_train, self.y_train), (self.x_val, self.y_val) = tf.keras.datasets.cifar100.load_data()
             return
+        elif self.dataset == RegisteredDataset.CIFAR10 :
+            (self.x_train, self.y_train), (self.x_val, self.y_val) = tf.keras.datasets.cifar10.load_data()
+            return
+
+        elif self.dataset == RegisteredDataset.IMDB :
+            (self.x_train, self.y_train), (self.x_val, self.y_val) = tf.keras.datasets.imdb.load_data()
+            return
+
+        elif self.dataset == RegisteredDataset.MNIST :
+            (self.x_train, self.y_train), (self.x_val, self.y_val) = tf.keras.datasets.mnist.load_data()
+            return
+
+        # elif (self.dataset == RegisteredDataset.TITANIC):
+        #     rel_path = "./datasets/titanic/"
+        #     df_tr = pd.read_csv(rel_path + "train.csv")
+        #     df_test = pd.read_csv(rel_path + "test.csv")
+        #     self.x_train = df_tr["PassengerId","Pclass","Name","Sex","Age","SibSp","Parch","Ticket","Fare","Cabin","Embarked"]
+        #     self.y_train = df_tr["Survived"]
+        #
+        #     dataset = sns.load_dataset('titanic')
+        #
+        #     dataset.head()
+        #
+        #
+        #     return
+        #
+        # elif (self.dataset == RegisteredDataset.ADULT_INCOME):
+        #     rel_path = "./datasets/titanic/"
+        #     df_tr = pd.read_csv(rel_path + "train.csv")
+        #     df_test = pd.read_csv(rel_path + "test.csv")
+        #     self.x_train = df_tr["PassengerId","Pclass","Name","Sex","Age","SibSp","Parch","Ticket","Fare","Cabin","Embarked"]
+        #     self.y_train = df_tr["Survived"]
+        #
+        #     self.x_val =
+        #
+        #
+        #     return
+        # elif (self.dataset == RegisteredDataset.PURCHASE100):
+        #     rel_path = "./datasets/titanic/"
+        #     df_tr = pd.read_csv(rel_path + "train.csv")
+        #     df_test = pd.read_csv(rel_path + "test.csv")
+        #     self.x_train = df_tr["PassengerId","Pclass","Name","Sex","Age","SibSp","Parch","Ticket","Fare","Cabin","Embarked"]
+        #     self.y_train = df_tr["Survived"]
+        #
+        #     self.x_val =
+        #
+        #
+        #     return
+
 
 
 

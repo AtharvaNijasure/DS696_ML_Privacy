@@ -76,3 +76,9 @@ class ModelParams :
         return model
 
 
+    def model2(self):
+
+
+        return
+
+
