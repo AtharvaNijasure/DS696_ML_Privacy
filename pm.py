@@ -8,6 +8,10 @@ from privacy_meter.dataset import Dataset
 from privacy_meter.information_source import InformationSource
 from privacy_meter.model import TensorflowModel
 
+from privacy_meter.metric import PopulationMetric
+from privacy_meter.information_source_signal import ModelGradientNorm, ModelGradient, ModelLoss
+from privacy_meter.hypothesis_test import linear_itp_threshold_func
+from privacy_meter.model import PytorchModelTensor
 
 """
  
@@ -55,6 +59,7 @@ class ML_PM:
     """
     def load_data(self,input,preprocess_x = None, preprocess_y = None):
         
+        #only for keras
         (self.x_train_all, self.y_train_all), (self.x_test_all, self.y_test_all) = input
         self.shape = self.x_train_all[0].shape
 
@@ -71,24 +76,6 @@ class ML_PM:
         self.x_population = self.x_train_all[self.num_train_points:(self.num_train_points + self.num_population_points)]
         self.y_population = self.y_train_all[self.num_train_points:(self.num_train_points + self.num_population_points)]
 
-
-        # create the target model's dataset
-        # train_ds = {'x': self.x_train, 'y': self.y_train}
-        # test_ds = {'x': self.x_test, 'y': self.y_test}
-        # self.target_dataset = Dataset(
-        #     data_dict={'train': train_ds, 'test': test_ds},
-        #     default_input='x', default_output='y'
-        # )
-
-        # # create the reference dataset
-        # population_ds = {'x': self.x_population, 'y': self.y_population}
-        # self.reference_dataset = Dataset(
-        #     # this is the default mapping that a Metric will look for
-        #     # in a reference dataset
-        #     data_dict={'train': population_ds},
-        #     default_input='x', default_output='y'
-        # )
-        # (self.x_train, self.y_train), (self.x_test, self.y_test) = tf.keras.datasets.cifar10.load_data()
 
     def Dataset_ready(self):
         train_ds = {'x': self.x_train, 'y': self.y_train}
@@ -190,14 +177,18 @@ class ML_PM:
         )
 
         if(attack == "population"):
-            self.audit_obj = Audit(
-                metrics=MetricEnum.POPULATION,
-                inference_game_type=InferenceGame.PRIVACY_LOSS_MODEL,
-                target_info_sources=target_info_source,
-                reference_info_sources=reference_info_source,
-                fpr_tolerances=self.fpr_tolerance_list
-            )
+            metric_used = MetricEnum.POPULATION
+        if(attack == "reference"):
+            metric_used = MetricEnum.REFERENCE
         
+        self.audit_obj = Audit(
+            metrics=metric_used,
+            inference_game_type=InferenceGame.PRIVACY_LOSS_MODEL,
+            target_info_sources=target_info_source,
+            reference_info_sources=reference_info_source,
+            fpr_tolerances=self.fpr_tolerance_list
+        )
+    
 
     def metrics(self,verbose = False):
         self.audit_obj.prepare()
@@ -209,7 +200,7 @@ class ML_PM:
         
 
     
-    
+
 def main():
     mlp = ML_PM()
     mlp.load_data(tf.keras.datasets.cifar10.load_data())
