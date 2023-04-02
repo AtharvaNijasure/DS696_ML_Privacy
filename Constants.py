@@ -26,7 +26,7 @@ TXT_EXTN = ".txt"
 # defined model names
 
 cifar_100_model_1 = "cifar100_model_1"
-
+model_basic_MLP_1 = "model_basic_MLP_1"
 
 # ml-privacy-attacks
 population = "population"
