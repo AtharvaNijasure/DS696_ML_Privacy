@@ -2,6 +2,8 @@ from symbol import decorator
 
 import tensorflow as tf
 from keras import layers
+from sklearn import neural_network, model_selection
+
 from Constants import *
 import enum
 
@@ -76,9 +78,17 @@ class ModelParams :
         return model
 
 
-    def model2(self):
+    def model_basic_MLP_1(self):
+        mlp_model = neural_network.MLPClassifier()
+        param_grid = {
+            'hidden_layer_sizes': [(64,), (32, 32)],
+            'solver': ['adam'],
+            'alpha': [0.0001, 0.001, 0.01],
+        }
+        model = model_selection.GridSearchCV(
+            mlp_model, param_grid=param_grid, cv=3, n_jobs=3, verbose=0)
 
 
-        return
+        return model
 
 

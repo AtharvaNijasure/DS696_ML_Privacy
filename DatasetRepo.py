@@ -4,6 +4,8 @@ import tensorflow as tf
 import pandas as pd
 
 import seaborn as sns
+from sklearn.model_selection import train_test_split
+import numpy as np
 
 
 
@@ -88,42 +90,45 @@ class DatasetRepo :
             (self.x_train, self.y_train), (self.x_val, self.y_val) = tf.keras.datasets.mnist.load_data()
             return
 
-        # elif (self.dataset == RegisteredDataset.TITANIC):
-        #     rel_path = "./datasets/titanic/"
-        #     df_tr = pd.read_csv(rel_path + "train.csv")
-        #     df_test = pd.read_csv(rel_path + "test.csv")
-        #     self.x_train = df_tr["PassengerId","Pclass","Name","Sex","Age","SibSp","Parch","Ticket","Fare","Cabin","Embarked"]
-        #     self.y_train = df_tr["Survived"]
-        #
-        #     dataset = sns.load_dataset('titanic')
-        #
-        #     dataset.head()
-        #
-        #
-        #     return
-        #
-        # elif (self.dataset == RegisteredDataset.ADULT_INCOME):
-        #     rel_path = "./datasets/titanic/"
-        #     df_tr = pd.read_csv(rel_path + "train.csv")
-        #     df_test = pd.read_csv(rel_path + "test.csv")
-        #     self.x_train = df_tr["PassengerId","Pclass","Name","Sex","Age","SibSp","Parch","Ticket","Fare","Cabin","Embarked"]
-        #     self.y_train = df_tr["Survived"]
-        #
-        #     self.x_val =
-        #
-        #
-        #     return
-        # elif (self.dataset == RegisteredDataset.PURCHASE100):
-        #     rel_path = "./datasets/titanic/"
-        #     df_tr = pd.read_csv(rel_path + "train.csv")
-        #     df_test = pd.read_csv(rel_path + "test.csv")
-        #     self.x_train = df_tr["PassengerId","Pclass","Name","Sex","Age","SibSp","Parch","Ticket","Fare","Cabin","Embarked"]
-        #     self.y_train = df_tr["Survived"]
-        #
-        #     self.x_val =
-        #
-        #
-        #     return
+        elif (self.dataset == RegisteredDataset.TITANIC):
+            rel_path = "./datasets/titanic/"
+            df_tr = pd.read_csv(rel_path + "train.csv")
+            df_test = pd.read_csv(rel_path + "test.csv")
+            df_test_val = pd.read_csv(rel_path + "gender_submission.csv")
+            self.x_train = df_tr[["PassengerId","Pclass","Name","Sex","Age","SibSp","Parch","Ticket","Fare","Cabin","Embarked"]]
+            self.y_train = df_tr[["PassengerId","Survived"]]
+            self.x_val = df_test[["PassengerId", "Pclass", "Name", "Sex", "Age", "SibSp", "Parch", "Ticket", "Fare", "Cabin",
+                 "Embarked"]]
+            self.y_val = df_test_val[["PassengerId","Survived"]]
+
+
+
+
+            return
+
+        elif (self.dataset == RegisteredDataset.ADULT_INCOME):
+            rel_path = "./datasets/adultincome/"
+            df = pd.read_csv(rel_path + "adult.csv")
+            input_cols = ['age', 'workclass', 'fnlwgt', 'education', 'educational-num',
+                       'marital-status', 'occupation', 'relationship', 'race', 'gender',
+                       'capital-gain', 'capital-loss', 'hours-per-week', 'native-country']
+
+
+            self.x_train, self.x_val, self.y_train, self.y_val = train_test_split(df[input_cols], df["income"],
+                                                                                  train_size=params["train_size"])
+
+            return
+
+        elif (self.dataset == RegisteredDataset.PURCHASE100):
+            rel_path = "./datasets/purchase100/"
+            data = np.load(rel_path + 'purchase100.npz')
+            features = data['features']
+            labels = data['labels']
+
+            self.x_train, self.x_val, self.y_train, self.y_val = train_test_split(features, labels, train_size = params["train_size"] )
+
+            # note the labels are one hot
+            return
 
 
 

@@ -7,10 +7,10 @@ from ModelParams import *
 
 attacks_tf_p = [
                 AttackType.THRESHOLD_ATTACK,
-                # AttackType.LOGISTIC_REGRESSION,
-                # AttackType.MULTI_LAYERED_PERCEPTRON,
-                # AttackType.RANDOM_FOREST,
-                # AttackType.K_NEAREST_NEIGHBORS,
+                AttackType.LOGISTIC_REGRESSION,
+                AttackType.MULTI_LAYERED_PERCEPTRON,
+                AttackType.RANDOM_FOREST,
+                AttackType.K_NEAREST_NEIGHBORS,
                 AttackType.THRESHOLD_ENTROPY_ATTACK
             ]
 
@@ -19,8 +19,8 @@ attacks_ml_pr = [
 ]
 
 
-format_dataset_params = {}
-model_training_params = {epoch: 5, batch_size: 64, verbose:1, model_type: ModelType.PytorchModel}
+format_dataset_params = {"train_size" : 0.8}
+model_training_params = {epoch: 5, batch_size: 64, verbose:1, model_type: ModelType.PytorchModel }
 tf_attack_input_params = {}
 
 ml_pr_attack_input_params = {
@@ -42,13 +42,17 @@ ml_pr_attack_input_params[regularizer] : tf.keras.regularizers.l2(l= ml_pr_attac
 
 
 attack_pipeline = AttackPipeline(
-    RegisteredDataset.CIFAR100 , format_dataset_params ,
+    RegisteredDataset.ADULT_INCOME , format_dataset_params ,
     num_train_points = ml_pr_attack_input_params[num_train_points],
     num_test_points = ml_pr_attack_input_params[num_test_points],
     num_population_points = ml_pr_attack_input_params[num_population_points]
     )
 
 # wrapper
-model = attack_pipeline.get_model(cifar_100_model_1, model_training_params)
+# model = attack_pipeline.get_model(cifar_100_model_1, model_training_params)
+# attack_pipeline.run_attacks(model, attacks_tf_p,model_training_params, AttackMethod.TF_PRIVACY , tf_attack_input_params)
+# attack_pipeline.run_attacks(model, attacks_ml_pr,model_training_params, AttackMethod.ML_PRIVACY , ml_pr_attack_input_params)
+
+model = attack_pipeline.get_model(model_basic_MLP_1, model_training_params)
 attack_pipeline.run_attacks(model, attacks_tf_p,model_training_params, AttackMethod.TF_PRIVACY , tf_attack_input_params)
-attack_pipeline.run_attacks(model, attacks_ml_pr,model_training_params, AttackMethod.ML_PRIVACY , ml_pr_attack_input_params)
+# attack_pipeline.run_attacks(model, attacks_ml_pr,model_training_params, AttackMethod.ML_PRIVACY , ml_pr_attack_input_params)
