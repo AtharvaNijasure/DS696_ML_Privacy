@@ -165,6 +165,9 @@ class AttackPipeline :
             models=[target_model],
             datasets=[reference_dataset]
         )
+
+        
+
         for attack in attacks :
             if (attack == population):
                 self.audit_obj = Audit(
@@ -175,6 +178,16 @@ class AttackPipeline :
                     fpr_tolerances=attack_input_params[fpr_tolerance_list]
                 )
                 self.metrics(audit_obj=self.audit_obj, verbose=True)
+
+            if (attack == reference):
+                self.audit_obj = Audit(
+                    metrics=MetricEnum.REFERENCE,
+                    inference_game_type=InferenceGame.PRIVACY_LOSS_MODEL,
+                    target_info_sources=target_info_source,
+                    reference_info_sources=reference_info_source,
+                    fpr_tolerances=attack_input_params[fpr_tolerance_list]
+                )
+
 
     def metrics(self, audit_obj , verbose=False):
         audit_obj.prepare()

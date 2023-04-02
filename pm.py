@@ -107,6 +107,8 @@ class ML_PM:
         self.verbose = 2
 
     def set_pm(self):
+        self.split_method = "hybrid"
+        self.reference_models = 10
         self.num_population_points = 10000
         self.fpr_tolerance_list = [
             0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0

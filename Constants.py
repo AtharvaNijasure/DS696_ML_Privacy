@@ -30,3 +30,4 @@ cifar_100_model_1 = "cifar100_model_1"
 
 # ml-privacy-attacks
 population = "population"
+reference = "reference"
