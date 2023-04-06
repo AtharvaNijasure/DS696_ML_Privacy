@@ -166,7 +166,7 @@ class AttackPipeline :
             datasets=[reference_dataset]
         )
 
-        
+
 
         for attack in attacks :
             if (attack == population):
@@ -187,6 +187,7 @@ class AttackPipeline :
                     reference_info_sources=reference_info_source,
                     fpr_tolerances=attack_input_params[fpr_tolerance_list]
                 )
+                self.metrics(audit_obj=self.audit_obj, verbose=True)
 
 
     def metrics(self, audit_obj , verbose=False):
