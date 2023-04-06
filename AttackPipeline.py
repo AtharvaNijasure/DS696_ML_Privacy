@@ -214,12 +214,19 @@ class AttackPipeline :
         print('Compute losses...')
         cce = tf.keras.backend.categorical_crossentropy
         constant = tf.keras.backend.constant
+        try :
+            loss_train = cce(constant(y_train.numpy()), constant(prob_train), from_logits=False).numpy()
+            loss_test = cce(constant(y_val.numpy()), constant(prob_test), from_logits=False).numpy()
+            labels_train = np.argmax(y_train, axis=1)
+            labels_test = np.argmax(y_val, axis=1)
+        except :
+            y_train_rs = y_train.reshape((y_train.shape[0],1))
+            y_val_rs = y_val.reshape((y_val.shape[0], 1))
+            loss_train = cce(constant(y_train_rs), constant(prob_train), from_logits=False).numpy()
+            loss_test = cce(constant(y_val_rs), constant(prob_test), from_logits=False).numpy()
 
-        loss_train = cce(constant(y_train.numpy()), constant(prob_train), from_logits=False).numpy()
-        loss_test = cce(constant(y_val.numpy()), constant(prob_test), from_logits=False).numpy()
-
-        labels_train = np.argmax(y_train, axis=1)
-        labels_test = np.argmax(y_val, axis=1)
+            labels_train = y_train
+            labels_test = y_val
 
         attack_inputs = AttackInputs()
 

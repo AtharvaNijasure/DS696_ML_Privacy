@@ -42,7 +42,7 @@ ml_pr_attack_input_params[regularizer] : tf.keras.regularizers.l2(l= ml_pr_attac
 
 
 attack_pipeline = AttackPipeline(
-    RegisteredDataset.ADULT_INCOME , format_dataset_params ,
+    RegisteredDataset.TITANIC , format_dataset_params ,
     num_train_points = ml_pr_attack_input_params[num_train_points],
     num_test_points = ml_pr_attack_input_params[num_test_points],
     num_population_points = ml_pr_attack_input_params[num_population_points]
