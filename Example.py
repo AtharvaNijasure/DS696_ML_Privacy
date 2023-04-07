@@ -36,8 +36,7 @@ attacks_ml_pr = [
 ]
 
 
-format_dataset_params = {"train_size" : 0.8}
-model_training_params = {epoch: 5, batch_size: 64, verbose:1, model_type: ModelType.PytorchModel }
+model_training_params = {epoch: 50, batch_size: 64, verbose:1, model_type: ModelType.TensorflowModel }
 # tf_attack_input_params = {}
 
 # ml_pr_attack_input_params = {
@@ -82,16 +81,25 @@ get_model(model_fx, training_params)
 run_other_models(#only for reference and shadow)
 run_attack(target_model,attack_params)
 """
+
+dataset_parameters = {
+"train_size" : 0.8
+}
+
 attack_pipeline = AttackPipeline(
-    RegisteredDataset.CIFAR10, MetricEnum.POPULATION,dataset_parameters
+    RegisteredDataset.TITANIC, AttackType.LOGISTIC_REGRESSION,dataset_parameters
     )
+
+attack_parameters = {
+    batch_size: 64
+}
 
 # wrapper
 # model = attack_pipeline.get_model(cifar_100_model_1, model_training_params)
 # attack_pipeline.run_attacks(model, attacks_tf_p,model_training_params, AttackMethod.TF_PRIVACY , tf_attack_input_params)
 # attack_pipeline.run_attacks(model, attacks_ml_pr,model_training_params, AttackMethod.ML_PRIVACY , ml_pr_attack_input_params)
 
-model = attack_pipeline.get_model(cifar_100_model_1, model_training_params)
-# attack_pipeline.run_attacks(model, attacks_tf_p,model_training_params, AttackMethod.TF_PRIVACY , tf_attack_input_params)
-attack_pipeline.run_attacks(model, attack_parameters)
-# attack_pipeline.run_attacks(model, attacks_ml_pr,model_training_params, AttackMethod.ML_PRIVACY , ml_pr_attack_input_params)
+model = attack_pipeline.get_model(model_basic_MLP_1, model_training_params)
+
+attack_pipeline.run_attack(model, attack_parameters)
+

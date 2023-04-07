@@ -1070,3 +1070,33 @@ Best-performing attacks over slice: "CORRECTLY_CLASSIFIED=False"
   MULTI_LAYERED_PERCEPTRON (with 399 training and 95 test examples) achieved an AUC of 0.31
   MULTI_LAYERED_PERCEPTRON (with 399 training and 95 test examples) achieved an advantage of 0.37
   MULTI_LAYERED_PERCEPTRON (with 399 training and 95 test examples) achieved a positive predictive value of 0.81
+New Summary :
+ model params :bat , summary : Best-performing attacks over all slices
+  LOGISTIC_REGRESSION (with 399 training and 95 test examples) achieved an AUC of 0.69 on slice CLASS=1
+  LOGISTIC_REGRESSION (with 648 training and 167 test examples) achieved an advantage of 0.37 on slice CORRECTLY_CLASSIFIED=True
+  LOGISTIC_REGRESSION (with 399 training and 95 test examples) achieved a positive predictive value of 0.95 on slice CLASS=1
+
+Best-performing attacks over slice: "Entire dataset"
+  LOGISTIC_REGRESSION (with 1047 training and 262 test examples) achieved an AUC of 0.50
+  LOGISTIC_REGRESSION (with 1047 training and 262 test examples) achieved an advantage of 0.00
+  LOGISTIC_REGRESSION (with 1047 training and 262 test examples) achieved a positive predictive value of 0.80
+
+Best-performing attacks over slice: "CLASS=0"
+  LOGISTIC_REGRESSION (with 648 training and 167 test examples) achieved an AUC of 0.68
+  LOGISTIC_REGRESSION (with 648 training and 167 test examples) achieved an advantage of 0.37
+  LOGISTIC_REGRESSION (with 648 training and 167 test examples) achieved a positive predictive value of 0.94
+
+Best-performing attacks over slice: "CLASS=1"
+  LOGISTIC_REGRESSION (with 399 training and 95 test examples) achieved an AUC of 0.69
+  LOGISTIC_REGRESSION (with 399 training and 95 test examples) achieved an advantage of 0.37
+  LOGISTIC_REGRESSION (with 399 training and 95 test examples) achieved a positive predictive value of 0.95
+
+Best-performing attacks over slice: "CORRECTLY_CLASSIFIED=True"
+  LOGISTIC_REGRESSION (with 648 training and 167 test examples) achieved an AUC of 0.31
+  LOGISTIC_REGRESSION (with 648 training and 167 test examples) achieved an advantage of 0.37
+  LOGISTIC_REGRESSION (with 648 training and 167 test examples) achieved a positive predictive value of 0.80
+
+Best-performing attacks over slice: "CORRECTLY_CLASSIFIED=False"
+  LOGISTIC_REGRESSION (with 399 training and 95 test examples) achieved an AUC of 0.69
+  LOGISTIC_REGRESSION (with 399 training and 95 test examples) achieved an advantage of 0.37
+  LOGISTIC_REGRESSION (with 399 training and 95 test examples) achieved a positive predictive value of 0.95

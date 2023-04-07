@@ -61,8 +61,23 @@ class AttackPipeline :
 
 
 
-    def __init__(self, dataset_name,attack,format_dataset_params = [], num_train_points = None, num_test_points = None, num_population_points = None):
-        self.getDataSet(dataset_name,attack, format_dataset_params, num_train_points, num_test_points, num_population_points )
+
+    def __init__(self, dataset_name,attack,dataset_train_params = {} ):
+        self.attack_method_dic = {
+            AttackType.THRESHOLD_ATTACK : AttackMethod.TF_PRIVACY,
+            AttackType.LOGISTIC_REGRESSION : AttackMethod.TF_PRIVACY,
+            AttackType.MULTI_LAYERED_PERCEPTRON : AttackMethod.TF_PRIVACY,
+            AttackType.RANDOM_FOREST : AttackMethod.TF_PRIVACY,
+            AttackType.K_NEAREST_NEIGHBORS : AttackMethod.TF_PRIVACY,
+            AttackType.THRESHOLD_ENTROPY_ATTACK : AttackMethod.TF_PRIVACY,
+            MetricEnum.POPULATION: AttackMethod.ML_PRIVACY,
+            MetricEnum.REFERENCE: AttackMethod.ML_PRIVACY,
+            MetricEnum.SHADOW: AttackMethod.ML_PRIVACY
+        # , MetricEnum.GROUPPOPULATION
+        }
+        self.attack = attack
+        self.attack_method = self.attack_method_dic[attack]
+        self.getDataSet(dataset_name,attack, dataset_train_params)
 
 
     def save_model(self, model, filename):
@@ -107,27 +122,22 @@ class AttackPipeline :
 
             return model
 
-    def getDataSet(self, dataset_name,attack,format_dataset_params , num_train_points = None, num_test_points = None , num_population_points = None):
-        self.dataset = DatasetRepo(dataset_name, format_dataset_params)  #
+    def getDataSet(self, dataset_name,attack,dataset_train_params ):
+        self.dataset = DatasetRepo(dataset_name, dataset_train_params)  #
         (self.x_train_all, self.y_train_all), (self.x_val_all, self.y_val_all) = self.dataset.get_data_for_training()
-
-        if(attack == population):
-            self.split_data_for_population_attack(num_train_points, num_test_points, num_population_points)
-        if(attack == reference):
-            self.split_data_for_reference_attack()
 
 
 
         return self.dataset.get_data_for_training()
 
-    def split_data_for_population_attack(self, num_train_points = None, num_test_points = None, num_population_points = None):
+    def split_data_for_population_attack(self, dataset_params = None):
         l_tr = len(self.x_train_all)
         l_te = len(self.x_val_all)
-        if( num_train_points == None) :
+        if( dataset_params['num_train_points'] == None) :
             num_train_points = l_tr/2
-        if( num_test_points == None) :
+        if( dataset_params['num_test_points'] == None) :
             num_test_points = l_te/2
-        if(num_population_points == None or num_population_points > num_train_points + num_test_points) :
+        if(dataset_params["num_population_points"] == None ) :
             num_population_points = num_train_points + num_test_points
         self.x_train, self.y_train = self.x_train_all[:num_train_points], self.y_train_all[:num_train_points]
         self.x_test, self.y_test = self.x_val_all[:num_test_points], self.y_val_all[:num_test_points]
@@ -142,8 +152,10 @@ class AttackPipeline :
 
 
 
-    def Dataset_ready(self,attacks,target_model):
-        if attacks == population:
+    def Dataset_ready(self,target_model, dataset_train_params):
+
+        if self.attack == population:
+            self.split_data_for_population_attack(dataset_train_params)
             train_ds = {'x': self.x_train, 'y': self.y_train}
             test_ds = {'x': self.x_test, 'y': self.y_test}
             self.target_dataset = Dataset(
@@ -169,7 +181,8 @@ class AttackPipeline :
                 datasets=[self.reference_dataset]
             )
 
-        if attacks == reference:
+        if self.attack == reference:
+            self.split_data_for_reference_attack()
             dataset = Dataset(
                 data_dict={
                     'train': {'x': self.x_train, 'y': self.y_train},
@@ -213,28 +226,28 @@ class AttackPipeline :
         return target_info_source,reference_info_source
 
 
-    def run_attacks(self, model, attacks, model_training_params, attack_method , attack_input_params ):
+    def run_attack(self, model, attack_parameters ):
 
 
 
         # predictions on the model
 
         # Prepare inputs for the mia attacks
-        if(attack_method == AttackMethod.TF_PRIVACY) :
-            self.perform_tf_privacy_attack(model , attacks, model_training_params , attack_input_params)
+        if(self.attack_method == AttackMethod.TF_PRIVACY) :
+            self.perform_tf_privacy_attack(model , attack_parameters)
 
-        elif(attack_method == AttackMethod.ML_PRIVACY) :
-            self.perform_ml_privacy_attack(model , attacks, model_training_params , attack_input_params)
+        elif(self.attack_method == AttackMethod.ML_PRIVACY) :
+            self.perform_ml_privacy_attack(model , attack_parameters)
 
 
-    def perform_ml_privacy_attack(self, model , attacks, model_training_params = None , attack_input_params = None):
+    def perform_ml_privacy_attack(self, model , attack_parameters):
 
         # get appropriate model class
         self.model = model
         target_model = None
-        if model_training_params[model_type] == ModelType.PytorchModel :
-            target_model = TensorflowModel(model_obj=model, loss_fn=attack_input_params[loss_fn])
-        self.attack_input_params = attack_input_params
+        if attack_parameters[model_type] == ModelType.PytorchModel :
+            target_model = TensorflowModel(model_obj=model, loss_fn=attack_parameters[loss_fn])
+        self.attack_input_params = attack_parameters
         # dataset ready
         # target_dataset, reference_dataset = self.Dataset_ready()
 
@@ -247,29 +260,29 @@ class AttackPipeline :
         #     models=[target_model],
         #     datasets=[reference_dataset]
         # )
-        target_info_source, reference_info_source = self.Dataset_ready(attacks,target_model)
+        target_info_source, reference_info_source = self.Dataset_ready(target_model, attack_parameters)
 
 
-        for attack in attacks :
-            if (attack == population):
-                self.audit_obj = Audit(
-                    metrics=MetricEnum.POPULATION,
-                    inference_game_type=InferenceGame.PRIVACY_LOSS_MODEL,
-                    target_info_sources=target_info_source,
-                    reference_info_sources=reference_info_source,
-                    fpr_tolerances=attack_input_params[fpr_tolerance_list]
-                )
-                self.metrics(audit_obj=self.audit_obj, verbose=True)
 
-            if (attack == reference):
-                self.audit_obj = Audit(
-                    metrics=MetricEnum.REFERENCE,
-                    inference_game_type=InferenceGame.PRIVACY_LOSS_MODEL,
-                    target_info_sources=target_info_source,
-                    reference_info_sources=reference_info_source,
-                    fpr_tolerances=attack_input_params[fpr_tolerance_list]
-                )
-                self.metrics(audit_obj=self.audit_obj, verbose=True)
+        if (self.attack == population):
+            self.audit_obj = Audit(
+                metrics=MetricEnum.POPULATION,
+                inference_game_type=InferenceGame.PRIVACY_LOSS_MODEL,
+                target_info_sources=target_info_source,
+                reference_info_sources=reference_info_source,
+                fpr_tolerances=attack_parameters[fpr_tolerance_list]
+            )
+            self.metrics(audit_obj=self.audit_obj, verbose=True)
+
+        if (self.attack == reference):
+            self.audit_obj = Audit(
+                metrics=MetricEnum.REFERENCE,
+                inference_game_type=InferenceGame.PRIVACY_LOSS_MODEL,
+                target_info_sources=target_info_source,
+                reference_info_sources=reference_info_source,
+                fpr_tolerances=attack_parameters[fpr_tolerance_list]
+            )
+            self.metrics(audit_obj=self.audit_obj, verbose=True)
 
 
     def metrics(self, audit_obj , verbose=False):
@@ -281,14 +294,15 @@ class AttackPipeline :
                 print(result)
 
 
-    def perform_tf_privacy_attack(self, model , attacks, model_training_params , attack_input_params = None):
+    def perform_tf_privacy_attack(self, model , attack_parameters):
 
         (x_train, y_train), (x_val, y_val) = self.dataset.get_data_for_training()
+        bt_size = attack_parameters[batch_size]
 
         print('Predict on train...')
-        logits_train = model.predict(x_train, batch_size=model_training_params[batch_size])
+        logits_train = model.predict(x_train, batch_size=bt_size)
         print('Predict on test...')
-        logits_test = model.predict(x_val, batch_size=model_training_params[batch_size])
+        logits_test = model.predict(x_val, batch_size=bt_size)
 
         print('Apply softmax to get probabilities from logits...')
         prob_train = special.softmax(logits_train, axis=1)
@@ -321,7 +335,7 @@ class AttackPipeline :
 
         attacks_result = mia.run_attacks(input,
                                          slicing_specs,
-                                         attack_types=attacks)
+                                         attack_types=[self.attack])
 
         # Plot the ROC curve of the best classifier
         fig = plotting.plot_roc_curve(
@@ -333,7 +347,7 @@ class AttackPipeline :
             summary_file = summary + TXT_EXTN
             with open(summary_file, encoding="utf-8", mode='a') as f:
                 f.write("\nNew Summary :\n")
-                line = f" model params :{self.get_model_param_tr_string(model_training_params)[:3]} , summary : {attacks_result.summary(by_slices=True)}"
+                line = f" model params :{self.get_model_param_tr_string(attack_parameters)[:3]} , summary : {attacks_result.summary(by_slices=True)}"
                 f.write(line)
                 f.close()
         except:
