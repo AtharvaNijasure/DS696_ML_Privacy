@@ -43,8 +43,9 @@ class DatasetRepo :
 
 
 
-    def get_data_for_training(self):
+    def get_data_for_training(self,model_training_parameters = None):
         return (self.x_train, self.y_train), (self.x_val, self.y_val)
+    
 
 
     def format_as_per_params(self, params):

@@ -6,6 +6,7 @@ from AttackInputs import AttackInputs
 import numpy as np
 from Constants import *
 import pickle
+import enum
 
 
 from tensorflow_privacy.privacy.privacy_tests.membership_inference_attack import membership_inference_attack as mia
@@ -24,9 +25,35 @@ from privacy_meter.audit import Audit, MetricEnum
 
 
 
+class AttacksAvailable(enum.Enum):
+    AttackType.THRESHOLD_ATTACK,
+    AttackType.LOGISTIC_REGRESSION,
+    AttackType.MULTI_LAYERED_PERCEPTRON,
+    AttackType.RANDOM_FOREST,
+    AttackType.K_NEAREST_NEIGHBORS,
+    AttackType.THRESHOLD_ENTROPY_ATTACK,
+    MetricEnum.POPULATION,
+    MetricEnum.REFERENCE,
+    MetricEnum.SHADOW
 
 
+attacks_tf_p = [
+                AttackType.THRESHOLD_ATTACK,
+                AttackType.LOGISTIC_REGRESSION,
+                AttackType.MULTI_LAYERED_PERCEPTRON,
+                AttackType.RANDOM_FOREST,
+                AttackType.K_NEAREST_NEIGHBORS,
+                AttackType.THRESHOLD_ENTROPY_ATTACK
+            ]
 
+
+# we can join the attacks
+attacks_ml_pr = [
+    MetricEnum.POPULATION,
+    MetricEnum.REFERENCE,
+    MetricEnum.SHADOW
+    #, MetricEnum.GROUPPOPULATION
+]
 
 
 
@@ -68,7 +95,7 @@ class AttackPipeline :
         except :
             model_func = getattr(ModelParams, model_name)
             model = model_func(ModelParams())
-            (x_train, y_train), (x_val, y_val) = self.dataset.get_data_for_training()
+            (x_train, y_train), (x_val, y_val) = self.dataset.get_data_for_training(model_training_params)
             # training the model
             hist = model.fit(x_train, y_train,
                              epochs=model_training_params[epoch],
