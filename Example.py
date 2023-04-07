@@ -1,3 +1,4 @@
+from privacy_meter.constants import MetricEnum
 from tensorflow_privacy.privacy.privacy_tests.membership_inference_attack.data_structures import AttackType
 from AttackPipeline import AttackPipeline
 from DatasetRepo import *
@@ -26,8 +27,10 @@ attacks_tf_p = [
             ]
 
 attacks_ml_pr = [
-    population,
-    reference
+    MetricEnum.POPULATION,
+    MetricEnum.REFERENCE,
+    MetricEnum.SHADOW
+    #, MetricEnum.GROUPPOPULATION
 ]
 
 
