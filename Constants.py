@@ -7,9 +7,12 @@ verbose = "verbose"
 
 num_train_points = "num_train_points"
 num_test_points = "num_test_points"
+num_points_per_train_split = "num_points_per_train_split"
+num_points_per_test_split = "num_points_per_test_split"
 loss_fn = "loss_fn"
 optim_fn = "optim_fn"
 epochs = "epochs"
+num_reference_models = "num_reference_models"
 
 regularizer_penalty = "regularizer_penalty"
 regularizer = "regularizer"

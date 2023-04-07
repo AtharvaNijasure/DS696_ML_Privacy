@@ -1,4 +1,4 @@
-from symbol import decorator
+# from symbol import decorator
 
 import tensorflow as tf
 from keras import layers

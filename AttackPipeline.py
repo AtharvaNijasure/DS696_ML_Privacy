@@ -31,8 +31,8 @@ class AttackPipeline :
 
 
 
-    def __init__(self, dataset_name,format_dataset_params = [], num_train_points = None, num_test_points = None, num_population_points = None):
-        self.getDataSet(dataset_name, format_dataset_params, num_train_points, num_test_points, num_population_points )
+    def __init__(self, dataset_name,attack,format_dataset_params = [], num_train_points = None, num_test_points = None, num_population_points = None):
+        self.getDataSet(dataset_name,attack, format_dataset_params, num_train_points, num_test_points, num_population_points )
 
 
     def save_model(self, model, filename):
@@ -77,33 +77,14 @@ class AttackPipeline :
 
             return model
 
-    def run_attacks(self, model, attacks, model_training_params, attack_method , attack_input_params ):
-
-
-
-        # predictions on the model
-
-        # Prepare inputs for the mia attacks
-        if(attack_method == AttackMethod.TF_PRIVACY) :
-            self.perform_tf_privacy_attack(model , attacks, model_training_params , attack_input_params)
-
-        elif(attack_method == AttackMethod.ML_PRIVACY) :
-            self.perform_ml_privacy_attack(model , attacks, model_training_params , attack_input_params)
-
-    # we have a model with pre deifned params ... even with training loss , etc
-    # we train the model
-
-    # we have attacks array
-
-
-    # run attacks in the array using ml-privacy-meter for now
-
-    # store the results
-
-    def getDataSet(self, dataset_name,format_dataset_params , num_train_points = None, num_test_points = None , num_population_points = None):
+    def getDataSet(self, dataset_name,attack,format_dataset_params , num_train_points = None, num_test_points = None , num_population_points = None):
         self.dataset = DatasetRepo(dataset_name, format_dataset_params)  #
         (self.x_train_all, self.y_train_all), (self.x_val_all, self.y_val_all) = self.dataset.get_data_for_training()
-        self.split_data_for_population_attack(num_train_points, num_test_points, num_population_points)
+
+        if(attack == population):
+            self.split_data_for_population_attack(num_train_points, num_test_points, num_population_points)
+        if(attack == reference):
+            self.split_data_for_reference_attack()
 
 
 
@@ -123,49 +104,120 @@ class AttackPipeline :
         self.x_population = self.x_train_all[num_train_points:(num_train_points + num_population_points)]
         self.y_population = self.y_train_all[num_train_points:(num_train_points + num_population_points)]
 
+    def split_data_for_reference_attack(self):
+        self.x_train, self.y_train = self.x_train_all, self.y_train_all
+        self.x_test, self.y_test = self.x_val_all, self.y_val_all
+        pass
 
 
-    def Dataset_ready(self):
-        train_ds = {'x': self.x_train, 'y': self.y_train}
-        test_ds = {'x': self.x_test, 'y': self.y_test}
-        self.target_dataset = Dataset(
-            data_dict={'train': train_ds, 'test': test_ds},
-            default_input='x', default_output='y'
-        )
-
-        # create the reference dataset
-        population_ds = {'x': self.x_population, 'y': self.y_population}
-        self.reference_dataset = Dataset(
-            # this is the default mapping that a Metric will look for
-            # in a reference dataset
-            data_dict={'train': population_ds},
-            default_input='x', default_output='y'
-        )
-        return self.target_dataset, self.reference_dataset
 
 
+    def Dataset_ready(self,attacks,target_model):
+        if attacks == population:
+            train_ds = {'x': self.x_train, 'y': self.y_train}
+            test_ds = {'x': self.x_test, 'y': self.y_test}
+            self.target_dataset = Dataset(
+                data_dict={'train': train_ds, 'test': test_ds},
+                default_input='x', default_output='y'
+            )
+
+            # create the reference dataset
+            population_ds = {'x': self.x_population, 'y': self.y_population}
+            self.reference_dataset = Dataset(
+                # this is the default mapping that a Metric will look for
+                # in a reference dataset
+                data_dict={'train': population_ds},
+                default_input='x', default_output='y'
+            )
+            target_info_source = InformationSource(
+                models=[target_model],
+                datasets=[self.target_dataset]
+            )
+
+            reference_info_source = InformationSource(
+                models=[target_model],
+                datasets=[self.reference_dataset]
+            )
+
+        if attacks == reference:
+            dataset = Dataset(
+                data_dict={
+                    'train': {'x': self.x_train, 'y': self.y_train},
+                    'test': {'x': self.x_test, 'y': self.y_test}
+                },
+                default_input='x',
+                default_output='y'
+            )
+            datasets_list = dataset.subdivide(
+                num_splits=self.attack_input_params[num_reference_models] + 1,
+                delete_original=True,
+                in_place=False,
+                return_results=True,
+                method='hybrid',
+                split_size={'train': self.attack_input_params[num_points_per_train_split], 'test': self.attack_input_params[num_points_per_test_split]}
+            )
+            reference_models = []
+            for model_idx in range(self.attack_input_params[num_reference_models]):
+                print(f"Training reference model {model_idx}...")
+                reference_model = self.model
+                reference_model.compile(optimizer=optim_fn, loss=loss_fn, metrics=['accuracy'])
+                reference_model.fit(
+                    datasets_list[model_idx + 1].get_feature('train', '<default_input>'),
+                    datasets_list[model_idx + 1].get_feature('train', '<default_output>'),
+                    batch_size=batch_size,
+                    epochs=epochs,
+                    verbose=2
+                )
+                reference_models.append(
+                    TensorflowModel(model_obj=reference_model, loss_fn=loss_fn)
+                )
+            target_info_source = InformationSource(
+                models=[target_model],
+                datasets=[datasets_list[0]]
+            )
+
+            reference_info_source = InformationSource(
+                models=reference_models,
+                datasets=[datasets_list[0]] # we use the same dataset for the reference models
+            )
+        return target_info_source,reference_info_source
+
+
+    def run_attacks(self, model, attacks, model_training_params, attack_method , attack_input_params ):
+
+
+
+        # predictions on the model
+
+        # Prepare inputs for the mia attacks
+        if(attack_method == AttackMethod.TF_PRIVACY) :
+            self.perform_tf_privacy_attack(model , attacks, model_training_params , attack_input_params)
+
+        elif(attack_method == AttackMethod.ML_PRIVACY) :
+            self.perform_ml_privacy_attack(model , attacks, model_training_params , attack_input_params)
 
 
     def perform_ml_privacy_attack(self, model , attacks, model_training_params = None , attack_input_params = None):
 
         # get appropriate model class
+        self.model = model
         target_model = None
         if model_training_params[model_type] == ModelType.PytorchModel :
             target_model = TensorflowModel(model_obj=model, loss_fn=attack_input_params[loss_fn])
-
+        self.attack_input_params = attack_input_params
         # dataset ready
-        target_dataset, reference_dataset = self.Dataset_ready()
+        # target_dataset, reference_dataset = self.Dataset_ready()
 
-        target_info_source = InformationSource(
-            models=[target_model],
-            datasets=[target_dataset]
-        )
+        # target_info_source = InformationSource(
+        #     models=[target_model],
+        #     datasets=[target_dataset]
+        # )
 
-        reference_info_source = InformationSource(
-            models=[target_model],
-            datasets=[reference_dataset]
-        )
-
+        # reference_info_source = InformationSource(
+        #     models=[target_model],
+        #     datasets=[reference_dataset]
+        # )
+        target_info_source, reference_info_source = self.Dataset_ready(attacks,target_model)
 
 
         for attack in attacks :
