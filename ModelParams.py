@@ -79,14 +79,22 @@ class ModelParams :
 
 
     def model_basic_MLP_1(self):
-        mlp_model = neural_network.MLPClassifier()
-        param_grid = {
-            'hidden_layer_sizes': [(64,), (32, 32)],
-            'solver': ['adam'],
-            'alpha': [0.0001, 0.001, 0.01],
-        }
-        model = model_selection.GridSearchCV(
-            mlp_model, param_grid=param_grid, cv=3, n_jobs=3, verbose=0)
+        model = tf.keras.models.Sequential([
+            layers.Input( shape=(46,)),
+            layers.Dense(128, activation='relu'),
+            layers.Dense(64, activation='relu'),
+            layers.Dense(16 , activation='relu'),
+            layers.Dense(1, activation="sigmoid")
+        ])
+
+
+
+        model.compile(
+            loss=tf.keras.losses.CategoricalCrossentropy(from_logits=True),
+            optimizer='adam',
+            metrics=['AUC', 'accuracy']
+        )
+
 
 
         return model

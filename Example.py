@@ -72,7 +72,7 @@ ml_pr_attack_input_params = {
 
 
 attack_pipeline = AttackPipeline(
-    RegisteredDataset.ADULT_INCOME , format_dataset_params ,
+    RegisteredDataset.TITANIC , format_dataset_params ,
     population,
     num_train_points = ml_pr_attack_input_params[num_train_points],
     num_test_points = ml_pr_attack_input_params[num_test_points],

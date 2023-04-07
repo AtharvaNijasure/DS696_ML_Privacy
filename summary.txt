@@ -1040,3 +1040,33 @@ Best-performing attacks over slice: "CORRECTLY_CLASSIFIED=False"
   THRESHOLD_ENTROPY_ATTACK (with 24240 training and 6205 test examples) achieved an AUC of 0.60
   THRESHOLD_ENTROPY_ATTACK (with 24240 training and 6205 test examples) achieved an advantage of 0.15
   THRESHOLD_ENTROPY_ATTACK (with 24240 training and 6205 test examples) achieved a positive predictive value of 0.94
+New Summary :
+ model params :epo , summary : Best-performing attacks over all slices
+  MULTI_LAYERED_PERCEPTRON (with 1047 training and 262 test examples) achieved an AUC of 0.69 on slice Entire dataset
+  MULTI_LAYERED_PERCEPTRON (with 399 training and 95 test examples) achieved an advantage of 0.39 on slice CLASS=1
+  MULTI_LAYERED_PERCEPTRON (with 648 training and 167 test examples) achieved a positive predictive value of 0.97 on slice CLASS=0
+
+Best-performing attacks over slice: "Entire dataset"
+  MULTI_LAYERED_PERCEPTRON (with 1047 training and 262 test examples) achieved an AUC of 0.69
+  MULTI_LAYERED_PERCEPTRON (with 1047 training and 262 test examples) achieved an advantage of 0.37
+  MULTI_LAYERED_PERCEPTRON (with 1047 training and 262 test examples) achieved a positive predictive value of 0.94
+
+Best-performing attacks over slice: "CLASS=0"
+  MULTI_LAYERED_PERCEPTRON (with 648 training and 167 test examples) achieved an AUC of 0.68
+  MULTI_LAYERED_PERCEPTRON (with 648 training and 167 test examples) achieved an advantage of 0.37
+  MULTI_LAYERED_PERCEPTRON (with 648 training and 167 test examples) achieved a positive predictive value of 0.97
+
+Best-performing attacks over slice: "CLASS=1"
+  MULTI_LAYERED_PERCEPTRON (with 399 training and 95 test examples) achieved an AUC of 0.31
+  MULTI_LAYERED_PERCEPTRON (with 399 training and 95 test examples) achieved an advantage of 0.39
+  MULTI_LAYERED_PERCEPTRON (with 399 training and 95 test examples) achieved a positive predictive value of 0.81
+
+Best-performing attacks over slice: "CORRECTLY_CLASSIFIED=True"
+  MULTI_LAYERED_PERCEPTRON (with 648 training and 167 test examples) achieved an AUC of 0.32
+  MULTI_LAYERED_PERCEPTRON (with 648 training and 167 test examples) achieved an advantage of 0.37
+  MULTI_LAYERED_PERCEPTRON (with 648 training and 167 test examples) achieved a positive predictive value of 0.80
+
+Best-performing attacks over slice: "CORRECTLY_CLASSIFIED=False"
+  MULTI_LAYERED_PERCEPTRON (with 399 training and 95 test examples) achieved an AUC of 0.31
+  MULTI_LAYERED_PERCEPTRON (with 399 training and 95 test examples) achieved an advantage of 0.37
+  MULTI_LAYERED_PERCEPTRON (with 399 training and 95 test examples) achieved a positive predictive value of 0.81

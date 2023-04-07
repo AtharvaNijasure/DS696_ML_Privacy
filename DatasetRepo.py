@@ -4,6 +4,7 @@ import tensorflow as tf
 import pandas as pd
 
 import seaborn as sns
+from sklearn.ensemble import RandomForestRegressor
 from sklearn.model_selection import train_test_split
 import numpy as np
 
@@ -95,11 +96,61 @@ class DatasetRepo :
             df_tr = pd.read_csv(rel_path + "train.csv")
             df_test = pd.read_csv(rel_path + "test.csv")
             df_test_val = pd.read_csv(rel_path + "gender_submission.csv")
-            self.x_train = df_tr[["PassengerId","Pclass","Name","Sex","Age","SibSp","Parch","Ticket","Fare","Cabin","Embarked"]]
-            self.y_train = df_tr[["PassengerId","Survived"]]
-            self.x_val = df_test[["PassengerId", "Pclass", "Name", "Sex", "Age", "SibSp", "Parch", "Ticket", "Fare", "Cabin",
-                 "Embarked"]]
-            self.y_val = df_test_val[["PassengerId","Survived"]]
+            df_test = pd.merge(df_test, df_test_val)# df_test.join(df_test_val, on = "PassengerId" )
+
+            df = df_tr.append(df_test, ignore_index=True)
+
+            df['Title'] = df.Name.map(lambda x: x.split(',')[1].split('.')[0].strip())
+
+            # inspect the amount of people for each title
+            df['Title'].value_counts()
+
+            df = pd.concat([df, pd.get_dummies(df['Title'])], axis=1).drop(labels=['Name'], axis=1)
+
+            df = df.drop(labels=['Cabin','Ticket'], axis=1)
+
+
+
+            df = pd.get_dummies(df, columns=['Title','Sex', 'Embarked'])
+
+            # notice that instead of using Title, we should use its corresponding dummy variables
+            df_sub = df[['Age', 'Master', 'Miss', 'Mr', 'Mrs', 'SibSp']]
+
+            X_train = df_sub.dropna().drop('Age', axis=1)
+            y_train = df['Age'].dropna()
+            X_test = df_sub.loc[np.isnan(df.Age)].drop('Age', axis=1)
+
+            regressor = RandomForestRegressor(n_estimators=300)
+            regressor.fit(X_train, y_train)
+            y_pred = np.round(regressor.predict(X_test), 1)
+            df.Age.loc[df.Age.isnull()] = y_pred
+
+            # df.Age.isnull().sum(axis=0)  # no more NAN now
+
+
+            train_size = int(params["train_size"] * len(df['PassengerId']) )
+
+            df.fillna(value=-1, inplace=True)
+
+
+            self.y_train = df[0:train_size]['Survived'].values
+            self.x_train = df[0:train_size].drop(['Survived', 'PassengerId'], axis=1).values
+            self.y_val = df[train_size:]["Survived"].values
+            self.x_val = df[train_size:].drop(['Survived', 'PassengerId'], axis=1).values
+
+
+
+
+
+
+
+
+            # self.x_train = df_tr[["Pclass","Name","Sex","Age","SibSp","Parch","Ticket","Fare","Cabin","Embarked"]]
+            # self.y_train = df_tr["Survived"]
+            # self.x_val = df_test[[ "Pclass", "Name", "Sex", "Age", "SibSp", "Parch", "Ticket", "Fare", "Cabin",
+            #      "Embarked"]]
+            # self.y_val = df_test["Survived"]
+            # PassengerId
 
 
 
