@@ -36,45 +36,6 @@ attacks_ml_pr = [
 ]
 
 
-model_training_params = {epoch: 50, batch_size: 64, verbose:1, model_type: ModelType.TensorflowModel }
-# tf_attack_input_params = {}
-
-# ml_pr_attack_input_params = {
-#     "population" :
-#     {
-#     num_train_points: 5000,
-#     num_test_points: 5000,
-#     loss_fn: tf.keras.losses.CategoricalCrossentropy(),
-#     optim_fn: 'adam',
-#     epochs: 2,
-#     batch_size: 64,
-#     regularizer_penalty: 0.01,
-#     verbose: 2,
-#     num_population_points: 10000,
-#     fpr_tolerance_list: [
-#             0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0
-#         ]
-#     },
-#     "reference":
-#     {
-#     num_points_per_train_split : 5000,
-#     num_points_per_test_split : 1000,
-#     loss_fn : tf.keras.losses.CategoricalCrossentropy(),
-#     optim_fn : 'adam',
-#     epochs : 10,
-#     batch_size : 64,
-#     regularizer_penalty : 0.01,
-#     regularizer : tf.keras.regularizers.l2(0.01),
-#     num_reference_models : 10,
-#     fpr_tolerance_list : [
-#         0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0
-#     ]
-#     }
-# }
-
-# ml_pr_attack_input_params[regularizer] : tf.keras.regularizers.l2(l= ml_pr_attack_input_params[regularizer_penalty])
-
-
 """
 attack pipeline - init(dataset,attack,model_train_and_dataset_params = {})
 get_model(model_fx, training_params)
@@ -83,16 +44,37 @@ run_attack(target_model,attack_params)
 """
 
 dataset_parameters = {
-"train_size" : 0.8
+    num_train_points: 5000,
+    num_test_points: 5000,
+    num_population_points: 10000,
+    verbose: 2
+}
+
+model_training_params = {
+    epoch: 50, 
+    batch_size: 64, 
+    verbose:1, 
+    model_type: ModelType.TensorflowModel,
+    loss_fn: tf.keras.losses.CategoricalCrossentropy(),
+    optim_fn: 'adam',
+    epochs: 2,
+    regularizer_penalty: 0.01
+    }
+
+attack_parameters = {
+    attack : population,
+    fpr_tolerance_list: [
+            0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0
+        ]
 }
 
 attack_pipeline = AttackPipeline(
     RegisteredDataset.TITANIC, AttackType.LOGISTIC_REGRESSION,dataset_parameters
     )
 
-attack_parameters = {
-    batch_size: 64
-}
+attack_pipeline_population = AttackPipeline(
+    RegisteredDataset.TITANIC, population,dataset_parameters
+    )
 
 # wrapper
 # model = attack_pipeline.get_model(cifar_100_model_1, model_training_params)

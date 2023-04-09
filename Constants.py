@@ -3,6 +3,7 @@
 epoch = "epoch"
 batch_size = "batch_size"
 verbose = "verbose"
+attack = "attack"
 
 
 num_train_points = "num_train_points"
