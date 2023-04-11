@@ -65,7 +65,7 @@ attack_parameters_titanic = {
 
 for att in attacks_tf_p :
     attack_pipeline_population = AttackPipeline(
-        RegisteredDataset.TITANIC, att, dataset_parameters
+        RegisteredDataset.CIFAR100, att, dataset_parameters
     )
-    model = attack_pipeline_population.get_model(model_basic_MLP_1, model_training_params)
+    model = attack_pipeline_population.get_model(cifar_100_model_1, model_training_params)
     attack_pipeline_population.run_attack(model, attack_parameters_titanic)
