@@ -95,8 +95,10 @@ class AttackPipeline :
 
     def get_model_param_tr_string(self, model_training_params):
         ans = ""
+        ignore_keys = ['model_type','loss_fn']
         for key in model_training_params.keys() :
-            ans += str(key) + "_" + str(model_training_params[key]).replace(".","")
+            if not key in ignore_keys:
+                ans += str(key) + "_" + str(model_training_params[key]).replace(".","")
 
         return ans + EXTN
 
@@ -129,13 +131,13 @@ class AttackPipeline :
                              verbose=model_training_params[verbose],
                              validation_data=(self.x_val, self.y_val))
 
-            self.save_model(model, model_name + EXTN)
+            self.save_model(model, model_file)
 
             return model
 
     def getDataSet(self, dataset_name,attack,dataset_train_params ):
         self.dataset = DatasetRepo(dataset_name, dataset_train_params)  #
-        (self.x_train_all, self.y_train_all), (self.x_val_all, self.y_val_all) = self.dataset.loadData(attack)
+        (self.x_train_all, self.y_train_all), (self.x_val_all, self.y_val_all) = self.dataset.loadData(dataset_train_params)
         # self.Dataset_ready(self,target_model, dataset_train_params)
 
 
