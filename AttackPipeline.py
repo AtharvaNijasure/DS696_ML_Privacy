@@ -75,9 +75,12 @@ class AttackPipeline :
             MetricEnum.SHADOW: AttackMethod.ML_PRIVACY
         # , MetricEnum.GROUPPOPULATION
         }
+        self.parameter = dataset_train_params
         self.attack = attack
         self.attack_method = self.attack_method_dic[attack]
-        self.getDataSet(dataset_name,attack, dataset_train_params)
+        print("getting data for training")
+        self.getDataSet(dataset_name,self.attack, dataset_train_params)
+        print("data gathering succesful")
 
 
     def save_model(self, model, filename):
@@ -110,13 +113,21 @@ class AttackPipeline :
         except :
             model_func = getattr(ModelParams, model_name)
             model = model_func(ModelParams())
-            (x_train, y_train), (x_val, y_val) = self.dataset.get_data_for_training(model_training_params)
-            # training the model
-            hist = model.fit(x_train, y_train,
+            if self.attack == MetricEnum.REFERENCE:
+                x = self.datasets_list[0].get_feature('train', '<default_input>')
+                y = self.datasets_list[0].get_feature('train', '<default_output>')
+                (self.x_train, self.y_train), (self.x_val, self.y_val) = (x,y),None
+            elif self.attack == MetricEnum.POPULATION:
+                (self.x_train, self.y_train), (self.x_val, self.y_val) = self.dataset.get_data_for_training(model_training_params)
+            else:
+                (self.x_train, self.y_train), (self.x_val, self.y_val) = self.dataset.get_data_for_training(model_training_params)
+            # training the 
+            # model.compile(optimizer=model_training_params[optim_fn], loss=model_training_params[loss_fn], metrics=['accuracy'])
+            hist = model.fit(self.x_train, self.y_train,
                              epochs=model_training_params[epoch],
                              batch_size=model_training_params[batch_size],
                              verbose=model_training_params[verbose],
-                             validation_data=(x_val, y_val))
+                             validation_data=(self.x_val, self.y_val))
 
             self.save_model(model, model_name + EXTN)
 
@@ -124,25 +135,25 @@ class AttackPipeline :
 
     def getDataSet(self, dataset_name,attack,dataset_train_params ):
         self.dataset = DatasetRepo(dataset_name, dataset_train_params)  #
-        (self.x_train_all, self.y_train_all), (self.x_val_all, self.y_val_all) = self.dataset.get_data_for_training()
-
+        (self.x_train_all, self.y_train_all), (self.x_val_all, self.y_val_all) = self.dataset.loadData(attack)
+        # self.Dataset_ready(self,target_model, dataset_train_params)
 
 
         return self.dataset.get_data_for_training()
 
-    def split_data_for_population_attack(self, dataset_params = None):
-        l_tr = len(self.x_train_all)
-        l_te = len(self.x_val_all)
-        if( dataset_params['num_train_points'] == None) :
-            num_train_points = l_tr/2
-        if( dataset_params['num_test_points'] == None) :
-            num_test_points = l_te/2
-        if(dataset_params["num_population_points"] == None ) :
-            num_population_points = num_train_points + num_test_points
-        self.x_train, self.y_train = self.x_train_all[:num_train_points], self.y_train_all[:num_train_points]
-        self.x_test, self.y_test = self.x_val_all[:num_test_points], self.y_val_all[:num_test_points]
-        self.x_population = self.x_train_all[num_train_points:(num_train_points + num_population_points)]
-        self.y_population = self.y_train_all[num_train_points:(num_train_points + num_population_points)]
+    def split_data_for_population_attack(self, attack_params = None):
+        # l_tr = len(self.x_train_all)
+        # l_te = len(self.x_val_all)
+        # if( dataset_params['num_train_points'] == None) :
+        #     num_train_points = l_tr/2
+        # if( dataset_params['num_test_points'] == None) :
+        #     num_test_points = l_te/2
+        # if(dataset_params["num_population_points"] == None ) :
+        #     num_population_points = num_train_points + num_test_points
+        # self.x_train, self.y_train = self.x_train_all[:num_train_points], self.y_train_all[:num_train_points]
+        # self.x_test, self.y_test = self.x_val_all[:num_test_points], self.y_val_all[:num_test_points]
+        self.x_population = self.x_train_all[self.parameter[num_train_points]:(self.parameter[num_train_points] + attack_params[num_population_points])]
+        self.y_population = self.y_train_all[self.parameter[num_train_points]:(self.parameter[num_train_points] + attack_params[num_population_points])]
 
     def split_data_for_reference_attack(self):
         self.x_train, self.y_train = self.x_train_all, self.y_train_all
@@ -152,10 +163,10 @@ class AttackPipeline :
 
 
 
-    def Dataset_ready(self,target_model, dataset_train_params):
+    def Dataset_ready(self,target_model, attack_params):
 
-        if self.attack == population:
-            self.split_data_for_population_attack(dataset_train_params)
+        if self.attack == MetricEnum.POPULATION:
+            self.split_data_for_population_attack(attack_params)
             train_ds = {'x': self.x_train, 'y': self.y_train}
             test_ds = {'x': self.x_test, 'y': self.y_test}
             self.target_dataset = Dataset(
@@ -191,7 +202,7 @@ class AttackPipeline :
                 default_input='x',
                 default_output='y'
             )
-            datasets_list = dataset.subdivide(
+            self.datasets_list = dataset.subdivide(
                 num_splits=self.attack_input_params[num_reference_models] + 1,
                 delete_original=True,
                 in_place=False,
@@ -205,8 +216,8 @@ class AttackPipeline :
                 reference_model = self.model
                 reference_model.compile(optimizer=optim_fn, loss=loss_fn, metrics=['accuracy'])
                 reference_model.fit(
-                    datasets_list[model_idx + 1].get_feature('train', '<default_input>'),
-                    datasets_list[model_idx + 1].get_feature('train', '<default_output>'),
+                    self.datasets_list[model_idx + 1].get_feature('train', '<default_input>'),
+                    self.datasets_list[model_idx + 1].get_feature('train', '<default_output>'),
                     batch_size=batch_size,
                     epochs=epochs,
                     verbose=2
@@ -216,12 +227,12 @@ class AttackPipeline :
                 )
             target_info_source = InformationSource(
                 models=[target_model],
-                datasets=[datasets_list[0]]
+                datasets=[self.datasets_list[0]]
             )
 
             reference_info_source = InformationSource(
                 models=reference_models,
-                datasets=[datasets_list[0]] # we use the same dataset for the reference models
+                datasets=[self.datasets_list[0]] # we use the same dataset for the reference models
             )
         return target_info_source,reference_info_source
 
@@ -248,23 +259,11 @@ class AttackPipeline :
         if attack_parameters[model_type] == ModelType.PytorchModel :
             target_model = TensorflowModel(model_obj=model, loss_fn=attack_parameters[loss_fn])
         self.attack_input_params = attack_parameters
-        # dataset ready
-        # target_dataset, reference_dataset = self.Dataset_ready()
-
-        # target_info_source = InformationSource(
-        #     models=[target_model],
-        #     datasets=[target_dataset]
-        # )
-
-        # reference_info_source = InformationSource(
-        #     models=[target_model],
-        #     datasets=[reference_dataset]
-        # )
         target_info_source, reference_info_source = self.Dataset_ready(target_model, attack_parameters)
 
 
 
-        if (self.attack == population):
+        if (self.attack == MetricEnum.POPULATION):
             self.audit_obj = Audit(
                 metrics=MetricEnum.POPULATION,
                 inference_game_type=InferenceGame.PRIVACY_LOSS_MODEL,

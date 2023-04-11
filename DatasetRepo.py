@@ -7,6 +7,8 @@ import seaborn as sns
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.model_selection import train_test_split
 import numpy as np
+from Constants import *
+from privacy_meter.constants import MetricEnum
 
 
 
@@ -36,6 +38,7 @@ class DatasetRepo :
     def __init__(self, dataset, params):
         self.dataset = dataset
         # self.dataset = RegisteredDataset.CIFAR100 # dataset # RegisteredDataset.CIFAR100
+        self.parameter = params
         self.loadData(params)
         self.format_as_per_params(params)
         self.format_outputs()
@@ -43,8 +46,15 @@ class DatasetRepo :
 
 
 
-    def get_data_for_training(self,model_training_parameters = None):
-        return (self.x_train, self.y_train), (self.x_val, self.y_val)
+    def get_data_for_training(self,attack = None,model_training_parameters = None):
+        if(attack == MetricEnum.POPULATION):
+            x_train, y_train = self.x_train[:self.parameter[num_train_points]], self.y_train[:self.parameter[num_train_points]]
+            x_test, y_test = self.x_val[:self.parameter[num_test_points]], self.y_val[:self.parameter[num_test_points]]
+        else:
+            (x_train, y_train),(x_test, y_test) = (self.x_train, self.y_train), (self.x_val, self.y_val)
+
+        return (x_train, y_train),(x_test, y_test)
+
     
 
 
@@ -79,18 +89,18 @@ class DatasetRepo :
     def loadData(self, params):
         if self.dataset == RegisteredDataset.CIFAR100 :
             (self.x_train, self.y_train), (self.x_val, self.y_val) = tf.keras.datasets.cifar100.load_data()
-            return
+            # return (self.x_train, self.y_train), (self.x_val, self.y_val)
         elif self.dataset == RegisteredDataset.CIFAR10 :
             (self.x_train, self.y_train), (self.x_val, self.y_val) = tf.keras.datasets.cifar10.load_data()
-            return
+            # return
 
         elif self.dataset == RegisteredDataset.IMDB :
             (self.x_train, self.y_train), (self.x_val, self.y_val) = tf.keras.datasets.imdb.load_data()
-            return
+            # return
 
         elif self.dataset == RegisteredDataset.MNIST :
             (self.x_train, self.y_train), (self.x_val, self.y_val) = tf.keras.datasets.mnist.load_data()
-            return
+            # return
 
         elif (self.dataset == RegisteredDataset.TITANIC):
             rel_path = "./datasets/titanic/"
@@ -156,7 +166,7 @@ class DatasetRepo :
 
 
 
-            return
+            # return
 
         elif (self.dataset == RegisteredDataset.ADULT_INCOME):
             rel_path = "./datasets/adultincome/"
@@ -169,7 +179,7 @@ class DatasetRepo :
             self.x_train, self.x_val, self.y_train, self.y_val = train_test_split(df[input_cols], df["income"],
                                                                                   train_size=params["train_size"])
 
-            return
+            # return
 
         elif (self.dataset == RegisteredDataset.PURCHASE100):
             rel_path = "./datasets/purchase100/"
@@ -180,7 +190,9 @@ class DatasetRepo :
             self.x_train, self.x_val, self.y_train, self.y_val = train_test_split(features, labels, train_size = params["train_size"] )
 
             # note the labels are one hot
-            return
+            # return
+        
+        return (self.x_train, self.y_train), (self.x_val, self.y_val)
 
 
 
