@@ -41,7 +41,7 @@ class DatasetRepo :
         self.parameter = params
         self.loadData(params)
         self.format_as_per_params(params)
-        self.format_outputs()
+        # self.format_outputs()
         # return self.get_data_for_training()
 
 
@@ -191,7 +191,7 @@ class DatasetRepo :
 
             # note the labels are one hot
             # return
-        
+        self.format_outputs()
         return (self.x_train, self.y_train), (self.x_val, self.y_val)
 
 
