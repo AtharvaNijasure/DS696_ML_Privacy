@@ -66,18 +66,10 @@ attack_parameters = {
         ]
 }
 
-# attack_pipeline = AttackPipeline(
-#     RegisteredDataset.TITANIC, AttackType.LOGISTIC_REGRESSION,dataset_parameters
-#     )
 
 attack_pipeline_population = AttackPipeline(
     RegisteredDataset.CIFAR100,MetricEnum.POPULATION ,dataset_parameters
     )
-
-# wrapper
-# model = attack_pipeline.get_model(cifar_100_model_1, model_training_params)
-# attack_pipeline.run_attacks(model, attacks_tf_p,model_training_params, AttackMethod.TF_PRIVACY , tf_attack_input_params)
-# attack_pipeline.run_attacks(model, attacks_ml_pr,model_training_params, AttackMethod.ML_PRIVACY , ml_pr_attack_input_params)
 
 model = attack_pipeline_population.get_model(cifar_100_model_2, model_training_params)
 

@@ -40,7 +40,21 @@ class ModelParams :
 
 
 
-
+    def cifar100_model_2(self):
+        regularizer_penalty = 0.01
+        regularizer = tf.keras.regularizers.l2(l=regularizer_penalty)
+        model = tf.keras.Sequential()
+        model.add(tf.keras.layers.Conv2D(32, kernel_size=(3, 3), activation='relu',
+                                        input_shape=(32,32,3), kernel_regularizer=regularizer))
+        model.add(tf.keras.layers.MaxPool2D(pool_size=(2, 2)))
+        model.add(tf.keras.layers.Conv2D(64, kernel_size=(3, 3), activation='relu',
+                                        kernel_regularizer=regularizer))
+        model.add(tf.keras.layers.MaxPool2D(pool_size=(2, 2)))
+        model.add(tf.keras.layers.Flatten())
+        model.add(tf.keras.layers.Dropout(0.5))
+        model.add(tf.keras.layers.Dense(100, activation='softmax'))
+        model.compile(optimizer="adam", loss=tf.keras.losses.CategoricalCrossentropy(), metrics=['accuracy'])
+        return model
 
 
     def cifar100_model_1(self):
@@ -70,8 +84,8 @@ class ModelParams :
         ])
 
         model.compile(
-            loss=tf.keras.losses.CategoricalCrossentropy(from_logits=True),
-            optimizer='adam',
+            loss=tf.keras.losses.CategoricalCrossentropy(from_logits=False),
+            optimizer=tf.keras.optimizers.Adam(learning_rate=0.001),
             metrics=['AUC', 'accuracy']
         )
 

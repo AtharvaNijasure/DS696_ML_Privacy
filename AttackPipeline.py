@@ -256,7 +256,7 @@ class AttackPipeline :
         # get appropriate model class
         self.model = model
         target_model = None
-        if attack_parameters[model_type] == ModelType.PytorchModel :
+        if attack_parameters[model_type] == ModelType.TensorflowModel :
             target_model = TensorflowModel(model_obj=model, loss_fn=attack_parameters[loss_fn])
         self.attack_input_params = attack_parameters
         target_info_source, reference_info_source = self.Dataset_ready(target_model, attack_parameters)
