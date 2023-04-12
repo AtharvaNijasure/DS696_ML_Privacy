@@ -46,8 +46,7 @@ run_attack(target_model,attack_params)
 dataset_parameters = {
     num_train_points: 5000,
     num_test_points: 5000,
-    verbose: 2,
-    "train_size" : 0.8
+    verbose: 1
 }
 
 model_training_params = {
@@ -66,23 +65,13 @@ attack_parameters = {
             0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0
         ]
 }
-attack_parameters_titanic = {
-    batch_size: 64
-}
-# attack_pipeline = AttackPipeline(
-#     RegisteredDataset.TITANIC, AttackType.LOGISTIC_REGRESSION,dataset_parameters
-#     )
+
 
 attack_pipeline_population = AttackPipeline(
-    RegisteredDataset.TITANIC,AttackType.LOGISTIC_REGRESSION ,dataset_parameters
+    RegisteredDataset.CIFAR100,MetricEnum.POPULATION ,dataset_parameters
     )
 
-# wrapper
-# model = attack_pipeline.get_model(cifar_100_model_1, model_training_params)
-# attack_pipeline.run_attacks(model, attacks_tf_p,model_training_params, AttackMethod.TF_PRIVACY , tf_attack_input_params)
-# attack_pipeline.run_attacks(model, attacks_ml_pr,model_training_params, AttackMethod.ML_PRIVACY , ml_pr_attack_input_params)
+model = attack_pipeline_population.get_model(cifar_100_model_2, model_training_params)
 
-model = attack_pipeline_population.get_model(model_basic_MLP_1, model_training_params)
-
-attack_pipeline_population.run_attack(model, attack_parameters_titanic)
+attack_pipeline_population.run_attack(model, attack_parameters)
 
