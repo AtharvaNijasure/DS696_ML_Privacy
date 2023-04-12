@@ -38,7 +38,7 @@ dataset_parameters = {
 }
 
 model_training_params = {
-    epoch: 50,
+    epoch: 5,
     batch_size: 64,
     verbose:1,
     model_type: ModelType.TensorflowModel,

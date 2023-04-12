@@ -24,7 +24,7 @@ model_type = "model_type"
 
 # serialized model extns
 EXTN = ".sav"
-summary = "summary"
+summary = "summaryTitanicDS_ml_privacy"
 TXT_EXTN = ".txt"
 
 # defined model names

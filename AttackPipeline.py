@@ -95,7 +95,7 @@ class AttackPipeline :
 
     def get_model_param_tr_string(self, model_training_params):
         ans = ""
-        ignore_keys = ['model_type','loss_fn']
+        ignore_keys = ['model_type','loss_fn', fpr_tolerance_list]
         for key in model_training_params.keys() :
             if not key in ignore_keys:
                 ans += str(key) + "_" + str(model_training_params[key]).replace(".","")
@@ -239,7 +239,7 @@ class AttackPipeline :
         return target_info_source,reference_info_source
 
 
-    def run_attack(self, model, attack_parameters ):
+    def run_attack(self, model, attack_parameters, model_file_name = None ):
 
 
 
@@ -247,7 +247,7 @@ class AttackPipeline :
 
         # Prepare inputs for the mia attacks
         if(self.attack_method == AttackMethod.TF_PRIVACY) :
-            self.perform_tf_privacy_attack(model , attack_parameters)
+            self.perform_tf_privacy_attack(model , attack_parameters, model_file_name)
 
         elif(self.attack_method == AttackMethod.ML_PRIVACY) :
             self.perform_ml_privacy_attack(model , attack_parameters)
@@ -258,7 +258,7 @@ class AttackPipeline :
         # get appropriate model class
         self.model = model
         target_model = None
-        if attack_parameters[model_type] == ModelType.PytorchModel :
+        if attack_parameters[model_type] == ModelType.TensorflowModel :
             target_model = TensorflowModel(model_obj=model, loss_fn=attack_parameters[loss_fn])
         self.attack_input_params = attack_parameters
         target_info_source, reference_info_source = self.Dataset_ready(target_model, attack_parameters)
@@ -295,7 +295,7 @@ class AttackPipeline :
                 print(result)
 
 
-    def perform_tf_privacy_attack(self, model , attack_parameters):
+    def perform_tf_privacy_attack(self, model , attack_parameters, model_file_name):
 
         (x_train, y_train), (x_val, y_val) = self.dataset.get_data_for_training()
         bt_size = attack_parameters[batch_size]
@@ -347,7 +347,7 @@ class AttackPipeline :
         try:
             summary_file = summary + TXT_EXTN
             with open(summary_file, encoding="utf-8", mode='a') as f:
-                f.write("\nNew Summary :\n")
+                f.write(f"\nNew Summary : {model_file_name}\n")
                 line = f" model params :{self.get_model_param_tr_string(attack_parameters)[:3]} , summary : {attacks_result.summary(by_slices=True)}"
                 f.write(line)
                 f.close()

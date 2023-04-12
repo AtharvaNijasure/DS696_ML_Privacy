@@ -1490,6 +1490,7 @@ Best-performing attacks over slice: "CORRECTLY_CLASSIFIED=False"
   MULTI_LAYERED_PERCEPTRON (with 399 training and 95 test examples) achieved an AUC of 0.69
   MULTI_LAYERED_PERCEPTRON (with 399 training and 95 test examples) achieved an advantage of 0.37
   MULTI_LAYERED_PERCEPTRON (with 399 training and 95 test examples) achieved a positive predictive value of 0.95
+
 New Summary :
  model params :bat , summary : Best-performing attacks over all slices
   RANDOM_FOREST (with 399 training and 95 test examples) achieved an AUC of 0.69 on slice CLASS=1
@@ -1550,3 +1551,1043 @@ Best-performing attacks over slice: "CORRECTLY_CLASSIFIED=False"
   K_NEAREST_NEIGHBORS (with 399 training and 95 test examples) achieved an AUC of 0.69
   K_NEAREST_NEIGHBORS (with 399 training and 95 test examples) achieved an advantage of 0.39
   K_NEAREST_NEIGHBORS (with 399 training and 95 test examples) achieved a positive predictive value of 0.95
+New Summary :
+ model params :bat , summary : Best-performing attacks over all slices
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an AUC of 0.72 on slice CLASS=42
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an advantage of 0.41 on slice CLASS=79
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved a positive predictive value of 1.00 on slice CLASS=6
+
+Best-performing attacks over slice: "Entire dataset"
+  LOGISTIC_REGRESSION (with 50000 training and 10000 test examples) achieved an AUC of 0.45
+  LOGISTIC_REGRESSION (with 50000 training and 10000 test examples) achieved an advantage of 0.22
+  LOGISTIC_REGRESSION (with 50000 training and 10000 test examples) achieved a positive predictive value of 0.85
+
+Best-performing attacks over slice: "CLASS=0"
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an AUC of 0.48
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an advantage of 0.14
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved a positive predictive value of 0.86
+
+Best-performing attacks over slice: "CLASS=1"
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an AUC of 0.51
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an advantage of 0.10
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved a positive predictive value of 0.96
+
+Best-performing attacks over slice: "CLASS=2"
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an AUC of 0.51
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an advantage of 0.06
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved a positive predictive value of 0.96
+
+Best-performing attacks over slice: "CLASS=3"
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an AUC of 0.50
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an advantage of 0.09
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved a positive predictive value of 0.85
+
+Best-performing attacks over slice: "CLASS=4"
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an AUC of 0.51
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an advantage of 0.23
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved a positive predictive value of 0.98
+
+Best-performing attacks over slice: "CLASS=5"
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an AUC of 0.53
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an advantage of 0.09
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved a positive predictive value of 0.96
+
+Best-performing attacks over slice: "CLASS=6"
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an AUC of 0.49
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an advantage of 0.23
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved a positive predictive value of 1.00
+
+Best-performing attacks over slice: "CLASS=7"
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an AUC of 0.45
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an advantage of 0.23
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved a positive predictive value of 1.00
+
+Best-performing attacks over slice: "CLASS=8"
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an AUC of 0.70
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an advantage of 0.36
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved a positive predictive value of 0.98
+
+Best-performing attacks over slice: "CLASS=9"
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an AUC of 0.45
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an advantage of 0.23
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved a positive predictive value of 1.00
+
+Best-performing attacks over slice: "CLASS=10"
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an AUC of 0.50
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an advantage of 0.22
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved a positive predictive value of 0.98
+
+Best-performing attacks over slice: "CLASS=11"
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an AUC of 0.50
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an advantage of 0.21
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved a positive predictive value of 1.00
+
+Best-performing attacks over slice: "CLASS=12"
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an AUC of 0.49
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an advantage of 0.13
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved a positive predictive value of 0.85
+
+Best-performing attacks over slice: "CLASS=13"
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an AUC of 0.51
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an advantage of 0.24
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved a positive predictive value of 0.98
+
+Best-performing attacks over slice: "CLASS=14"
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an AUC of 0.52
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an advantage of 0.17
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved a positive predictive value of 1.00
+
+Best-performing attacks over slice: "CLASS=15"
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an AUC of 0.46
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an advantage of 0.23
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved a positive predictive value of 0.96
+
+Best-performing attacks over slice: "CLASS=16"
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an AUC of 0.50
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an advantage of 0.19
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved a positive predictive value of 1.00
+
+Best-performing attacks over slice: "CLASS=17"
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an AUC of 0.51
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an advantage of 0.15
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved a positive predictive value of 1.00
+
+Best-performing attacks over slice: "CLASS=18"
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an AUC of 0.48
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an advantage of 0.10
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved a positive predictive value of 0.98
+
+Best-performing attacks over slice: "CLASS=19"
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an AUC of 0.43
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an advantage of 0.27
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved a positive predictive value of 0.86
+
+Best-performing attacks over slice: "CLASS=20"
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an AUC of 0.43
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an advantage of 0.30
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved a positive predictive value of 1.00
+
+Best-performing attacks over slice: "CLASS=21"
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an AUC of 0.50
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an advantage of 0.22
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved a positive predictive value of 0.96
+
+Best-performing attacks over slice: "CLASS=22"
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an AUC of 0.48
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an advantage of 0.22
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved a positive predictive value of 0.87
+
+Best-performing attacks over slice: "CLASS=23"
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an AUC of 0.52
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an advantage of 0.21
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved a positive predictive value of 0.87
+
+Best-performing attacks over slice: "CLASS=24"
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an AUC of 0.54
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an advantage of 0.24
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved a positive predictive value of 1.00
+
+Best-performing attacks over slice: "CLASS=25"
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an AUC of 0.48
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an advantage of 0.21
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved a positive predictive value of 0.87
+
+Best-performing attacks over slice: "CLASS=26"
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an AUC of 0.39
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an advantage of 0.29
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved a positive predictive value of 1.00
+
+Best-performing attacks over slice: "CLASS=27"
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an AUC of 0.53
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an advantage of 0.24
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved a positive predictive value of 0.98
+
+Best-performing attacks over slice: "CLASS=28"
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an AUC of 0.52
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an advantage of 0.08
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved a positive predictive value of 0.93
+
+Best-performing attacks over slice: "CLASS=29"
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an AUC of 0.43
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an advantage of 0.27
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved a positive predictive value of 0.89
+
+Best-performing attacks over slice: "CLASS=30"
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an AUC of 0.44
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an advantage of 0.13
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved a positive predictive value of 1.00
+
+Best-performing attacks over slice: "CLASS=31"
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an AUC of 0.47
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an advantage of 0.11
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved a positive predictive value of 0.98
+
+Best-performing attacks over slice: "CLASS=32"
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an AUC of 0.48
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an advantage of 0.12
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved a positive predictive value of 0.85
+
+Best-performing attacks over slice: "CLASS=33"
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an AUC of 0.47
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an advantage of 0.17
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved a positive predictive value of 0.89
+
+Best-performing attacks over slice: "CLASS=34"
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an AUC of 0.48
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an advantage of 0.17
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved a positive predictive value of 0.86
+
+Best-performing attacks over slice: "CLASS=35"
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an AUC of 0.43
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an advantage of 0.18
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved a positive predictive value of 1.00
+
+Best-performing attacks over slice: "CLASS=36"
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an AUC of 0.51
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an advantage of 0.25
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved a positive predictive value of 1.00
+
+Best-performing attacks over slice: "CLASS=37"
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an AUC of 0.65
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an advantage of 0.27
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved a positive predictive value of 1.00
+
+Best-performing attacks over slice: "CLASS=38"
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an AUC of 0.50
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an advantage of 0.19
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved a positive predictive value of 0.97
+
+Best-performing attacks over slice: "CLASS=39"
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an AUC of 0.50
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an advantage of 0.21
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved a positive predictive value of 0.87
+
+Best-performing attacks over slice: "CLASS=40"
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an AUC of 0.50
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an advantage of 0.18
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved a positive predictive value of 0.87
+
+Best-performing attacks over slice: "CLASS=41"
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an AUC of 0.45
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an advantage of 0.15
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved a positive predictive value of 0.88
+
+Best-performing attacks over slice: "CLASS=42"
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an AUC of 0.72
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an advantage of 0.40
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved a positive predictive value of 1.00
+
+Best-performing attacks over slice: "CLASS=43"
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an AUC of 0.45
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an advantage of 0.14
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved a positive predictive value of 0.96
+
+Best-performing attacks over slice: "CLASS=44"
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an AUC of 0.52
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an advantage of 0.21
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved a positive predictive value of 0.87
+
+Best-performing attacks over slice: "CLASS=45"
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an AUC of 0.59
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an advantage of 0.18
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved a positive predictive value of 0.88
+
+Best-performing attacks over slice: "CLASS=46"
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an AUC of 0.47
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an advantage of 0.20
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved a positive predictive value of 1.00
+
+Best-performing attacks over slice: "CLASS=47"
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an AUC of 0.41
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an advantage of 0.32
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved a positive predictive value of 0.89
+
+Best-performing attacks over slice: "CLASS=48"
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an AUC of 0.45
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an advantage of 0.22
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved a positive predictive value of 0.96
+
+Best-performing attacks over slice: "CLASS=49"
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an AUC of 0.57
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an advantage of 0.19
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved a positive predictive value of 1.00
+
+Best-performing attacks over slice: "CLASS=50"
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an AUC of 0.54
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an advantage of 0.13
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved a positive predictive value of 0.89
+
+Best-performing attacks over slice: "CLASS=51"
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an AUC of 0.51
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an advantage of 0.14
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved a positive predictive value of 0.89
+
+Best-performing attacks over slice: "CLASS=52"
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an AUC of 0.45
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an advantage of 0.24
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved a positive predictive value of 0.96
+
+Best-performing attacks over slice: "CLASS=53"
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an AUC of 0.57
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an advantage of 0.26
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved a positive predictive value of 0.97
+
+Best-performing attacks over slice: "CLASS=54"
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an AUC of 0.47
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an advantage of 0.21
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved a positive predictive value of 0.96
+
+Best-performing attacks over slice: "CLASS=55"
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an AUC of 0.46
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an advantage of 0.26
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved a positive predictive value of 0.86
+
+Best-performing attacks over slice: "CLASS=56"
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an AUC of 0.49
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an advantage of 0.20
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved a positive predictive value of 0.93
+
+Best-performing attacks over slice: "CLASS=57"
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an AUC of 0.59
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an advantage of 0.28
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved a positive predictive value of 0.98
+
+Best-performing attacks over slice: "CLASS=58"
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an AUC of 0.54
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an advantage of 0.20
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved a positive predictive value of 0.97
+
+Best-performing attacks over slice: "CLASS=59"
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an AUC of 0.54
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an advantage of 0.09
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved a positive predictive value of 0.95
+
+Best-performing attacks over slice: "CLASS=60"
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an AUC of 0.48
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an advantage of 0.23
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved a positive predictive value of 0.93
+
+Best-performing attacks over slice: "CLASS=61"
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an AUC of 0.50
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an advantage of 0.11
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved a positive predictive value of 1.00
+
+Best-performing attacks over slice: "CLASS=62"
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an AUC of 0.45
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an advantage of 0.26
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved a positive predictive value of 1.00
+
+Best-performing attacks over slice: "CLASS=63"
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an AUC of 0.49
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an advantage of 0.21
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved a positive predictive value of 0.93
+
+Best-performing attacks over slice: "CLASS=64"
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an AUC of 0.58
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an advantage of 0.26
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved a positive predictive value of 1.00
+
+Best-performing attacks over slice: "CLASS=65"
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an AUC of 0.40
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an advantage of 0.35
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved a positive predictive value of 0.85
+
+Best-performing attacks over slice: "CLASS=66"
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an AUC of 0.49
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an advantage of 0.23
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved a positive predictive value of 0.87
+
+Best-performing attacks over slice: "CLASS=67"
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an AUC of 0.49
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an advantage of 0.17
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved a positive predictive value of 1.00
+
+Best-performing attacks over slice: "CLASS=68"
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an AUC of 0.58
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an advantage of 0.29
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved a positive predictive value of 0.89
+
+Best-performing attacks over slice: "CLASS=69"
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an AUC of 0.43
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an advantage of 0.17
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved a positive predictive value of 0.96
+
+Best-performing attacks over slice: "CLASS=70"
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an AUC of 0.48
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an advantage of 0.22
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved a positive predictive value of 0.87
+
+Best-performing attacks over slice: "CLASS=71"
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an AUC of 0.51
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an advantage of 0.23
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved a positive predictive value of 0.96
+
+Best-performing attacks over slice: "CLASS=72"
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an AUC of 0.48
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an advantage of 0.09
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved a positive predictive value of 1.00
+
+Best-performing attacks over slice: "CLASS=73"
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an AUC of 0.48
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an advantage of 0.22
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved a positive predictive value of 0.87
+
+Best-performing attacks over slice: "CLASS=74"
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an AUC of 0.51
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an advantage of 0.24
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved a positive predictive value of 0.88
+
+Best-performing attacks over slice: "CLASS=75"
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an AUC of 0.57
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an advantage of 0.17
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved a positive predictive value of 1.00
+
+Best-performing attacks over slice: "CLASS=76"
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an AUC of 0.44
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an advantage of 0.27
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved a positive predictive value of 0.86
+
+Best-performing attacks over slice: "CLASS=77"
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an AUC of 0.61
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an advantage of 0.26
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved a positive predictive value of 1.00
+
+Best-performing attacks over slice: "CLASS=78"
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an AUC of 0.53
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an advantage of 0.24
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved a positive predictive value of 0.88
+
+Best-performing attacks over slice: "CLASS=79"
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an AUC of 0.29
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an advantage of 0.41
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved a positive predictive value of 0.83
+
+Best-performing attacks over slice: "CLASS=80"
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an AUC of 0.55
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an advantage of 0.27
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved a positive predictive value of 0.98
+
+Best-performing attacks over slice: "CLASS=81"
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an AUC of 0.49
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an advantage of 0.16
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved a positive predictive value of 0.97
+
+Best-performing attacks over slice: "CLASS=82"
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an AUC of 0.48
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an advantage of 0.20
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved a positive predictive value of 0.91
+
+Best-performing attacks over slice: "CLASS=83"
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an AUC of 0.45
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an advantage of 0.16
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved a positive predictive value of 0.85
+
+Best-performing attacks over slice: "CLASS=84"
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an AUC of 0.54
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an advantage of 0.15
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved a positive predictive value of 0.86
+
+Best-performing attacks over slice: "CLASS=85"
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an AUC of 0.45
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an advantage of 0.21
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved a positive predictive value of 0.86
+
+Best-performing attacks over slice: "CLASS=86"
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an AUC of 0.50
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an advantage of 0.18
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved a positive predictive value of 1.00
+
+Best-performing attacks over slice: "CLASS=87"
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an AUC of 0.51
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an advantage of 0.23
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved a positive predictive value of 0.98
+
+Best-performing attacks over slice: "CLASS=88"
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an AUC of 0.57
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an advantage of 0.26
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved a positive predictive value of 1.00
+
+Best-performing attacks over slice: "CLASS=89"
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an AUC of 0.46
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an advantage of 0.11
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved a positive predictive value of 0.83
+
+Best-performing attacks over slice: "CLASS=90"
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an AUC of 0.59
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an advantage of 0.27
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved a positive predictive value of 1.00
+
+Best-performing attacks over slice: "CLASS=91"
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an AUC of 0.48
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an advantage of 0.22
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved a positive predictive value of 0.87
+
+Best-performing attacks over slice: "CLASS=92"
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an AUC of 0.51
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an advantage of 0.12
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved a positive predictive value of 0.98
+
+Best-performing attacks over slice: "CLASS=93"
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an AUC of 0.52
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an advantage of 0.18
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved a positive predictive value of 1.00
+
+Best-performing attacks over slice: "CLASS=94"
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an AUC of 0.45
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an advantage of 0.23
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved a positive predictive value of 0.97
+
+Best-performing attacks over slice: "CLASS=95"
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an AUC of 0.50
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an advantage of 0.13
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved a positive predictive value of 1.00
+
+Best-performing attacks over slice: "CLASS=96"
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an AUC of 0.52
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an advantage of 0.17
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved a positive predictive value of 0.89
+
+Best-performing attacks over slice: "CLASS=97"
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an AUC of 0.56
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an advantage of 0.22
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved a positive predictive value of 0.98
+
+Best-performing attacks over slice: "CLASS=98"
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an AUC of 0.62
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an advantage of 0.25
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved a positive predictive value of 1.00
+
+Best-performing attacks over slice: "CLASS=99"
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an AUC of 0.55
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved an advantage of 0.22
+  LOGISTIC_REGRESSION (with 500 training and 100 test examples) achieved a positive predictive value of 0.98
+
+Best-performing attacks over slice: "CORRECTLY_CLASSIFIED=True"
+  LOGISTIC_REGRESSION (with 16347 training and 2921 test examples) achieved an AUC of 0.68
+  LOGISTIC_REGRESSION (with 16347 training and 2921 test examples) achieved an advantage of 0.38
+  LOGISTIC_REGRESSION (with 16347 training and 2921 test examples) achieved a positive predictive value of 0.95
+
+Best-performing attacks over slice: "CORRECTLY_CLASSIFIED=False"
+  LOGISTIC_REGRESSION (with 33653 training and 7079 test examples) achieved an AUC of 0.50
+  LOGISTIC_REGRESSION (with 33653 training and 7079 test examples) achieved an advantage of 0.20
+  LOGISTIC_REGRESSION (with 33653 training and 7079 test examples) achieved a positive predictive value of 0.86
+New Summary :
+ model params :bat , summary : Best-performing attacks over all slices
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an AUC of 0.68 on slice CLASS=63
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an advantage of 0.39 on slice CLASS=63
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved a positive predictive value of 1.00 on slice CLASS=0
+
+Best-performing attacks over slice: "Entire dataset"
+  MULTI_LAYERED_PERCEPTRON (with 50000 training and 10000 test examples) achieved an AUC of 0.53
+  MULTI_LAYERED_PERCEPTRON (with 50000 training and 10000 test examples) achieved an advantage of 0.07
+  MULTI_LAYERED_PERCEPTRON (with 50000 training and 10000 test examples) achieved a positive predictive value of 0.85
+
+Best-performing attacks over slice: "CLASS=0"
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an AUC of 0.56
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an advantage of 0.20
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved a positive predictive value of 1.00
+
+Best-performing attacks over slice: "CLASS=1"
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an AUC of 0.46
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an advantage of 0.12
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved a positive predictive value of 1.00
+
+Best-performing attacks over slice: "CLASS=2"
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an AUC of 0.47
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an advantage of 0.11
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved a positive predictive value of 0.93
+
+Best-performing attacks over slice: "CLASS=3"
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an AUC of 0.51
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an advantage of 0.07
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved a positive predictive value of 0.85
+
+Best-performing attacks over slice: "CLASS=4"
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an AUC of 0.50
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an advantage of 0.13
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved a positive predictive value of 1.00
+
+Best-performing attacks over slice: "CLASS=5"
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an AUC of 0.54
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an advantage of 0.12
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved a positive predictive value of 1.00
+
+Best-performing attacks over slice: "CLASS=6"
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an AUC of 0.49
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an advantage of 0.09
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved a positive predictive value of 1.00
+
+Best-performing attacks over slice: "CLASS=7"
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an AUC of 0.55
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an advantage of 0.19
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved a positive predictive value of 0.96
+
+Best-performing attacks over slice: "CLASS=8"
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an AUC of 0.51
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an advantage of 0.12
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved a positive predictive value of 1.00
+
+Best-performing attacks over slice: "CLASS=9"
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an AUC of 0.51
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an advantage of 0.09
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved a positive predictive value of 0.94
+
+Best-performing attacks over slice: "CLASS=10"
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an AUC of 0.49
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an advantage of 0.14
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved a positive predictive value of 0.94
+
+Best-performing attacks over slice: "CLASS=11"
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an AUC of 0.50
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an advantage of 0.15
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved a positive predictive value of 1.00
+
+Best-performing attacks over slice: "CLASS=12"
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an AUC of 0.53
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an advantage of 0.11
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved a positive predictive value of 0.86
+
+Best-performing attacks over slice: "CLASS=13"
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an AUC of 0.54
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an advantage of 0.14
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved a positive predictive value of 0.86
+
+Best-performing attacks over slice: "CLASS=14"
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an AUC of 0.56
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an advantage of 0.14
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved a positive predictive value of 1.00
+
+Best-performing attacks over slice: "CLASS=15"
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an AUC of 0.54
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an advantage of 0.24
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved a positive predictive value of 0.97
+
+Best-performing attacks over slice: "CLASS=16"
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an AUC of 0.44
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an advantage of 0.22
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved a positive predictive value of 0.97
+
+Best-performing attacks over slice: "CLASS=17"
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an AUC of 0.51
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an advantage of 0.09
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved a positive predictive value of 0.96
+
+Best-performing attacks over slice: "CLASS=18"
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an AUC of 0.50
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an advantage of 0.19
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved a positive predictive value of 1.00
+
+Best-performing attacks over slice: "CLASS=19"
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an AUC of 0.53
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an advantage of 0.08
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved a positive predictive value of 1.00
+
+Best-performing attacks over slice: "CLASS=20"
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an AUC of 0.50
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an advantage of 0.06
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved a positive predictive value of 1.00
+
+Best-performing attacks over slice: "CLASS=21"
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an AUC of 0.55
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an advantage of 0.13
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved a positive predictive value of 0.86
+
+Best-performing attacks over slice: "CLASS=22"
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an AUC of 0.63
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an advantage of 0.26
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved a positive predictive value of 1.00
+
+Best-performing attacks over slice: "CLASS=23"
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an AUC of 0.47
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an advantage of 0.10
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved a positive predictive value of 0.96
+
+Best-performing attacks over slice: "CLASS=24"
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an AUC of 0.48
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an advantage of 0.10
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved a positive predictive value of 0.99
+
+Best-performing attacks over slice: "CLASS=25"
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an AUC of 0.54
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an advantage of 0.13
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved a positive predictive value of 0.99
+
+Best-performing attacks over slice: "CLASS=26"
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an AUC of 0.53
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an advantage of 0.15
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved a positive predictive value of 1.00
+
+Best-performing attacks over slice: "CLASS=27"
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an AUC of 0.52
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an advantage of 0.10
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved a positive predictive value of 1.00
+
+Best-performing attacks over slice: "CLASS=28"
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an AUC of 0.55
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an advantage of 0.15
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved a positive predictive value of 0.92
+
+Best-performing attacks over slice: "CLASS=29"
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an AUC of 0.48
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an advantage of 0.21
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved a positive predictive value of 0.87
+
+Best-performing attacks over slice: "CLASS=30"
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an AUC of 0.36
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an advantage of 0.29
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved a positive predictive value of 0.83
+
+Best-performing attacks over slice: "CLASS=31"
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an AUC of 0.47
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an advantage of 0.12
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved a positive predictive value of 0.89
+
+Best-performing attacks over slice: "CLASS=32"
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an AUC of 0.49
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an advantage of 0.09
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved a positive predictive value of 1.00
+
+Best-performing attacks over slice: "CLASS=33"
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an AUC of 0.47
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an advantage of 0.12
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved a positive predictive value of 0.85
+
+Best-performing attacks over slice: "CLASS=34"
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an AUC of 0.53
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an advantage of 0.21
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved a positive predictive value of 1.00
+
+Best-performing attacks over slice: "CLASS=35"
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an AUC of 0.52
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an advantage of 0.23
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved a positive predictive value of 0.88
+
+Best-performing attacks over slice: "CLASS=36"
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an AUC of 0.48
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an advantage of 0.09
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved a positive predictive value of 0.85
+
+Best-performing attacks over slice: "CLASS=37"
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an AUC of 0.47
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an advantage of 0.15
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved a positive predictive value of 1.00
+
+Best-performing attacks over slice: "CLASS=38"
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an AUC of 0.53
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an advantage of 0.26
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved a positive predictive value of 0.89
+
+Best-performing attacks over slice: "CLASS=39"
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an AUC of 0.51
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an advantage of 0.06
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved a positive predictive value of 1.00
+
+Best-performing attacks over slice: "CLASS=40"
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an AUC of 0.45
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an advantage of 0.14
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved a positive predictive value of 0.84
+
+Best-performing attacks over slice: "CLASS=41"
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an AUC of 0.48
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an advantage of 0.13
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved a positive predictive value of 0.89
+
+Best-performing attacks over slice: "CLASS=42"
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an AUC of 0.47
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an advantage of 0.27
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved a positive predictive value of 1.00
+
+Best-performing attacks over slice: "CLASS=43"
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an AUC of 0.42
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an advantage of 0.11
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved a positive predictive value of 0.83
+
+Best-performing attacks over slice: "CLASS=44"
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an AUC of 0.50
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an advantage of 0.12
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved a positive predictive value of 0.96
+
+Best-performing attacks over slice: "CLASS=45"
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an AUC of 0.46
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an advantage of 0.11
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved a positive predictive value of 0.97
+
+Best-performing attacks over slice: "CLASS=46"
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an AUC of 0.50
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an advantage of 0.10
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved a positive predictive value of 0.98
+
+Best-performing attacks over slice: "CLASS=47"
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an AUC of 0.46
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an advantage of 0.11
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved a positive predictive value of 0.84
+
+Best-performing attacks over slice: "CLASS=48"
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an AUC of 0.31
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an advantage of 0.38
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved a positive predictive value of 1.00
+
+Best-performing attacks over slice: "CLASS=49"
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an AUC of 0.51
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an advantage of 0.09
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved a positive predictive value of 0.90
+
+Best-performing attacks over slice: "CLASS=50"
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an AUC of 0.57
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an advantage of 0.14
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved a positive predictive value of 1.00
+
+Best-performing attacks over slice: "CLASS=51"
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an AUC of 0.49
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an advantage of 0.14
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved a positive predictive value of 0.93
+
+Best-performing attacks over slice: "CLASS=52"
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an AUC of 0.48
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an advantage of 0.14
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved a positive predictive value of 1.00
+
+Best-performing attacks over slice: "CLASS=53"
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an AUC of 0.48
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an advantage of 0.17
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved a positive predictive value of 0.96
+
+Best-performing attacks over slice: "CLASS=54"
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an AUC of 0.46
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an advantage of 0.16
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved a positive predictive value of 0.94
+
+Best-performing attacks over slice: "CLASS=55"
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an AUC of 0.52
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an advantage of 0.09
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved a positive predictive value of 0.90
+
+Best-performing attacks over slice: "CLASS=56"
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an AUC of 0.49
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an advantage of 0.13
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved a positive predictive value of 0.85
+
+Best-performing attacks over slice: "CLASS=57"
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an AUC of 0.43
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an advantage of 0.11
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved a positive predictive value of 1.00
+
+Best-performing attacks over slice: "CLASS=58"
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an AUC of 0.52
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an advantage of 0.09
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved a positive predictive value of 0.93
+
+Best-performing attacks over slice: "CLASS=59"
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an AUC of 0.53
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an advantage of 0.19
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved a positive predictive value of 0.87
+
+Best-performing attacks over slice: "CLASS=60"
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an AUC of 0.55
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an advantage of 0.23
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved a positive predictive value of 0.93
+
+Best-performing attacks over slice: "CLASS=61"
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an AUC of 0.59
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an advantage of 0.20
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved a positive predictive value of 0.88
+
+Best-performing attacks over slice: "CLASS=62"
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an AUC of 0.41
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an advantage of 0.23
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved a positive predictive value of 0.96
+
+Best-performing attacks over slice: "CLASS=63"
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an AUC of 0.68
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an advantage of 0.39
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved a positive predictive value of 0.97
+
+Best-performing attacks over slice: "CLASS=64"
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an AUC of 0.57
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an advantage of 0.13
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved a positive predictive value of 0.99
+
+Best-performing attacks over slice: "CLASS=65"
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an AUC of 0.49
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an advantage of 0.12
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved a positive predictive value of 0.85
+
+Best-performing attacks over slice: "CLASS=66"
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an AUC of 0.50
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an advantage of 0.10
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved a positive predictive value of 0.85
+
+Best-performing attacks over slice: "CLASS=67"
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an AUC of 0.47
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an advantage of 0.20
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved a positive predictive value of 0.86
+
+Best-performing attacks over slice: "CLASS=68"
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an AUC of 0.53
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an advantage of 0.14
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved a positive predictive value of 0.97
+
+Best-performing attacks over slice: "CLASS=69"
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an AUC of 0.53
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an advantage of 0.09
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved a positive predictive value of 0.91
+
+Best-performing attacks over slice: "CLASS=70"
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an AUC of 0.44
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an advantage of 0.15
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved a positive predictive value of 0.98
+
+Best-performing attacks over slice: "CLASS=71"
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an AUC of 0.48
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an advantage of 0.21
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved a positive predictive value of 0.86
+
+Best-performing attacks over slice: "CLASS=72"
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an AUC of 0.50
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an advantage of 0.14
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved a positive predictive value of 0.96
+
+Best-performing attacks over slice: "CLASS=73"
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an AUC of 0.53
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an advantage of 0.18
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved a positive predictive value of 0.87
+
+Best-performing attacks over slice: "CLASS=74"
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an AUC of 0.57
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an advantage of 0.26
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved a positive predictive value of 0.96
+
+Best-performing attacks over slice: "CLASS=75"
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an AUC of 0.60
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an advantage of 0.25
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved a positive predictive value of 0.95
+
+Best-performing attacks over slice: "CLASS=76"
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an AUC of 0.47
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an advantage of 0.10
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved a positive predictive value of 1.00
+
+Best-performing attacks over slice: "CLASS=77"
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an AUC of 0.61
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an advantage of 0.20
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved a positive predictive value of 0.90
+
+Best-performing attacks over slice: "CLASS=78"
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an AUC of 0.53
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an advantage of 0.22
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved a positive predictive value of 0.96
+
+Best-performing attacks over slice: "CLASS=79"
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an AUC of 0.51
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an advantage of 0.07
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved a positive predictive value of 0.93
+
+Best-performing attacks over slice: "CLASS=80"
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an AUC of 0.49
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an advantage of 0.06
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved a positive predictive value of 0.93
+
+Best-performing attacks over slice: "CLASS=81"
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an AUC of 0.53
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an advantage of 0.10
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved a positive predictive value of 0.87
+
+Best-performing attacks over slice: "CLASS=82"
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an AUC of 0.46
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an advantage of 0.16
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved a positive predictive value of 0.97
+
+Best-performing attacks over slice: "CLASS=83"
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an AUC of 0.54
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an advantage of 0.22
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved a positive predictive value of 0.96
+
+Best-performing attacks over slice: "CLASS=84"
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an AUC of 0.47
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an advantage of 0.12
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved a positive predictive value of 1.00
+
+Best-performing attacks over slice: "CLASS=85"
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an AUC of 0.44
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an advantage of 0.22
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved a positive predictive value of 1.00
+
+Best-performing attacks over slice: "CLASS=86"
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an AUC of 0.46
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an advantage of 0.10
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved a positive predictive value of 0.86
+
+Best-performing attacks over slice: "CLASS=87"
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an AUC of 0.46
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an advantage of 0.14
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved a positive predictive value of 0.96
+
+Best-performing attacks over slice: "CLASS=88"
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an AUC of 0.51
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an advantage of 0.10
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved a positive predictive value of 0.89
+
+Best-performing attacks over slice: "CLASS=89"
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an AUC of 0.43
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an advantage of 0.15
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved a positive predictive value of 0.83
+
+Best-performing attacks over slice: "CLASS=90"
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an AUC of 0.52
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an advantage of 0.10
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved a positive predictive value of 0.94
+
+Best-performing attacks over slice: "CLASS=91"
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an AUC of 0.49
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an advantage of 0.10
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved a positive predictive value of 0.87
+
+Best-performing attacks over slice: "CLASS=92"
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an AUC of 0.44
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an advantage of 0.17
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved a positive predictive value of 1.00
+
+Best-performing attacks over slice: "CLASS=93"
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an AUC of 0.59
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an advantage of 0.18
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved a positive predictive value of 0.96
+
+Best-performing attacks over slice: "CLASS=94"
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an AUC of 0.43
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an advantage of 0.25
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved a positive predictive value of 0.96
+
+Best-performing attacks over slice: "CLASS=95"
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an AUC of 0.45
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an advantage of 0.23
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved a positive predictive value of 1.00
+
+Best-performing attacks over slice: "CLASS=96"
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an AUC of 0.54
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an advantage of 0.21
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved a positive predictive value of 0.88
+
+Best-performing attacks over slice: "CLASS=97"
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an AUC of 0.56
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an advantage of 0.24
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved a positive predictive value of 0.96
+
+Best-performing attacks over slice: "CLASS=98"
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an AUC of 0.58
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an advantage of 0.20
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved a positive predictive value of 0.90
+
+Best-performing attacks over slice: "CLASS=99"
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an AUC of 0.56
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved an advantage of 0.13
+  MULTI_LAYERED_PERCEPTRON (with 500 training and 100 test examples) achieved a positive predictive value of 0.98
+
+Best-performing attacks over slice: "CORRECTLY_CLASSIFIED=True"
+  MULTI_LAYERED_PERCEPTRON (with 16347 training and 2921 test examples) achieved an AUC of 0.49
+  MULTI_LAYERED_PERCEPTRON (with 16347 training and 2921 test examples) achieved an advantage of 0.06
+  MULTI_LAYERED_PERCEPTRON (with 16347 training and 2921 test examples) achieved a positive predictive value of 0.95
+
+Best-performing attacks over slice: "CORRECTLY_CLASSIFIED=False"
+  MULTI_LAYERED_PERCEPTRON (with 33653 training and 7079 test examples) achieved an AUC of 0.50
+  MULTI_LAYERED_PERCEPTRON (with 33653 training and 7079 test examples) achieved an advantage of 0.01
+  MULTI_LAYERED_PERCEPTRON (with 33653 training and 7079 test examples) achieved a positive predictive value of 0.83
