@@ -7,6 +7,7 @@ import numpy as np
 from Constants import *
 import pickle
 import enum
+from sklearn.metrics import accuracy_score
 
 
 from tensorflow_privacy.privacy.privacy_tests.membership_inference_attack import membership_inference_attack as mia
@@ -114,7 +115,10 @@ class AttackPipeline :
             return  self.load_model(model_file)
         except :
             model_func = getattr(ModelParams, model_name)
-            model = model_func(ModelParams())
+            if(model_training_params[model_hyper_param]) :
+                model = model_func(ModelParams(), layers_to_freeze = model_training_params[num_layers_training], num_classes = model_training_params[num_class])
+            else :
+                model = model_func(ModelParams())
             if self.attack == MetricEnum.REFERENCE:
                 x = self.datasets_list[0].get_feature('train', '<default_input>')
                 y = self.datasets_list[0].get_feature('train', '<default_output>')
@@ -125,11 +129,24 @@ class AttackPipeline :
                 (self.x_train, self.y_train), (self.x_val, self.y_val) = self.dataset.get_data_for_training(model_training_params)
             # training the 
             # model.compile(optimizer=model_training_params[optim_fn], loss=model_training_params[loss_fn], metrics=['accuracy'])
-            hist = model.fit(self.x_train, self.y_train,
-                             epochs=model_training_params[epoch],
-                             batch_size=model_training_params[batch_size],
-                             verbose=model_training_params[verbose],
-                             validation_data=(self.x_val, self.y_val))
+            try :
+                hist = model.fit(self.x_train, self.y_train,
+                                 epochs=model_training_params[epoch],
+                                 batch_size=model_training_params[batch_size],
+                                 verbose=model_training_params[verbose],
+                                 validation_data=(self.x_val, self.y_val))
+                try :
+                    y_pred = model.predict(self.x_val)
+                    accuracy = accuracy_score(self.y_val, y_pred)
+                    print("Target model Accuracy:", accuracy)
+                except :
+                    print("")
+
+            except : # for sk learn algos
+                hist = model.fit(self.x_train, self.y_train)
+                y_pred = model.predict(self.x_val)
+                accuracy = accuracy_score(self.y_val, y_pred)
+                print("Target model Accuracy:", accuracy)
 
             self.save_model(model, model_file)
 
@@ -294,20 +311,44 @@ class AttackPipeline :
             for result in audit_results:
                 print(result)
 
+    def get_logits(self, x_train, x_val, model ,bt_size =None ):
+        try :
+            print('Predict on train...')
+            logits_train = model.predict(x_train, batch_size=bt_size)
+            print('Predict on test...')
+            logits_test = model.predict(x_val, batch_size=bt_size)
+        except :
+            print('Predict on train...')
+            logits_train = model.predict(x_train )
+            print('Predict on test...')
+            logits_test = model.predict(x_val )
+
+        (logits_train, logits_test) = (np.array(logits_train).reshape(-1,1), np.array(logits_test).reshape(-1,1))
+
+        return (logits_train, logits_test)
+
+    def get_probabilities_sftmax(self, logits_train,logits_test ):
+        try:
+            prob_train = special.softmax(logits_train, axis=1)
+            prob_test = special.softmax(logits_test, axis=1)
+        except :
+            prob_train = special.softmax(logits_train)
+            prob_test = special.softmax(logits_test)
+
+        return (prob_train, prob_test)
+
+
 
     def perform_tf_privacy_attack(self, model , attack_parameters, model_file_name):
 
         (x_train, y_train), (x_val, y_val) = self.dataset.get_data_for_training()
         bt_size = attack_parameters[batch_size]
 
-        print('Predict on train...')
-        logits_train = model.predict(x_train, batch_size=bt_size)
-        print('Predict on test...')
-        logits_test = model.predict(x_val, batch_size=bt_size)
+        (logits_train, logits_test) = self.get_logits( x_train, x_val, model ,bt_size )
 
         print('Apply softmax to get probabilities from logits...')
-        prob_train = special.softmax(logits_train, axis=1)
-        prob_test = special.softmax(logits_test, axis=1)
+        (prob_train, prob_test) = self.get_probabilities_sftmax(logits_train,logits_test )
+
 
         print('Compute losses...')
         cce = tf.keras.backend.categorical_crossentropy
@@ -320,6 +361,8 @@ class AttackPipeline :
         except :
             y_train_rs = y_train.reshape((y_train.shape[0],1))
             y_val_rs = y_val.reshape((y_val.shape[0], 1))
+            prob_train = prob_train.reshape(prob_train.shape)
+            prob_test = prob_test.reshape(prob_test.shape)
             loss_train = cce(constant(y_train_rs), constant(prob_train), from_logits=False).numpy()
             loss_test = cce(constant(y_val_rs), constant(prob_test), from_logits=False).numpy()
 
@@ -331,8 +374,7 @@ class AttackPipeline :
         input = attack_inputs.get_Attack_inputs(logits_train, logits_test, loss_train, loss_test, labels_train,
                                                 labels_test)
 
-        slicing_specs = attack_inputs.get_Attack_slicing_specs(True, True,
-                                                               True)  # pass values using unpack function arguments!!
+        slicing_specs = attack_inputs.get_Attack_slicing_specs(True, True, True)  # pass values using unpack function arguments!!
 
         attacks_result = mia.run_attacks(input,
                                          slicing_specs,

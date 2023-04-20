@@ -7,6 +7,13 @@ from sklearn import neural_network, model_selection
 from Constants import *
 import enum
 
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.linear_model import LogisticRegression
+
+from tensorflow.keras.applications import ResNet50
+from tensorflow.keras.layers import Dense, Flatten
+from tensorflow.keras.models import Model
+
 
 class ModelType(enum.Enum):
     # specifically for ml-privacy-meter
@@ -151,14 +158,15 @@ class ModelParams :
     def model_basic_LR_1_titanic(self):
         model = tf.keras.models.Sequential([
         layers.Input( shape=(46,)),
-        # layers.Dense(128, activation='relu'),
-        # layers.Dense(64, activation='relu'),
-        # layers.Dense(16 , activation='relu'),
-        layers.Dense(1, activation="sigmoid")
+        # tf.keras.layers.Dense(64, activation='relu', input_shape=(46,)), # , input_shape=(X_train.shape[1],)
+        tf.keras.layers.Dense(32),
+        tf.keras.layers.LeakyReLU(alpha=0.01),
+        tf.keras.layers.Dense(1, activation='sigmoid')
+        # layers.Dense(1, activation="sigmoid")
         ])
 
         model.compile(
-            loss=tf.keras.losses.CategoricalCrossentropy(from_logits=True),
+            loss=tf.keras.losses.CategoricalCrossentropy(from_logits=False),
             optimizer='adam',
             metrics=['AUC', 'accuracy']
         )
@@ -181,10 +189,52 @@ class ModelParams :
             ])
 
         model.compile(
-            loss=tf.keras.losses.CategoricalCrossentropy(from_logits=True),
+            loss=tf.keras.losses.CategoricalCrossentropy(from_logits=False),
             optimizer='adam',
             metrics=['AUC', 'accuracy']
         )
 
         return model
+
+
+    def decisionTreeCLS(self):
+
+        model = DecisionTreeClassifier()
+        return model
+
+    def sk_learn_LR(self):
+        model = LogisticRegression()
+
+
+        return model
+
+
+    def resnet_model(self, layers_to_freeze = None, num_classes = None):
+
+        # Load the pre-trained ResNet50 model
+        resnet = ResNet50(include_top=False, input_shape=(32, 32, 3), pooling='avg')
+
+        # Freeze the weights of the pre-trained layers
+        i = 0
+        for layer in resnet.layers:
+
+            layer.trainable = False
+            i+=1
+            if (layers_to_freeze == i):
+                break
+
+        # Add a dense output layer with 10 units for CIFAR-10 classification
+        outputs = Dense(num_classes, activation='softmax')(resnet.output)
+
+        # Create a new model with the pre-trained layers and the new output layer
+        model = Model(inputs=resnet.input, outputs=outputs)
+
+        # Compile the model
+        model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
+
+        return model
+
+
+
+
 
