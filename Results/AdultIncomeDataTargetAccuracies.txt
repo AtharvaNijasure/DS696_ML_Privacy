@@ -1,0 +1,174 @@
+Started sk_learn_KNN
+Started sk_learn_KNN for   batch_size = 64  l = 0
+Started attack THRESHOLD_ATTACK for sk_learn_KNN  l = 0
+getting data for training
+data gathering succesful
+
+------------------*****---------------
+./adult_income_models_2/sk_learn_KNNverbose_1model_hyper_param_Truenum_neigh_3.sav
+Target model val Accuracy: 0.7534549474847982
+Target model target Accuracy: 0.8644442601652984
+------------------*****---------------
+
+Started sk_learn_KNN for   batch_size = 64  l = 1
+Started attack THRESHOLD_ATTACK for sk_learn_KNN  l = 1
+getting data for training
+data gathering succesful
+
+------------------*****---------------
+./adult_income_models_2/sk_learn_KNNverbose_1model_hyper_param_Truenum_neigh_4.sav
+Target model val Accuracy: 0.7847429519071311
+Target model target Accuracy: 0.834812173480388
+------------------*****---------------
+Started sk_learn_KNN for   batch_size = 64  l = 2
+Started attack THRESHOLD_ATTACK for sk_learn_KNN  l = 2
+getting data for training
+data gathering succesful
+
+------------------*****---------------
+./adult_income_models_2/sk_learn_KNNverbose_1model_hyper_param_Truenum_neigh_5.sav
+Target model val Accuracy: 0.7638474295190714
+Target model target Accuracy: 0.8315780744672029
+------------------*****---------------
+
+Started sk_learn_KNN for   batch_size = 64  l = 3
+Started attack THRESHOLD_ATTACK for sk_learn_KNN  l = 3
+getting data for training
+data gathering succesful
+
+------------------*****---------------
+./adult_income_models_2/sk_learn_KNNverbose_1model_hyper_param_Truenum_neigh_10.sav
+Target model val Accuracy: 0.7817578772802654
+Target model target Accuracy: 0.8085523951682008
+------------------*****---------------
+
+Started sk_learn_KNN for   batch_size = 64  l = 4
+Started attack THRESHOLD_ATTACK for sk_learn_KNN  l = 4
+getting data for training
+data gathering succesful
+
+------------------*****---------------
+./adult_income_models_2/sk_learn_KNNverbose_1model_hyper_param_Truenum_neigh_15.sav
+Target model val Accuracy: 0.7976782752902156
+Target model target Accuracy: 0.8008126710340824
+------------------*****---------------
+
+Done sk_learn_KNN
+Started sk_learn_MLP
+Started sk_learn_MLP for   batch_size = 64  l = 0
+Started attack THRESHOLD_ATTACK for sk_learn_MLP  l = 0
+getting data for training
+data gathering succesful
+
+------------------*****---------------
+./adult_income_models_2/sk_learn_MLPverbose_1model_hyper_param_Truehidden_layers_32.sav
+Target model val Accuracy: 0.7870646766169154
+Target model target Accuracy: 0.7866323907455013
+------------------*****---------------
+Started sk_learn_MLP for   batch_size = 64  l = 1
+Started attack THRESHOLD_ATTACK for sk_learn_MLP  l = 1
+getting data for training
+data gathering succesful
+
+------------------*****---------------
+./adult_income_models_2/sk_learn_MLPverbose_1model_hyper_param_Truehidden_layers_64.sav
+Target model val Accuracy: 0.2507462686567164
+Target model target Accuracy: 0.24999308953202312
+------------------*****---------------
+Started sk_learn_MLP for   batch_size = 64  l = 2
+Started attack THRESHOLD_ATTACK for sk_learn_MLP  l = 2
+getting data for training
+data gathering succesful
+
+------------------*****---------------
+./adult_income_models_2/sk_learn_MLPverbose_1model_hyper_param_Truehidden_layers_(64, 128).sav
+Target model val Accuracy: 0.7831951354339414
+Target model target Accuracy: 0.7811040163639882
+------------------*****---------------
+Started sk_learn_MLP for   batch_size = 64  l = 3
+Started attack THRESHOLD_ATTACK for sk_learn_MLP  l = 3
+getting data for training
+data gathering succesful
+
+------------------*****---------------
+./adult_income_models_2/sk_learn_MLPverbose_1model_hyper_param_Truehidden_layers_(64, 128, 256).sav
+Target model val Accuracy: 0.7864013266998342
+Target model target Accuracy: 0.7911380158664345
+------------------*****---------------
+Started sk_learn_MLP for   batch_size = 64  l = 4
+Started attack THRESHOLD_ATTACK for sk_learn_MLP  l = 4
+getting data for training
+data gathering succesful
+
+------------------*****---------------
+./adult_income_models_2/sk_learn_MLPverbose_1model_hyper_param_Truehidden_layers_(64, 128, 32).sav
+Target model val Accuracy: 0.8004422332780542
+Target model target Accuracy: 0.7952566547806618
+------------------*****---------------
+Done sk_learn_MLP
+Started decisionTreeCLS
+Started decisionTreeCLS for   batch_size = 64  l = 0
+Started attack THRESHOLD_ATTACK for decisionTreeCLS  l = 0
+getting data for training
+data gathering succesful
+
+------------------*****---------------
+./adult_income_models_2/decisionTreeCLSverbose_1model_hyper_param_Truemax_depth_3.sav
+Target model val Accuracy: 0.8401326699834163
+Target model target Accuracy: 0.8358072808690604
+------------------*****---------------
+Started decisionTreeCLS for   batch_size = 64  l = 1
+Started attack THRESHOLD_ATTACK for decisionTreeCLS  l = 1
+getting data for training
+data gathering succesful
+
+------------------*****---------------
+./adult_income_models_2/decisionTreeCLSverbose_1model_hyper_param_Truemax_depth_4.sav
+Target model val Accuracy: 0.8310668877833057
+Target model target Accuracy: 0.8363324764353042
+------------------*****---------------
+Started decisionTreeCLS for   batch_size = 64  l = 2
+Started attack THRESHOLD_ATTACK for decisionTreeCLS  l = 2
+getting data for training
+data gathering succesful
+
+------------------*****---------------
+./adult_income_models_2/decisionTreeCLSverbose_1model_hyper_param_Truemax_depth_5.sav
+Target model val Accuracy: 0.8466556108347153
+Target model target Accuracy: 0.8466428946568262
+------------------*****---------------
+Started decisionTreeCLS for   batch_size = 64  l = 3
+Started attack THRESHOLD_ATTACK for decisionTreeCLS  l = 3
+getting data for training
+data gathering succesful
+
+------------------*****---------------
+./adult_income_models_2/decisionTreeCLSverbose_1model_hyper_param_Truemax_depth_10.sav
+Target model val Accuracy: 0.855942509673853
+Target model target Accuracy: 0.8603809049948863
+------------------*****---------------
+Started decisionTreeCLS for   batch_size = 64  l = 4
+Started attack THRESHOLD_ATTACK for decisionTreeCLS  l = 4
+getting data for training
+data gathering succesful
+
+------------------*****---------------
+./adult_income_models_2/decisionTreeCLSverbose_1model_hyper_param_Truemax_depth_15.sav
+Target model val Accuracy: 0.8402432283029297
+Target model target Accuracy: 0.8923072670481245
+------------------*****---------------
+Done decisionTreeCLS
+Started sk_learn_LR
+Started sk_learn_LR for   batch_size = 64  l = 0
+Started attack THRESHOLD_ATTACK for sk_learn_LR  l = 0
+getting data for training
+data gathering succesful
+
+------------------*****---------------
+./adult_income_models_2/sk_learn_LRverbose_1model_hyper_param_False.sav
+Target model val Accuracy: 0.7910447761194029
+Target model target Accuracy: 0.7918843464079387
+------------------*****---------------
+Done sk_learn_LR
+
+Process finished with exit code 0

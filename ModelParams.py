@@ -6,6 +6,10 @@ from sklearn import neural_network, model_selection
 
 from Constants import *
 import enum
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.linear_model import LogisticRegression
+from sklearn.neural_network import MLPClassifier
+from sklearn.neighbors import KNeighborsClassifier
 
 
 class ModelType(enum.Enum):
@@ -21,13 +25,15 @@ class ModelType(enum.Enum):
 
     HuggingFaceCausalLanguageModel = "HuggingFaceCausalLanguageModel"
 
+    SkLearn = "SkLearn"
+
 
 
 class ModelParams :
 
 
     def __init__(self):
-        print("initiating the model")
+        print("")
 
 
 
@@ -187,4 +193,25 @@ class ModelParams :
         )
 
         return model
+
+    def decisionTreeCLS(self , max_depth):
+        model = DecisionTreeClassifier(max_depth=max_depth)
+        return model
+
+    def sk_learn_LR(self):
+        model = LogisticRegression()
+        return model
+
+    def sk_learn_MLP(self, hidden_layers ,lr = None, activation = None, batch_size = None ):
+        if(lr == None or activation == None or batch_size == None) :
+            model = MLPClassifier(hidden_layer_sizes=hidden_layers)
+        else :
+            model = MLPClassifier(hidden_layer_sizes = hidden_layers, learning_rate= lr, activation=activation, batch_size=batch_size)
+        return model
+
+
+    def sk_learn_KNN(self, num_neigh):
+        model = KNeighborsClassifier(n_neighbors= num_neigh)
+        return model
+
 

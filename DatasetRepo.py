@@ -9,7 +9,7 @@ from sklearn.model_selection import train_test_split
 import numpy as np
 from Constants import *
 from privacy_meter.constants import MetricEnum
-
+from sklearn.datasets import load_wine
 
 
 class AttackMethod(enum.Enum) :
@@ -30,6 +30,7 @@ class RegisteredDataset(enum.Enum) :
     # MOVIELENS = 'movielens'
     IMDB = 'imdb'
     # NG20 = '20ng'
+    WINEQUALITY = 'winequality'
 
 
 class DatasetRepo :
@@ -64,7 +65,7 @@ class DatasetRepo :
 
     # create a clause for each new enrolled dataset
     def format_outputs(self):
-        one_hots = [RegisteredDataset.CIFAR100 , RegisteredDataset.CIFAR10, RegisteredDataset.MNIST]
+        one_hots = [RegisteredDataset.CIFAR100 , RegisteredDataset.CIFAR10, RegisteredDataset.MNIST, RegisteredDataset.WINEQUALITY]
         if(self.dataset in one_hots) :
             # preparing the outputs / labels
             self.y_train = tf.one_hot(self.y_train,
@@ -172,12 +173,125 @@ class DatasetRepo :
             rel_path = "./datasets/adultincome/"
             df = pd.read_csv(rel_path + "adult.csv")
             input_cols = ['age', 'workclass', 'fnlwgt', 'education', 'educational-num',
-                       'marital-status', 'occupation', 'relationship', 'race', 'gender',
-                       'capital-gain', 'capital-loss', 'hours-per-week', 'native-country']
+                       'marital', 'relationship', 'race', 'gender',
+                       'capital gain', 'capital loss', 'hours per week'] # 'occupation', 'country'
+            # text_cols = ['workclass', 'education', 'marital-status', 'occupation', 'relationship', 'race', 'gender','native-country']
+
+            # replacing some special character columns names with proper names
+            df = df.rename(
+                columns={'capital-gain': 'capital gain', 'capital-loss': 'capital loss', 'native-country': 'country',
+                         'hours-per-week': 'hours per week', 'marital-status': 'marital'})
+
+
+
+            df['country'] = df['country'].replace('?', np.nan)
+            df['workclass'] = df['workclass'].replace('?', np.nan)
+            df['occupation'] = df['occupation'].replace('?', np.nan)
+            # dropping the NaN rows now
+            df.dropna(how='any', inplace=True)
+
+            # dropping based on uniquness of data from the dataset
+            df = df.drop(
+                [ 'occupation', 'country'],
+                axis=1)
+
+            df['income'] = df['income'].map({'<=50K': 0, '>50K': 1}).astype(int)
+
+            # gender
+            df['gender'] = df['gender'].map({'Male': 0, 'Female': 1}).astype(int)
+            # race
+            df['race'] = df['race'].map(
+                {'Black': 0, 'Asian-Pac-Islander': 1, 'Other': 2, 'White': 3, 'Amer-Indian-Eskimo': 4}).astype(int)
+            # marital
+            df['marital'] = df['marital'].map(
+                {'Married-spouse-absent': 0, 'Widowed': 1, 'Married-civ-spouse': 2, 'Separated': 3, 'Divorced': 4,
+                 'Never-married': 5, 'Married-AF-spouse': 6}).astype(int)
+            # workclass
+            df['workclass'] = df['workclass'].map(
+                {'Self-emp-inc': 0, 'State-gov': 1, 'Federal-gov': 2, 'Without-pay': 3, 'Local-gov': 4, 'Private': 5,
+                 'Self-emp-not-inc': 6}).astype(int)
+            # education
+            df['education'] = df['education'].map(
+                {'Some-college': 0, 'Preschool': 1, '5th-6th': 2, 'HS-grad': 3, 'Masters': 4, '12th': 5, '7th-8th': 6,
+                 'Prof-school': 7, '1st-4th': 8, 'Assoc-acdm': 9, 'Doctorate': 10, '11th': 11, 'Bachelors': 12,
+                 '10th': 13, 'Assoc-voc': 14, '9th': 15}).astype(int)
+            # occupation
+            # df['occupation'] = df['occupation'].map(
+            #     {
+            #         'Machine - op - inspct': 0,
+            #         'Farming - fishing': 1,
+            #         'Protective - serv':2,
+            #         'Other - service' :3,
+            #         'Prof - specialty' :4,
+            #         'Craft - repair':5,
+            #         'Adm - clerical':6,
+            #         'Exec - managerial':7,
+            #         'Tech - support':8,
+            #         'Sales':9,
+            #         'Priv - house - serv':10,
+            #         'Transport - moving':11,
+            #         'Handlers - cleaners':12,
+            #         'Armed - Forces':13
+            #     }).astype(int)
+
+            # country
+            # df['country'] = df['country'].map(
+            #     {'United - States':0, 'Peru':1,'Guatemala':2,'Mexico':3,
+            #         'Dominica n -Republic'		:	4	,
+            #         'Ireland'		:	5	,
+            #         'Germany'		:	6	,
+            #         'Philippines'		:	7	,
+            #         'Thailand'		:	8	,
+            #         'Haiti'		:	9	,
+            #         'E l -Salvador'		:	10	,
+            #         'Puert o -Rico'		:	11	,
+            #         'Vietnam'		:	12	,
+            #         'South'		:	13	,
+            #         'Columbia'		:	14	,
+            #         'Japan'		:	15	,
+            #         'India'		:	16	,
+            #         'Cambodia'		:	17	,
+            #         'Poland'		:	18	,
+            #         'Laos'		:	19	,
+            #         'England'		:	20	,
+            #         'Cuba'		:	21	,
+            #         'Taiwan'		:	22	,
+            #         'Italy'		:	23	,
+            #         'Canada'		:	24	,
+            #         'Portugal'		:	25	,
+            #         'China'		:	26	,
+            #         'Nicaragua'		:	27	,
+            #         'Honduras'		:	28	,
+            #         'Iran'		:	29	,
+            #         'Scotland'		:	30	,
+            #         'Jamaica'		:	31	,
+            #         'Ecuador'		:	32	,
+            #         'Yugoslavia'		:	33	,
+            #         'Hungary'		:	34	,
+            #         'Hong'		:	35	,
+            #         'Greece'		:	36	,
+            #         'Trinada d &Tobago'		:	37	,
+            #         'Outlyin g -US(Gua m -USV I -etc)'		:	38	,
+            #         'France'		:	39	,
+            #         'Holan d -Netherlands'		:	40
+            #     }).astype(int)
+
+
+            # relationship
+            df['relationship'] = df['relationship'].map(
+                {'Not-in-family': 0, 'Wife': 1, 'Other-relative': 2, 'Unmarried': 3, 'Husband': 4,
+                 'Own-child': 5}).astype(int)
+
+            # for d in text_cols :
+            #     df = pd.get_dummies(df, columns=[d])
 
 
             self.x_train, self.x_val, self.y_train, self.y_val = train_test_split(df[input_cols], df["income"],
                                                                                   train_size=params["train_size"])
+
+
+            # took help from
+            # https://towardsdatascience.com/a-beginners-guide-to-data-analysis-machine-learning-with-python-adult-salary-dataset-e5fc028b6f0a
 
             # return
 
@@ -189,10 +303,33 @@ class DatasetRepo :
 
             self.x_train, self.x_val, self.y_train, self.y_val = train_test_split(features, labels, train_size = params["train_size"] )
 
+
+
+        elif (self.dataset == RegisteredDataset.WINEQUALITY):
+            rel_path = "./datasets/wine_quality/"
+
+            redwine = rel_path + "winequality-red.csv"
+            whitewine = rel_path + "winequality-white.csv"
+
+            df = pd.read_csv(redwine)
+            df_white = pd.read_csv(whitewine)
+            df = df.append(df_white, ignore_index=True)
+
+            # Create Classification version of target variable
+            df['goodquality'] = [1 if x >= 7 else 0 for x in df['quality']]
+            # Separate feature variables and target variable
+            X = df.drop(['quality', 'goodquality'], axis=1)
+            y = df['goodquality']
+
+
+
+            self.x_train, self.x_val, self.y_train, self.y_val = train_test_split(X, y, train_size = params["train_size"] )
+
             # note the labels are one hot
             # return
         self.format_outputs()
         return (self.x_train, self.y_train), (self.x_val, self.y_val)
+
 
 
 

@@ -21,10 +21,17 @@ regularizer = "regularizer"
 num_population_points = "num_population_points"
 fpr_tolerance_list = "fpr_tolerance_list"
 model_type = "model_type"
+model_hyper_param = "model_hyper_param"
+num_class = "num_class"
+num_layers_training = "num_layers_training"
+num_neigh = "num_neigh"
+hidden_layers = "hidden_layers"
+activation = "activation"
+max_depth = "max_depth"
 
 # serialized model extns
 EXTN = ".sav"
-summary = "summaryTitanicDS_ml_privacy"
+summary = "summaryWine_qualityDS_tf_privacy_05_11"
 TXT_EXTN = ".txt"
 
 # defined model names

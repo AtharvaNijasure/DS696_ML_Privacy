@@ -1,0 +1,170 @@
+C:\Users\Atharva\AppData\Local\Programs\Python\Python39\python.exe E:/UMassAmherst/Spring_2023/CS696DS/DS696_ML_Privacy/Purchase100_Generator.py
+C:\Users\Atharva\AppData\Local\Programs\Python\Python39\lib\site-packages\requests\__init__.py:102: RequestsDependencyWarning: urllib3 (1.26.8) or chardet (5.1.0)/charset_normalizer (2.0.10) doesn't match a supported version!
+  warnings.warn("urllib3 ({}) or chardet ({})/charset_normalizer ({}) doesn't match a supported "
+Started sk_learn_KNN
+Started sk_learn_KNN for   batch_size = 64  l = 0
+Started attack THRESHOLD_ATTACK for sk_learn_KNN  l = 0
+getting data for training
+data gathering succesful
+
+------------------*****---------------
+./purchase_models/sk_learn_KNNverbose_1model_hyper_param_Truenum_neigh_3.sav
+Target model val Accuracy: 0.1880907132902572
+Target model target Accuracy: 0.39123521623727503
+-------------****-----------]
+Started sk_learn_KNN for   batch_size = 64  l = 1
+Started attack THRESHOLD_ATTACK for sk_learn_KNN  l = 1
+getting data for training
+data gathering succesful
+
+------------------*****---------------
+./purchase_models/sk_learn_KNNverbose_1model_hyper_param_Truenum_neigh_4.sav
+Target model val Accuracy: 0.10596731280881794
+Target model target Accuracy: 0.1877244883091873
+-------------****-----------]
+Started sk_learn_KNN for   batch_size = 64  l = 2
+Started attack THRESHOLD_ATTACK for sk_learn_KNN  l = 2
+getting data for training
+data gathering succesful
+
+------------------*****---------------
+./purchase_models/sk_learn_KNNverbose_1model_hyper_param_Truenum_neigh_5.sav
+Target model val Accuracy: 0.15877359685797543
+Target model target Accuracy: 0.2640964404943652
+-------------****-----------]
+Started sk_learn_KNN for   batch_size = 64  l = 3
+Started attack THRESHOLD_ATTACK for sk_learn_KNN  l = 3
+getting data for training
+data gathering succesful
+
+------------------*****---------------
+./purchase_models/sk_learn_KNNverbose_1model_hyper_param_Truenum_neigh_10.sav
+Target model val Accuracy: 0.09421005954643355
+Target model target Accuracy: 0.1272337972494441
+-------------****-----------]
+Started sk_learn_KNN for   batch_size = 64  l = 4
+Started attack THRESHOLD_ATTACK for sk_learn_KNN  l = 4
+getting data for training
+data gathering succesful
+
+------------------*****---------------
+./purchase_models/sk_learn_KNNverbose_1model_hyper_param_Truenum_neigh_15.sav
+Target model val Accuracy: 0.1015583428354238
+Target model target Accuracy: 0.12833604672524215
+-------------****-----------]
+Done sk_learn_KNN
+Started sk_learn_MLP
+Started sk_learn_MLP for   batch_size = 64  l = 0
+Started attack THRESHOLD_ATTACK for sk_learn_MLP  l = 0
+getting data for training
+data gathering succesful
+
+C:\Users\Atharva\AppData\Local\Programs\Python\Python39\lib\site-packages\sklearn\neural_network\_multilayer_perceptron.py:692: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  warnings.warn(
+------------------*****---------------
+./purchase_models/sk_learn_MLPverbose_1model_hyper_param_Truehidden_layers_32.sav
+Target model val Accuracy: 0.6904599011782592
+Target model target Accuracy: 0.7539449762129495
+-------------****-----------]
+Started sk_learn_MLP for   batch_size = 64  l = 1
+Started attack THRESHOLD_ATTACK for sk_learn_MLP  l = 1
+getting data for training
+data gathering succesful
+
+C:\Users\Atharva\AppData\Local\Programs\Python\Python39\lib\site-packages\sklearn\neural_network\_multilayer_perceptron.py:692: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  warnings.warn(
+------------------*****---------------
+./purchase_models/sk_learn_MLPverbose_1model_hyper_param_Truehidden_layers_64.sav
+Target model val Accuracy: 0.7376409476751552
+Target model target Accuracy: 0.8741218429104454
+-------------****-----------]
+Started sk_learn_MLP for   batch_size = 64  l = 2
+Started attack THRESHOLD_ATTACK for sk_learn_MLP  l = 2
+getting data for training
+data gathering succesful
+
+------------------*****---------------
+./purchase_models/sk_learn_MLPverbose_1model_hyper_param_Truehidden_layers_(64, 128).sav
+Target model val Accuracy: 0.8386671734448246
+Target model target Accuracy: 0.9733306304993697
+-------------****-----------]
+Started sk_learn_MLP for   batch_size = 64  l = 3
+Started attack THRESHOLD_ATTACK for sk_learn_MLP  l = 3
+getting data for training
+data gathering succesful
+
+------------------*****---------------
+./purchase_models/sk_learn_MLPverbose_1model_hyper_param_Truehidden_layers_(64, 128, 256).sav
+Target model val Accuracy: 0.8663625997719498
+Target model target Accuracy: 0.9783287617430745
+-------------****-----------]
+Started sk_learn_MLP for   batch_size = 64  l = 4
+Started attack THRESHOLD_ATTACK for sk_learn_MLP  l = 4
+getting data for training
+data gathering succesful
+
+------------------*****---------------
+./purchase_models/sk_learn_MLPverbose_1model_hyper_param_Truehidden_layers_(64, 128, 32).sav
+Target model val Accuracy: 0.7928290890662613
+Target model target Accuracy: 0.9455463419887368
+-------------****-----------]
+Done sk_learn_MLP
+Started decisionTreeCLS
+Started decisionTreeCLS for   batch_size = 64  l = 0
+Started attack THRESHOLD_ATTACK for decisionTreeCLS  l = 0
+getting data for training
+data gathering succesful
+
+------------------*****---------------
+./purchase_models/decisionTreeCLSverbose_1model_hyper_param_Truemax_depth_3.sav
+Target model val Accuracy: 0.0
+Target model target Accuracy: 0.0
+-------------****-----------]
+Started decisionTreeCLS for   batch_size = 64  l = 1
+Started attack THRESHOLD_ATTACK for decisionTreeCLS  l = 1
+getting data for training
+data gathering succesful
+
+------------------*****---------------
+./purchase_models/decisionTreeCLSverbose_1model_hyper_param_Truemax_depth_4.sav
+Target model val Accuracy: 0.0012162675788673508
+Target model target Accuracy: 0.0008235197232973729
+-------------****-----------]
+Started decisionTreeCLS for   batch_size = 64  l = 2
+Started attack THRESHOLD_ATTACK for decisionTreeCLS  l = 2
+getting data for training
+data gathering succesful
+
+------------------*****---------------
+./purchase_models/decisionTreeCLSverbose_1model_hyper_param_Truemax_depth_5.sav
+Target model val Accuracy: 0.003294058026099075
+Target model target Accuracy: 0.003218061687962042
+-------------****-----------]
+Started decisionTreeCLS for   batch_size = 64  l = 3
+Started attack THRESHOLD_ATTACK for decisionTreeCLS  l = 3
+getting data for training
+data gathering succesful
+
+------------------*****---------------
+./purchase_models/decisionTreeCLSverbose_1model_hyper_param_Truemax_depth_10.sav
+Target model val Accuracy: 0.02642848093247181
+Target model target Accuracy: 0.03577876459371971
+-------------****-----------]
+Started decisionTreeCLS for   batch_size = 64  l = 4
+Started attack THRESHOLD_ATTACK for decisionTreeCLS  l = 4
+getting data for training
+data gathering succesful
+
+------------------*****---------------
+./purchase_models/decisionTreeCLSverbose_1model_hyper_param_Truemax_depth_15.sav
+Target model val Accuracy: 0.08554415304700368
+Target model target Accuracy: 0.27921752956752544
+-------------****-----------]
+Done decisionTreeCLS
+Started sk_learn_LR
+Started sk_learn_LR for   batch_size = 64  l = 0
+Started attack THRESHOLD_ATTACK for sk_learn_LR  l = 0
+getting data for training
+data gathering succesful
+
+Process finished with exit code 1

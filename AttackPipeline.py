@@ -7,6 +7,7 @@ import numpy as np
 from Constants import *
 import pickle
 import enum
+from sklearn.metrics import accuracy_score
 
 
 from tensorflow_privacy.privacy.privacy_tests.membership_inference_attack import membership_inference_attack as mia
@@ -103,18 +104,49 @@ class AttackPipeline :
         return ans + EXTN
 
     def get_model_file(self, model_name, model_training_params):
-        return model_name + self.get_model_param_tr_string(model_training_params)
+        folder = "./wine_quality_models/" #"./purchase_models/" #"./titanic_models/"  # "./adult_income_models/"
+        return folder + model_name + self.get_model_param_tr_string(model_training_params)
 
+    def get_model_args(self, model_training_params):
+
+        # Define the keys that correspond to arguments of another_function
+        arg_keys = [num_layers_training, num_neigh, hidden_layers,activation,max_depth]
+
+        # Create a dictionary of keyword arguments for another_function
+        kwargs = {key: model_training_params[key] for key in arg_keys if key in model_training_params}
+
+        return kwargs
 
     # make this code more modular, make use of unpacking of function arguments so that the training , attacks, slicing specs , inputs, ml-privacy and tf privacy all can be included !!
     def get_model(self,  model_name, model_training_params):
         model_file = self.get_model_file(model_name, model_training_params)
         try :
             # return if the model with given params is already trained before
-            return  self.load_model(model_file)
+            model = self.load_model(model_file)
+            # try :
+            #     print("[-------------****-----------")
+            #     print(model_file)
+            #     hist = model.fit(self.x_train, self.y_train)
+            #     y_pred = model.predict(self.x_val)
+            #     accuracy = accuracy_score(self.y_val, y_pred)
+            #     print("Target model val Accuracy:", accuracy)
+            #     self.val_acc = accuracy
+            #     y_pred = model.predict(self.x_train)
+            #     accuracy = accuracy_score(self.y_train, y_pred)
+            #     print("Target model target Accuracy:", accuracy)
+            #     self.tr_acc = accuracy
+            # except:
+            #     print("In except block")
+
+            return  model
         except :
             model_func = getattr(ModelParams, model_name)
-            model = model_func(ModelParams())
+            if(model_training_params[model_hyper_param]) :
+                # model = model_func(ModelParams(), layers_to_freeze = model_training_params[num_layers_training], num_classes = model_training_params[num_class])
+                kwargs = self.get_model_args(model_training_params)
+                model = model_func(ModelParams(), **kwargs)
+            else :
+                model = model_func(ModelParams())
             if self.attack == MetricEnum.REFERENCE:
                 x = self.datasets_list[0].get_feature('train', '<default_input>')
                 y = self.datasets_list[0].get_feature('train', '<default_output>')
@@ -123,13 +155,35 @@ class AttackPipeline :
                 (self.x_train, self.y_train), (self.x_val, self.y_val) = self.dataset.get_data_for_training(model_training_params)
             else:
                 (self.x_train, self.y_train), (self.x_val, self.y_val) = self.dataset.get_data_for_training(model_training_params)
-            # training the 
+            # training the
             # model.compile(optimizer=model_training_params[optim_fn], loss=model_training_params[loss_fn], metrics=['accuracy'])
-            hist = model.fit(self.x_train, self.y_train,
-                             epochs=model_training_params[epoch],
-                             batch_size=model_training_params[batch_size],
-                             verbose=model_training_params[verbose],
-                             validation_data=(self.x_val, self.y_val))
+            try :
+                hist = model.fit(self.x_train, self.y_train,
+                                 epochs=model_training_params[epoch],
+                                 batch_size=model_training_params[batch_size],
+                                 verbose=model_training_params[verbose],
+                                 validation_data=(self.x_val, self.y_val))
+                try :
+                    y_pred = model.predict(self.x_val)
+                    accuracy = accuracy_score(self.y_val, y_pred)
+                    print("Target model val Accuracy:", accuracy)
+                    self.val_acc = accuracy
+                except :
+                    print("")
+
+            except : # for sk learn algos
+                hist = model.fit(self.x_train, self.y_train)
+                y_pred = model.predict(self.x_val)
+                accuracy = accuracy_score(self.y_val, y_pred)
+                print("------------------*****---------------")
+                print(model_file)
+                print("Target model val Accuracy:", accuracy)
+                self.val_acc = accuracy
+                y_pred = model.predict(self.x_train)
+                accuracy = accuracy_score(self.y_train, y_pred)
+                print("Target model target Accuracy:", accuracy)
+                self.tr_acc = accuracy
+                print("-------------****-----------]")
 
             self.save_model(model, model_file)
 
@@ -294,20 +348,44 @@ class AttackPipeline :
             for result in audit_results:
                 print(result)
 
+    def get_logits(self, x_train, x_val, model ,bt_size =None ):
+        try :
+            print('Predict on train...')
+            logits_train = model.predict(x_train, batch_size=bt_size)
+            print('Predict on test...')
+            logits_test = model.predict(x_val, batch_size=bt_size)
+        except :
+            print('Predict on train...')
+            logits_train = model.predict(x_train )
+            print('Predict on test...')
+            logits_test = model.predict(x_val )
+
+        (logits_train, logits_test) = (np.array(logits_train).reshape(-1,1), np.array(logits_test).reshape(-1,1))
+
+        return (logits_train, logits_test)
+
+    def get_probabilities_sftmax(self, logits_train,logits_test ):
+        try:
+            prob_train = special.softmax(logits_train, axis=1)
+            prob_test = special.softmax(logits_test, axis=1)
+        except :
+            prob_train = special.softmax(logits_train)
+            prob_test = special.softmax(logits_test)
+
+        return (prob_train, prob_test)
+
+
 
     def perform_tf_privacy_attack(self, model , attack_parameters, model_file_name):
 
         (x_train, y_train), (x_val, y_val) = self.dataset.get_data_for_training()
         bt_size = attack_parameters[batch_size]
 
-        print('Predict on train...')
-        logits_train = model.predict(x_train, batch_size=bt_size)
-        print('Predict on test...')
-        logits_test = model.predict(x_val, batch_size=bt_size)
+        (logits_train, logits_test) = self.get_logits( x_train, x_val, model ,bt_size )
 
         print('Apply softmax to get probabilities from logits...')
-        prob_train = special.softmax(logits_train, axis=1)
-        prob_test = special.softmax(logits_test, axis=1)
+        (prob_train, prob_test) = self.get_probabilities_sftmax(logits_train,logits_test )
+
 
         print('Compute losses...')
         cce = tf.keras.backend.categorical_crossentropy
@@ -318,21 +396,29 @@ class AttackPipeline :
             labels_train = np.argmax(y_train, axis=1)
             labels_test = np.argmax(y_val, axis=1)
         except :
-            y_train_rs = y_train.reshape((y_train.shape[0],1))
-            y_val_rs = y_val.reshape((y_val.shape[0], 1))
-            loss_train = cce(constant(y_train_rs), constant(prob_train), from_logits=False).numpy()
-            loss_test = cce(constant(y_val_rs), constant(prob_test), from_logits=False).numpy()
+            try :
+                y_train_rs = y_train.reshape((y_train.shape[0],1))
+                y_val_rs = y_val.reshape((y_val.shape[0], 1))
+                labels_train = y_train
+                labels_test = y_val
+            except :
+                y_train_rs = np.argmax(y_train, axis=1)#y_train.to_numpy().reshape(-1,1)
+                y_val_rs = np.argmax(y_val, axis=1) #y_val.to_numpy().reshape(-1,1)
+                labels_train = y_train #.to_numpy()
+                labels_test = y_val #.to_numpy()
+            prob_train = prob_train.reshape(prob_train.shape)
+            prob_test = prob_test.reshape(prob_test.shape)
+            loss_train = cce(constant(y_train), constant(prob_train), from_logits=False).numpy() # _rs
+            loss_test = cce(constant(y_val), constant(prob_test), from_logits=False).numpy() # _rs
 
-            labels_train = y_train
-            labels_test = y_val
+
 
         attack_inputs = AttackInputs()
 
         input = attack_inputs.get_Attack_inputs(logits_train, logits_test, loss_train, loss_test, labels_train,
                                                 labels_test)
 
-        slicing_specs = attack_inputs.get_Attack_slicing_specs(True, True,
-                                                               True)  # pass values using unpack function arguments!!
+        slicing_specs = attack_inputs.get_Attack_slicing_specs(True, True, True)  # pass values using unpack function arguments!!
 
         attacks_result = mia.run_attacks(input,
                                          slicing_specs,
@@ -344,21 +430,42 @@ class AttackPipeline :
 
         # Print a user-friendly summary of the attacks
         print(attacks_result.summary(by_slices=True))
+        self.write_results(model_file_name, model, attack_parameters, attacks_result)
+
+    def write_results(self, model_file_name, model, attack_parameters, attacks_result):
+
+        # try:
+        #     y_pred = model.predict(self.x_val)
+        #     val_Acc = accuracy_score(self.y_val, y_pred)
+        #     print("Target model val Accuracy:", val_Acc)
+        #     y_pred = model.predict(self.x_train)
+        #     target_Acc = accuracy_score(self.y_train, y_pred)
+        #     print("Target model training Accuracy:", target_Acc)
+        # except:
+        #     y_pred = model.predict(self.x_val)
+        #     val_Acc = accuracy_score(self.y_val, y_pred)
+        #     print("Target model val Accuracy:", val_Acc)
+        #     y_pred = model.predict(self.x_train)
+        #     target_Acc = accuracy_score(self.y_train, y_pred)
+        #     print("Target model training Accuracy:", target_Acc)
+
         try:
             summary_file = summary + TXT_EXTN
             with open(summary_file, encoding="utf-8", mode='a') as f:
-                f.write(f"\nNew Summary : {model_file_name}\n")
-                line = f" model params :{self.get_model_param_tr_string(attack_parameters)[:3]} , summary : {attacks_result.summary(by_slices=True)}"
+                f.write(f"\n------------***************\nNew Summary : {model_file_name}\n")
+                line = f" \nsummary : {attacks_result.summary(by_slices=True)} \n***************------------\n"
+
                 f.write(line)
+                # line2 = f"\nTarget_model_Accuracies: training {self.tr_acc} , val_acc: {self.val_acc} \n"
+                # f.write(line2)
+                print(f"\n------------***************\n New Summary :> {model_file_name}\n")
+                print(line)
+                # print(line2)
+                # print("***************------------")
                 f.close()
+
         except:
             print("Error : while saving summary in the summary file")
-
-
-
-
-
-
 
 
 '''
@@ -371,31 +478,20 @@ we need functions to
 1. get the data 
 2. read / load the data 
 3. Format the data if required
-
 4. creating the labels or the outputs 
-
 -- https://bargavjayaraman.github.io/project/evaluating-dpml/
 -- https://github.com/bargavj/EvaluatingDPML
 licenses on the git code before sending to Pallika and Virendra
-
-
 Get all of the above things done
-
 Note : once a dataset is registered here then just by giving the format, splitting parameters we will not need to make any changes with code here 
-
 Part 2:
-
 Independently define and compile the models 
 You can write them in the model params class and call them as required 
 - Register (define) the basic architectures of the models 
 - for tweaking the other training / optimizing/ epoch / etc  params either create a separate function or put enitire model in a different class and then change its params 
 - remember model and its params must have some unique name so that we can track it against the recorded results. 
-
 Note : this is the iteration part so try to keep the code more readable and developer friendly!!
-
-
 Part 4: (AttackPipeline)
-
 Orchestrator Get required data , get models , 
 0. Get dataset, format if required 
 1. Train the required models using the data 
@@ -403,11 +499,6 @@ Orchestrator Get required data , get models ,
 3. Get predictions on the models 
 4. Prepare Attack inputs based upon tf-privacy/ ml-privacy-meter (call Part 3)
 5. Run the attacks 
-
 Part 3: (AttackInputs)
 1. prepare inputs based upon model, dataset, and tf_privacy or ml_privacy_meter
-
-
-
 '''
-

@@ -1,0 +1,109 @@
+
+------------------*****---------------
+./titanic_models/sk_learn_KNNverbose_1model_hyper_param_Truenum_neigh_3.sav
+Target model val Accuracy: 0.6946564885496184
+Target model target Accuracy: 0.8500477554918816
+-------------****-----------]
+
+
+------------------*****---------------
+./titanic_models/sk_learn_KNNverbose_1model_hyper_param_Truenum_neigh_4.sav
+Target model val Accuracy: 0.7290076335877863
+Target model target Accuracy: 0.8242597898758357
+-------------****-----------]
+
+
+------------------*****---------------
+./titanic_models/sk_learn_KNNverbose_1model_hyper_param_Truenum_neigh_5.sav
+Target model val Accuracy: 0.7099236641221374
+Target model target Accuracy: 0.8299904489016237
+-------------****-----------]
+
+
+------------------*****---------------
+./titanic_models/sk_learn_KNNverbose_1model_hyper_param_Truenum_neigh_10.sav
+Target model val Accuracy: 0.7022900763358778
+Target model target Accuracy: 0.7870105062082139
+-------------****-----------]
+
+
+------------------*****---------------
+./titanic_models/sk_learn_KNNverbose_1model_hyper_param_Truenum_neigh_15.sav
+Target model val Accuracy: 0.6946564885496184
+Target model target Accuracy: 0.7688634192932188
+-------------****-----------]
+
+------------------*****---------------
+./titanic_models/sk_learn_MLPverbose_1model_hyper_param_Truehidden_layers_32.sav
+Target model val Accuracy: 0.9236641221374046
+Target model target Accuracy: 0.8538681948424068
+-------------****-----------]
+
+------------------*****---------------
+./titanic_models/sk_learn_MLPverbose_1model_hyper_param_Truehidden_layers_64.sav
+Target model val Accuracy: 0.9274809160305344
+Target model target Accuracy: 0.8538681948424068
+-------------****-----------]
+
+------------------*****---------------
+./titanic_models/sk_learn_MLPverbose_1model_hyper_param_Truehidden_layers_(64, 128).sav
+Target model val Accuracy: 0.9122137404580153
+Target model target Accuracy: 0.833810888252149
+-------------****-----------]
+
+
+------------------*****---------------
+./titanic_models/sk_learn_MLPverbose_1model_hyper_param_Truehidden_layers_(64, 128, 256).sav
+Target model val Accuracy: 0.8778625954198473
+Target model target Accuracy: 0.8204393505253104
+-------------****-----------]
+
+------------------*****---------------
+./titanic_models/sk_learn_MLPverbose_1model_hyper_param_Truehidden_layers_(64, 128, 32).sav
+Target model val Accuracy: 0.9351145038167938
+Target model target Accuracy: 0.8433619866284623
+-------------****-----------]
+
+
+------------------*****---------------
+./titanic_models/decisionTreeCLSverbose_1model_hyper_param_Truemax_depth_3.sav
+Target model val Accuracy: 0.9541984732824428
+Target model target Accuracy: 0.8500477554918816
+-------------****-----------]
+
+
+------------------*****---------------
+./titanic_models/decisionTreeCLSverbose_1model_hyper_param_Truemax_depth_4.sav
+Target model val Accuracy: 0.9580152671755725
+Target model target Accuracy: 0.8519579751671442
+-------------****-----------]
+
+
+------------------*****---------------
+./titanic_models/decisionTreeCLSverbose_1model_hyper_param_Truemax_depth_5.sav
+Target model val Accuracy: 0.9465648854961832
+Target model target Accuracy: 0.8653295128939829
+-------------****-----------]
+
+
+
+------------------*****---------------
+./titanic_models/decisionTreeCLSverbose_1model_hyper_param_Truemax_depth_10.sav
+Target model val Accuracy: 0.8396946564885496
+Target model target Accuracy: 0.9140401146131805
+-------------****-----------]
+
+
+
+------------------*****---------------
+./titanic_models/decisionTreeCLSverbose_1model_hyper_param_Truemax_depth_15.sav
+Target model val Accuracy: 0.8587786259541985
+Target model target Accuracy: 0.958930276981853
+-------------****-----------]
+
+
+------------------*****---------------
+./titanic_models/sk_learn_LRverbose_1model_hyper_param_False.sav
+Target model val Accuracy: 0.9427480916030534
+Target model target Accuracy: 0.8519579751671442
+-------------****-----------]
