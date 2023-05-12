@@ -311,8 +311,8 @@ class DatasetRepo :
             redwine = rel_path + "winequality-red.csv"
             whitewine = rel_path + "winequality-white.csv"
 
-            df = pd.read_csv(redwine)
-            df_white = pd.read_csv(whitewine)
+            df = pd.read_csv(redwine, delimiter = ";")
+            df_white = pd.read_csv(whitewine, delimiter = ";")
             df = df.append(df_white, ignore_index=True)
 
             # Create Classification version of target variable

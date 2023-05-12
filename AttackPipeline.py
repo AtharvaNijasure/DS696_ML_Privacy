@@ -360,7 +360,7 @@ class AttackPipeline :
             print('Predict on test...')
             logits_test = model.predict(x_val )
 
-        (logits_train, logits_test) = (np.array(logits_train).reshape(-1,1), np.array(logits_test).reshape(-1,1))
+        # (logits_train, logits_test) = (np.array(logits_train).reshape(-1,1), np.array(logits_test).reshape(-1,1))
 
         return (logits_train, logits_test)
 
@@ -406,10 +406,10 @@ class AttackPipeline :
                 y_val_rs = np.argmax(y_val, axis=1) #y_val.to_numpy().reshape(-1,1)
                 labels_train = y_train #.to_numpy()
                 labels_test = y_val #.to_numpy()
-            prob_train = prob_train.reshape(prob_train.shape)
-            prob_test = prob_test.reshape(prob_test.shape)
-            loss_train = cce(constant(y_train), constant(prob_train), from_logits=False).numpy() # _rs
-            loss_test = cce(constant(y_val), constant(prob_test), from_logits=False).numpy() # _rs
+            # prob_train = prob_train.reshape(prob_train.shape)
+            # prob_test = prob_test.reshape(prob_test.shape)
+            loss_train = cce(constant(y_train_rs), constant(prob_train), from_logits=False).numpy() # _rs
+            loss_test = cce(constant(y_val_rs), constant(prob_test), from_logits=False).numpy() # _rs
 
 
 
