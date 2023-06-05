@@ -103,5 +103,6 @@ for mod_name in model_names :
                 # break
                 model_file = attack_pipeline_population.get_model_file(mod_name, model_training_params)
                 attack_pipeline_population.run_attack(model, attack_parameters_titanic, model_file_name = model_file)
+                break
             l+=1
     print(f"Done {mod_name}")

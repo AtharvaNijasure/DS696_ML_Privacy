@@ -1,0 +1,389 @@
+C:\Users\Atharva\AppData\Local\Programs\Python\Python39\python.exe E:\UMassAmherst\Spring_2023\CS696DS\DS696_ML_Privacy\AdultIncomeResultsGeneration.py
+C:\Users\Atharva\AppData\Local\Programs\Python\Python39\lib\site-packages\requests\__init__.py:102: RequestsDependencyWarning: urllib3 (1.26.8) or chardet (5.1.0)/charset_normalizer (2.0.10) doesn't match a supported version!
+  warnings.warn("urllib3 ({}) or chardet ({})/charset_normalizer ({}) doesn't match a supported "
+Started sk_learn_KNN
+Started sk_learn_KNN for   batch_size = 64  l = 0
+Started attack THRESHOLD_ATTACK for sk_learn_KNN  l = 0
+getting data for training
+E:\UMassAmherst\Spring_2023\CS696DS\DS696_ML_Privacy\DatasetRepo.py:113: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df_tr.append(df_test, ignore_index=True)
+E:\UMassAmherst\Spring_2023\CS696DS\DS696_ML_Privacy\DatasetRepo.py:138: SettingWithCopyWarning:
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  df.Age.loc[df.Age.isnull()] = y_pred
+E:\UMassAmherst\Spring_2023\CS696DS\DS696_ML_Privacy\DatasetRepo.py:113: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df_tr.append(df_test, ignore_index=True)
+E:\UMassAmherst\Spring_2023\CS696DS\DS696_ML_Privacy\DatasetRepo.py:138: SettingWithCopyWarning:
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  df.Age.loc[df.Age.isnull()] = y_pred
+data gathering succesful
+[-------------****-----------
+./adult_income_models_2/sk_learn_KNNverbose_1model_hyper_param_Truenum_neigh_3.sav
+Target model Test Accuracy:0.6984732824427481  number samples : 262, f1 :0.6786972787531629 precision :0.6767156862745098 recall : 0.6817838008194138
+Target model Train Accuracy:0.8500477554918816  number samples : 1047, f1 :0.8400305576776164 precision :0.8424392308717361 recall : 0.8379281537176273
+Generalization GAP:0.15157447304913352
+Started sk_learn_KNN for   batch_size = 64  l = 1
+Started attack THRESHOLD_ATTACK for sk_learn_KNN  l = 1
+getting data for training
+E:\UMassAmherst\Spring_2023\CS696DS\DS696_ML_Privacy\DatasetRepo.py:113: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df_tr.append(df_test, ignore_index=True)
+E:\UMassAmherst\Spring_2023\CS696DS\DS696_ML_Privacy\DatasetRepo.py:138: SettingWithCopyWarning:
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  df.Age.loc[df.Age.isnull()] = y_pred
+E:\UMassAmherst\Spring_2023\CS696DS\DS696_ML_Privacy\DatasetRepo.py:113: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df_tr.append(df_test, ignore_index=True)
+E:\UMassAmherst\Spring_2023\CS696DS\DS696_ML_Privacy\DatasetRepo.py:138: SettingWithCopyWarning:
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  df.Age.loc[df.Age.isnull()] = y_pred
+data gathering succesful
+[-------------****-----------
+./adult_income_models_2/sk_learn_KNNverbose_1model_hyper_param_Truenum_neigh_4.sav
+Target model Test Accuracy:0.732824427480916  number samples : 262, f1 :0.6913912633775325 precision :0.7149915197994248 recall : 0.6837693034982666
+Target model Train Accuracy:0.8233046800382043  number samples : 1047, f1 :0.7996139080020981 precision :0.8382671826965306 recall : 0.785986958136081
+Generalization GAP:0.09048025255728831
+Started sk_learn_KNN for   batch_size = 64  l = 2
+Started attack THRESHOLD_ATTACK for sk_learn_KNN  l = 2
+getting data for training
+E:\UMassAmherst\Spring_2023\CS696DS\DS696_ML_Privacy\DatasetRepo.py:113: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df_tr.append(df_test, ignore_index=True)
+E:\UMassAmherst\Spring_2023\CS696DS\DS696_ML_Privacy\DatasetRepo.py:138: SettingWithCopyWarning:
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  df.Age.loc[df.Age.isnull()] = y_pred
+E:\UMassAmherst\Spring_2023\CS696DS\DS696_ML_Privacy\DatasetRepo.py:113: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df_tr.append(df_test, ignore_index=True)
+E:\UMassAmherst\Spring_2023\CS696DS\DS696_ML_Privacy\DatasetRepo.py:138: SettingWithCopyWarning:
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  df.Age.loc[df.Age.isnull()] = y_pred
+data gathering succesful
+[-------------****-----------
+./adult_income_models_2/sk_learn_KNNverbose_1model_hyper_param_Truenum_neigh_5.sav
+Target model Test Accuracy:0.7022900763358778  number samples : 262, f1 :0.6794051204819277 precision :0.6786629178381756 recall : 0.6802395209580838
+Target model Train Accuracy:0.8319006685768864  number samples : 1047, f1 :0.8205795295217324 precision :0.8230529289441677 recall : 0.8184523809523809
+Generalization GAP:0.12961059224100857
+Started sk_learn_KNN for   batch_size = 64  l = 3
+Started attack THRESHOLD_ATTACK for sk_learn_KNN  l = 3
+getting data for training
+E:\UMassAmherst\Spring_2023\CS696DS\DS696_ML_Privacy\DatasetRepo.py:113: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df_tr.append(df_test, ignore_index=True)
+E:\UMassAmherst\Spring_2023\CS696DS\DS696_ML_Privacy\DatasetRepo.py:138: SettingWithCopyWarning:
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  df.Age.loc[df.Age.isnull()] = y_pred
+E:\UMassAmherst\Spring_2023\CS696DS\DS696_ML_Privacy\DatasetRepo.py:113: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df_tr.append(df_test, ignore_index=True)
+data gathering succesful
+[-------------****-----------
+./adult_income_models_2/sk_learn_KNNverbose_1model_hyper_param_Truenum_neigh_10.sav
+E:\UMassAmherst\Spring_2023\CS696DS\DS696_ML_Privacy\DatasetRepo.py:138: SettingWithCopyWarning:
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  df.Age.loc[df.Age.isnull()] = y_pred
+Target model Test Accuracy:0.7022900763358778  number samples : 262, f1 :0.668182113398714 precision :0.675506495254762 recall : 0.6643554995272613
+Target model Train Accuracy:0.7870105062082139  number samples : 1047, f1 :0.7647605853756833 precision :0.7823340963045531 recall : 0.75666597048176
+Generalization GAP:0.08472042987233608
+Started sk_learn_KNN for   batch_size = 64  l = 4
+Started attack THRESHOLD_ATTACK for sk_learn_KNN  l = 4
+getting data for training
+E:\UMassAmherst\Spring_2023\CS696DS\DS696_ML_Privacy\DatasetRepo.py:113: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df_tr.append(df_test, ignore_index=True)
+E:\UMassAmherst\Spring_2023\CS696DS\DS696_ML_Privacy\DatasetRepo.py:138: SettingWithCopyWarning:
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  df.Age.loc[df.Age.isnull()] = y_pred
+E:\UMassAmherst\Spring_2023\CS696DS\DS696_ML_Privacy\DatasetRepo.py:113: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df_tr.append(df_test, ignore_index=True)
+data gathering succesful
+[-------------****-----------
+./adult_income_models_2/sk_learn_KNNverbose_1model_hyper_param_Truenum_neigh_15.sav
+E:\UMassAmherst\Spring_2023\CS696DS\DS696_ML_Privacy\DatasetRepo.py:138: SettingWithCopyWarning:
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  df.Age.loc[df.Age.isnull()] = y_pred
+Target model Test Accuracy:0.6946564885496184  number samples : 262, f1 :0.6614987080103358 precision :0.6669990029910269 recall : 0.6583674755751654
+Target model Train Accuracy:0.7640878701050621  number samples : 1047, f1 :0.74109714525987 precision :0.7540938316254772 recall : 0.7347767567065813
+Generalization GAP:0.0694313815554437
+Done sk_learn_KNN
+Started sk_learn_MLP
+Started sk_learn_MLP for   batch_size = 64  l = 0
+Started attack THRESHOLD_ATTACK for sk_learn_MLP  l = 0
+getting data for training
+E:\UMassAmherst\Spring_2023\CS696DS\DS696_ML_Privacy\DatasetRepo.py:113: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df_tr.append(df_test, ignore_index=True)
+E:\UMassAmherst\Spring_2023\CS696DS\DS696_ML_Privacy\DatasetRepo.py:138: SettingWithCopyWarning:
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  df.Age.loc[df.Age.isnull()] = y_pred
+E:\UMassAmherst\Spring_2023\CS696DS\DS696_ML_Privacy\DatasetRepo.py:113: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df_tr.append(df_test, ignore_index=True)
+E:\UMassAmherst\Spring_2023\CS696DS\DS696_ML_Privacy\DatasetRepo.py:138: SettingWithCopyWarning:
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  df.Age.loc[df.Age.isnull()] = y_pred
+data gathering succesful
+[-------------****-----------
+./adult_income_models_2/sk_learn_MLPverbose_1model_hyper_param_Truehidden_layers_32.sav
+Target model Test Accuracy:0.9198473282442748  number samples : 262, f1 :0.9155655816951338 precision :0.9083092833092833 recall : 0.9280491648282383
+Target model Train Accuracy:0.8481375358166189  number samples : 1047, f1 :0.8379927303868855 precision :0.840387464432129 recall : 0.8359034159472756
+Generalization GAP:-0.07170979242765596
+Started sk_learn_MLP for   batch_size = 64  l = 1
+Started attack THRESHOLD_ATTACK for sk_learn_MLP  l = 1
+getting data for training
+E:\UMassAmherst\Spring_2023\CS696DS\DS696_ML_Privacy\DatasetRepo.py:113: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df_tr.append(df_test, ignore_index=True)
+E:\UMassAmherst\Spring_2023\CS696DS\DS696_ML_Privacy\DatasetRepo.py:138: SettingWithCopyWarning:
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  df.Age.loc[df.Age.isnull()] = y_pred
+E:\UMassAmherst\Spring_2023\CS696DS\DS696_ML_Privacy\DatasetRepo.py:113: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df_tr.append(df_test, ignore_index=True)
+E:\UMassAmherst\Spring_2023\CS696DS\DS696_ML_Privacy\DatasetRepo.py:138: SettingWithCopyWarning:
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  df.Age.loc[df.Age.isnull()] = y_pred
+data gathering succesful
+[-------------****-----------
+./adult_income_models_2/sk_learn_MLPverbose_1model_hyper_param_Truehidden_layers_64.sav
+Target model Test Accuracy:0.9045801526717557  number samples : 262, f1 :0.9001813499138969 precision :0.8929166666666667 recall : 0.9160731169240466
+Target model Train Accuracy:0.8424068767908309  number samples : 1047, f1 :0.8330393687089557 precision :0.8328806027820711 recall : 0.8331998978928803
+Generalization GAP:-0.062173275880924805
+Started sk_learn_MLP for   batch_size = 64  l = 2
+Started attack THRESHOLD_ATTACK for sk_learn_MLP  l = 2
+getting data for training
+E:\UMassAmherst\Spring_2023\CS696DS\DS696_ML_Privacy\DatasetRepo.py:113: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df_tr.append(df_test, ignore_index=True)
+E:\UMassAmherst\Spring_2023\CS696DS\DS696_ML_Privacy\DatasetRepo.py:138: SettingWithCopyWarning:
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  df.Age.loc[df.Age.isnull()] = y_pred
+E:\UMassAmherst\Spring_2023\CS696DS\DS696_ML_Privacy\DatasetRepo.py:113: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df_tr.append(df_test, ignore_index=True)
+E:\UMassAmherst\Spring_2023\CS696DS\DS696_ML_Privacy\DatasetRepo.py:138: SettingWithCopyWarning:
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  df.Age.loc[df.Age.isnull()] = y_pred
+data gathering succesful
+[-------------****-----------
+./adult_income_models_2/sk_learn_MLPverbose_1model_hyper_param_Truehidden_layers_(64, 128).sav
+Target model Test Accuracy:0.9465648854961832  number samples : 262, f1 :0.9431740720084278 precision :0.9371679794834219 recall : 0.9512763945792626
+Target model Train Accuracy:0.8481375358166189  number samples : 1047, f1 :0.8353293205861843 precision :0.8454568366965316 recall : 0.8286804975401467
+Generalization GAP:-0.09842734967956435
+Started sk_learn_MLP for   batch_size = 64  l = 3
+Started attack THRESHOLD_ATTACK for sk_learn_MLP  l = 3
+getting data for training
+E:\UMassAmherst\Spring_2023\CS696DS\DS696_ML_Privacy\DatasetRepo.py:113: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df_tr.append(df_test, ignore_index=True)
+E:\UMassAmherst\Spring_2023\CS696DS\DS696_ML_Privacy\DatasetRepo.py:138: SettingWithCopyWarning:
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  df.Age.loc[df.Age.isnull()] = y_pred
+E:\UMassAmherst\Spring_2023\CS696DS\DS696_ML_Privacy\DatasetRepo.py:113: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df_tr.append(df_test, ignore_index=True)
+E:\UMassAmherst\Spring_2023\CS696DS\DS696_ML_Privacy\DatasetRepo.py:138: SettingWithCopyWarning:
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  df.Age.loc[df.Age.isnull()] = y_pred
+data gathering succesful
+[-------------****-----------
+./adult_income_models_2/sk_learn_MLPverbose_1model_hyper_param_Truehidden_layers_(64, 128, 256).sav
+Target model Test Accuracy:0.9198473282442748  number samples : 262, f1 :0.9158651273033105 precision :0.9083133971291866 recall : 0.9303183107469273
+Target model Train Accuracy:0.8424068767908309  number samples : 1047, f1 :0.8327160224846397 precision :0.8332111436950147 recall : 0.8322368421052632
+Generalization GAP:-0.07744045145344391
+Started sk_learn_MLP for   batch_size = 64  l = 4
+Started attack THRESHOLD_ATTACK for sk_learn_MLP  l = 4
+getting data for training
+E:\UMassAmherst\Spring_2023\CS696DS\DS696_ML_Privacy\DatasetRepo.py:113: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df_tr.append(df_test, ignore_index=True)
+E:\UMassAmherst\Spring_2023\CS696DS\DS696_ML_Privacy\DatasetRepo.py:138: SettingWithCopyWarning:
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  df.Age.loc[df.Age.isnull()] = y_pred
+E:\UMassAmherst\Spring_2023\CS696DS\DS696_ML_Privacy\DatasetRepo.py:113: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df_tr.append(df_test, ignore_index=True)
+E:\UMassAmherst\Spring_2023\CS696DS\DS696_ML_Privacy\DatasetRepo.py:138: SettingWithCopyWarning:
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  df.Age.loc[df.Age.isnull()] = y_pred
+data gathering succesful
+[-------------****-----------
+./adult_income_models_2/sk_learn_MLPverbose_1model_hyper_param_Truehidden_layers_(64, 128, 32).sav
+Target model Test Accuracy:0.8740458015267175  number samples : 262, f1 :0.8702172053017908 precision :0.8663348946135832 recall : 0.8943901670343524
+Target model Train Accuracy:0.8204393505253104  number samples : 1047, f1 :0.8123798993442122 precision :0.8090781028716063 recall : 0.8173790958878678
+Generalization GAP:-0.05360645100140715
+Done sk_learn_MLP
+Started decisionTreeCLS
+Started decisionTreeCLS for   batch_size = 64  l = 0
+Started attack THRESHOLD_ATTACK for decisionTreeCLS  l = 0
+getting data for training
+E:\UMassAmherst\Spring_2023\CS696DS\DS696_ML_Privacy\DatasetRepo.py:113: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df_tr.append(df_test, ignore_index=True)
+E:\UMassAmherst\Spring_2023\CS696DS\DS696_ML_Privacy\DatasetRepo.py:138: SettingWithCopyWarning:
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  df.Age.loc[df.Age.isnull()] = y_pred
+E:\UMassAmherst\Spring_2023\CS696DS\DS696_ML_Privacy\DatasetRepo.py:113: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df_tr.append(df_test, ignore_index=True)
+E:\UMassAmherst\Spring_2023\CS696DS\DS696_ML_Privacy\DatasetRepo.py:138: SettingWithCopyWarning:
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  df.Age.loc[df.Age.isnull()] = y_pred
+data gathering succesful
+[-------------****-----------
+./adult_income_models_2/decisionTreeCLSverbose_1model_hyper_param_Truemax_depth_3.sav
+Target model Test Accuracy:0.9541984732824428  number samples : 262, f1 :0.9506777108433735 precision :0.9487660106216808 recall : 0.9527261266939804
+Target model Train Accuracy:0.8500477554918816  number samples : 1047, f1 :0.8375876511324374 precision :0.8471511623192871 recall : 0.8311867632043071
+Generalization GAP:-0.10415071779056118
+Started decisionTreeCLS for   batch_size = 64  l = 1
+Started attack THRESHOLD_ATTACK for decisionTreeCLS  l = 1
+getting data for training
+E:\UMassAmherst\Spring_2023\CS696DS\DS696_ML_Privacy\DatasetRepo.py:113: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df_tr.append(df_test, ignore_index=True)
+E:\UMassAmherst\Spring_2023\CS696DS\DS696_ML_Privacy\DatasetRepo.py:138: SettingWithCopyWarning:
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  df.Age.loc[df.Age.isnull()] = y_pred
+E:\UMassAmherst\Spring_2023\CS696DS\DS696_ML_Privacy\DatasetRepo.py:113: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df_tr.append(df_test, ignore_index=True)
+E:\UMassAmherst\Spring_2023\CS696DS\DS696_ML_Privacy\DatasetRepo.py:138: SettingWithCopyWarning:
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  df.Age.loc[df.Age.isnull()] = y_pred
+data gathering succesful
+[-------------****-----------
+./adult_income_models_2/decisionTreeCLSverbose_1model_hyper_param_Truemax_depth_4.sav
+Target model Test Accuracy:0.9656488549618321  number samples : 262, f1 :0.9632452653729249 precision :0.9588271604938272 recall : 0.968515600378191
+Target model Train Accuracy:0.8519579751671442  number samples : 1047, f1 :0.8398395286524256 precision :0.848847646773411 recall : 0.8336930288684674
+Generalization GAP:-0.11369087979468784
+Started decisionTreeCLS for   batch_size = 64  l = 2
+Started attack THRESHOLD_ATTACK for decisionTreeCLS  l = 2
+getting data for training
+E:\UMassAmherst\Spring_2023\CS696DS\DS696_ML_Privacy\DatasetRepo.py:113: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df_tr.append(df_test, ignore_index=True)
+E:\UMassAmherst\Spring_2023\CS696DS\DS696_ML_Privacy\DatasetRepo.py:138: SettingWithCopyWarning:
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  df.Age.loc[df.Age.isnull()] = y_pred
+E:\UMassAmherst\Spring_2023\CS696DS\DS696_ML_Privacy\DatasetRepo.py:113: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df_tr.append(df_test, ignore_index=True)
+E:\UMassAmherst\Spring_2023\CS696DS\DS696_ML_Privacy\DatasetRepo.py:138: SettingWithCopyWarning:
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  df.Age.loc[df.Age.isnull()] = y_pred
+data gathering succesful
+[-------------****-----------
+./adult_income_models_2/decisionTreeCLSverbose_1model_hyper_param_Truemax_depth_5.sav
+Target model Test Accuracy:0.9465648854961832  number samples : 262, f1 :0.9424573293172691 precision :0.94058106841612 recall : 0.9444689568231956
+Target model Train Accuracy:0.8662846227316141  number samples : 1047, f1 :0.8552565054587395 precision :0.8649551402474573 recall : 0.8486377981992017
+Generalization GAP:-0.08028026276456912
+Started decisionTreeCLS for   batch_size = 64  l = 3
+Started attack THRESHOLD_ATTACK for decisionTreeCLS  l = 3
+getting data for training
+E:\UMassAmherst\Spring_2023\CS696DS\DS696_ML_Privacy\DatasetRepo.py:113: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df_tr.append(df_test, ignore_index=True)
+E:\UMassAmherst\Spring_2023\CS696DS\DS696_ML_Privacy\DatasetRepo.py:138: SettingWithCopyWarning:
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  df.Age.loc[df.Age.isnull()] = y_pred
+E:\UMassAmherst\Spring_2023\CS696DS\DS696_ML_Privacy\DatasetRepo.py:113: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df_tr.append(df_test, ignore_index=True)
+data gathering succesful
+[-------------****-----------
+./adult_income_models_2/decisionTreeCLSverbose_1model_hyper_param_Truemax_depth_10.sav
+Target model Test Accuracy:0.8702290076335878  number samples : 262, f1 :0.8568858042542253 precision :0.8652873563218391 recall : 0.8505515285219036
+Target model Train Accuracy:0.9102196752626552  number samples : 1047, f1 :0.9011589603502994 precision :0.9237982919542946 recall : 0.8884653764039729
+Generalization GAP:0.039990667629067445
+Started decisionTreeCLS for   batch_size = 64  l = 4
+Started attack THRESHOLD_ATTACK for decisionTreeCLS  l = 4
+getting data for training
+E:\UMassAmherst\Spring_2023\CS696DS\DS696_ML_Privacy\DatasetRepo.py:138: SettingWithCopyWarning:
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  df.Age.loc[df.Age.isnull()] = y_pred
+E:\UMassAmherst\Spring_2023\CS696DS\DS696_ML_Privacy\DatasetRepo.py:113: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df_tr.append(df_test, ignore_index=True)
+E:\UMassAmherst\Spring_2023\CS696DS\DS696_ML_Privacy\DatasetRepo.py:138: SettingWithCopyWarning:
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  df.Age.loc[df.Age.isnull()] = y_pred
+E:\UMassAmherst\Spring_2023\CS696DS\DS696_ML_Privacy\DatasetRepo.py:113: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df_tr.append(df_test, ignore_index=True)
+E:\UMassAmherst\Spring_2023\CS696DS\DS696_ML_Privacy\DatasetRepo.py:138: SettingWithCopyWarning:
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  df.Age.loc[df.Age.isnull()] = y_pred
+data gathering succesful
+[-------------****-----------
+./adult_income_models_2/decisionTreeCLSverbose_1model_hyper_param_Truemax_depth_15.sav
+Target model Test Accuracy:0.8587786259541985  number samples : 262, f1 :0.846173376283343 precision :0.8487851662404091 recall : 0.8438386385124488
+Target model Train Accuracy:0.9598853868194842  number samples : 1047, f1 :0.9569591261451725 precision :0.9634464285714286 recall : 0.951702172096909
+Generalization GAP:0.1011067608652857
+Done decisionTreeCLS
+Started sk_learn_LR
+Started sk_learn_LR for   batch_size = 64  l = 0
+Started attack THRESHOLD_ATTACK for sk_learn_LR  l = 0
+getting data for training
+E:\UMassAmherst\Spring_2023\CS696DS\DS696_ML_Privacy\DatasetRepo.py:113: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df_tr.append(df_test, ignore_index=True)
+E:\UMassAmherst\Spring_2023\CS696DS\DS696_ML_Privacy\DatasetRepo.py:138: SettingWithCopyWarning:
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  df.Age.loc[df.Age.isnull()] = y_pred
+E:\UMassAmherst\Spring_2023\CS696DS\DS696_ML_Privacy\DatasetRepo.py:113: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df_tr.append(df_test, ignore_index=True)
+E:\UMassAmherst\Spring_2023\CS696DS\DS696_ML_Privacy\DatasetRepo.py:138: SettingWithCopyWarning:
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  df.Age.loc[df.Age.isnull()] = y_pred
+data gathering succesful
+[-------------****-----------
+./adult_income_models_2/sk_learn_LRverbose_1model_hyper_param_False.sav
+C:\Users\Atharva\AppData\Local\Programs\Python\Python39\lib\site-packages\sklearn\linear_model\_logistic.py:814: ConvergenceWarning: lbfgs failed to converge (status=1):
+STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
+
+Increase the number of iterations (max_iter) or scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+Target model Test Accuracy:0.9427480916030534  number samples : 262, f1 :0.9389931541936385 precision :0.933578431372549 recall : 0.9460132366845257
+Target model Train Accuracy:0.8490926456542502  number samples : 1047, f1 :0.8382565743159739 precision :0.8426501445029494 recall : 0.8347489093103129
+Generalization GAP:-0.09365544594880315
+Done sk_learn_LR
+
+Process finished with exit code 0

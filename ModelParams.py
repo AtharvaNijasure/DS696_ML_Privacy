@@ -11,6 +11,8 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.neural_network import MLPClassifier
 from sklearn.neighbors import KNeighborsClassifier
 
+from sklearn.ensemble import RandomForestClassifier
+
 
 class ModelType(enum.Enum):
     # specifically for ml-privacy-meter
@@ -212,6 +214,13 @@ class ModelParams :
 
     def sk_learn_KNN(self, num_neigh):
         model = KNeighborsClassifier(n_neighbors= num_neigh)
+        return model
+
+
+    def sk_learn_random_forest(self, depth, random_state = 0, criterion = "gini" ):
+
+        model = RandomForestClassifier(max_depth=depth, random_state= random_state, criterion = criterion)
+
         return model
 
 

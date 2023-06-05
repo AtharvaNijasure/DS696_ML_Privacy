@@ -55,7 +55,7 @@ def extract_results(row, rr):
 
 # script to create a csv file of results from output file
 
-out_put_csv = "./Results/results_AdultDS.csv"
+out_put_csv = "./Results/results_Titanic_MLP_LR_rerun_DS.csv"
 
 headers = []
 
@@ -69,8 +69,8 @@ summary_holder = "summary : Best-performing attacks over all slices"
 best_perf = "Best-performing attacks over slice: "
 
 
-# results = extract_strings_from_file(summary + ".txt", start_delimiter, end_delimiter)
-read_file = "./Results/summaryAdultDS_tf_privacy_27_04"
+# results = extract_strings_from_file(summary + ".txt", start_delimiter, end_delimiter) summary
+read_file =  "summaryTitanic_MLP_LR_rerun_tf_privacy_05_15" # "./Results/" +
 text = getFileAsString( read_file + ".txt")
 
 results = text.split(end_delimiter)

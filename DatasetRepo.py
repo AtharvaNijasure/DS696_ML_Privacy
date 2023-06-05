@@ -25,7 +25,7 @@ class RegisteredDataset(enum.Enum) :
     ADULT_INCOME = 'AdultIncome'
     TITANIC = 'titanic'
     PURCHASE100 = 'purchase100'
-    # TEXAS100 = 'texas100'
+    TEXAS100 = 'texas100'
     # #Text
     # MOVIELENS = 'movielens'
     IMDB = 'imdb'
@@ -49,12 +49,12 @@ class DatasetRepo :
 
     def get_data_for_training(self,attack = None,model_training_parameters = None):
         if(attack == MetricEnum.POPULATION):
-            x_train, y_train = self.x_train[:self.parameter[num_train_points]], self.y_train[:self.parameter[num_train_points]]
-            x_test, y_test = self.x_val[:self.parameter[num_test_points]], self.y_val[:self.parameter[num_test_points]]
+            self.x_train, self.y_train = self.x_train[:self.parameter[num_train_points]], self.y_train[:self.parameter[num_train_points]]
+            self.x_test, self.y_test = self.x_val[:self.parameter[num_test_points]], self.y_val[:self.parameter[num_test_points]]
         else:
-            (x_train, y_train),(x_test, y_test) = (self.x_train, self.y_train), (self.x_val, self.y_val)
+            (self.x_train, self.y_train),(self.x_test, self.y_test) = (self.x_train, self.y_train), (self.x_val, self.y_val)
 
-        return (x_train, y_train),(x_test, y_test)
+        return (self.x_train, self.y_train),(self.x_test, self.y_test)
 
     
 
@@ -65,7 +65,7 @@ class DatasetRepo :
 
     # create a clause for each new enrolled dataset
     def format_outputs(self):
-        one_hots = [RegisteredDataset.CIFAR100 , RegisteredDataset.CIFAR10, RegisteredDataset.MNIST, RegisteredDataset.WINEQUALITY]
+        one_hots = [RegisteredDataset.CIFAR100 , RegisteredDataset.CIFAR10, RegisteredDataset.MNIST] # , RegisteredDataset.WINEQUALITY
         if(self.dataset in one_hots) :
             # preparing the outputs / labels
             self.y_train = tf.one_hot(self.y_train,
@@ -150,31 +150,12 @@ class DatasetRepo :
             self.y_val = df[train_size:]["Survived"].values
             self.x_val = df[train_size:].drop(['Survived', 'PassengerId'], axis=1).values
 
-
-
-
-
-
-
-
-            # self.x_train = df_tr[["Pclass","Name","Sex","Age","SibSp","Parch","Ticket","Fare","Cabin","Embarked"]]
-            # self.y_train = df_tr["Survived"]
-            # self.x_val = df_test[[ "Pclass", "Name", "Sex", "Age", "SibSp", "Parch", "Ticket", "Fare", "Cabin",
-            #      "Embarked"]]
-            # self.y_val = df_test["Survived"]
-            # PassengerId
-
-
-
-
-            # return
-
         elif (self.dataset == RegisteredDataset.ADULT_INCOME):
             rel_path = "./datasets/adultincome/"
             df = pd.read_csv(rel_path + "adult.csv")
             input_cols = ['age', 'workclass', 'fnlwgt', 'education', 'educational-num',
                        'marital', 'relationship', 'race', 'gender',
-                       'capital gain', 'capital loss', 'hours per week'] # 'occupation', 'country'
+                       'capital gain', 'capital loss', 'hours per week', 'occupation', 'country'] # 'occupation', 'country'
             # text_cols = ['workclass', 'education', 'marital-status', 'occupation', 'relationship', 'race', 'gender','native-country']
 
             # replacing some special character columns names with proper names
@@ -216,75 +197,71 @@ class DatasetRepo :
                  'Prof-school': 7, '1st-4th': 8, 'Assoc-acdm': 9, 'Doctorate': 10, '11th': 11, 'Bachelors': 12,
                  '10th': 13, 'Assoc-voc': 14, '9th': 15}).astype(int)
             # occupation
-            # df['occupation'] = df['occupation'].map(
-            #     {
-            #         'Machine - op - inspct': 0,
-            #         'Farming - fishing': 1,
-            #         'Protective - serv':2,
-            #         'Other - service' :3,
-            #         'Prof - specialty' :4,
-            #         'Craft - repair':5,
-            #         'Adm - clerical':6,
-            #         'Exec - managerial':7,
-            #         'Tech - support':8,
-            #         'Sales':9,
-            #         'Priv - house - serv':10,
-            #         'Transport - moving':11,
-            #         'Handlers - cleaners':12,
-            #         'Armed - Forces':13
-            #     }).astype(int)
+            df['occupation'] = df['occupation'].map(
+                {
+                    'Machine - op - inspct': 0,
+                    'Farming - fishing': 1,
+                    'Protective - serv':2,
+                    'Other - service' :3,
+                    'Prof - specialty' :4,
+                    'Craft - repair':5,
+                    'Adm - clerical':6,
+                    'Exec - managerial':7,
+                    'Tech - support':8,
+                    'Sales':9,
+                    'Priv - house - serv':10,
+                    'Transport - moving':11,
+                    'Handlers - cleaners':12,
+                    'Armed - Forces':13
+                }).astype(int)
 
             # country
-            # df['country'] = df['country'].map(
-            #     {'United - States':0, 'Peru':1,'Guatemala':2,'Mexico':3,
-            #         'Dominica n -Republic'		:	4	,
-            #         'Ireland'		:	5	,
-            #         'Germany'		:	6	,
-            #         'Philippines'		:	7	,
-            #         'Thailand'		:	8	,
-            #         'Haiti'		:	9	,
-            #         'E l -Salvador'		:	10	,
-            #         'Puert o -Rico'		:	11	,
-            #         'Vietnam'		:	12	,
-            #         'South'		:	13	,
-            #         'Columbia'		:	14	,
-            #         'Japan'		:	15	,
-            #         'India'		:	16	,
-            #         'Cambodia'		:	17	,
-            #         'Poland'		:	18	,
-            #         'Laos'		:	19	,
-            #         'England'		:	20	,
-            #         'Cuba'		:	21	,
-            #         'Taiwan'		:	22	,
-            #         'Italy'		:	23	,
-            #         'Canada'		:	24	,
-            #         'Portugal'		:	25	,
-            #         'China'		:	26	,
-            #         'Nicaragua'		:	27	,
-            #         'Honduras'		:	28	,
-            #         'Iran'		:	29	,
-            #         'Scotland'		:	30	,
-            #         'Jamaica'		:	31	,
-            #         'Ecuador'		:	32	,
-            #         'Yugoslavia'		:	33	,
-            #         'Hungary'		:	34	,
-            #         'Hong'		:	35	,
-            #         'Greece'		:	36	,
-            #         'Trinada d &Tobago'		:	37	,
-            #         'Outlyin g -US(Gua m -USV I -etc)'		:	38	,
-            #         'France'		:	39	,
-            #         'Holan d -Netherlands'		:	40
-            #     }).astype(int)
+            df['country'] = df['country'].map(
+                {'United - States':0, 'Peru':1,'Guatemala':2,'Mexico':3,
+                    'Dominica n -Republic'		:	4	,
+                    'Ireland'		:	5	,
+                    'Germany'		:	6	,
+                    'Philippines'		:	7	,
+                    'Thailand'		:	8	,
+                    'Haiti'		:	9	,
+                    'E l -Salvador'		:	10	,
+                    'Puert o -Rico'		:	11	,
+                    'Vietnam'		:	12	,
+                    'South'		:	13	,
+                    'Columbia'		:	14	,
+                    'Japan'		:	15	,
+                    'India'		:	16	,
+                    'Cambodia'		:	17	,
+                    'Poland'		:	18	,
+                    'Laos'		:	19	,
+                    'England'		:	20	,
+                    'Cuba'		:	21	,
+                    'Taiwan'		:	22	,
+                    'Italy'		:	23	,
+                    'Canada'		:	24	,
+                    'Portugal'		:	25	,
+                    'China'		:	26	,
+                    'Nicaragua'		:	27	,
+                    'Honduras'		:	28	,
+                    'Iran'		:	29	,
+                    'Scotland'		:	30	,
+                    'Jamaica'		:	31	,
+                    'Ecuador'		:	32	,
+                    'Yugoslavia'		:	33	,
+                    'Hungary'		:	34	,
+                    'Hong'		:	35	,
+                    'Greece'		:	36	,
+                    'Trinada d &Tobago'		:	37	,
+                    'Outlyin g -US(Gua m -USV I -etc)'		:	38	,
+                    'France'		:	39	,
+                    'Holan d -Netherlands'		:	40
+                }).astype(int)
 
 
             # relationship
             df['relationship'] = df['relationship'].map(
                 {'Not-in-family': 0, 'Wife': 1, 'Other-relative': 2, 'Unmarried': 3, 'Husband': 4,
                  'Own-child': 5}).astype(int)
-
-            # for d in text_cols :
-            #     df = pd.get_dummies(df, columns=[d])
-
 
             self.x_train, self.x_val, self.y_train, self.y_val = train_test_split(df[input_cols], df["income"],
                                                                                   train_size=params["train_size"])
@@ -303,6 +280,13 @@ class DatasetRepo :
 
             self.x_train, self.x_val, self.y_train, self.y_val = train_test_split(features, labels, train_size = params["train_size"] )
 
+        elif (self.dataset == RegisteredDataset.TEXAS100):
+            rel_path = "./datasets/texas100/"
+            data = np.load(rel_path + 'texas100.npz')
+            features = data['features']
+            labels = data['labels']
+            self.x_train, self.x_val, self.y_train, self.y_val = train_test_split(features, labels, train_size = params["train_size"] )
+
 
 
         elif (self.dataset == RegisteredDataset.WINEQUALITY):
@@ -319,7 +303,7 @@ class DatasetRepo :
             df['goodquality'] = [1 if x >= 7 else 0 for x in df['quality']]
             # Separate feature variables and target variable
             X = df.drop(['quality', 'goodquality'], axis=1)
-            y = df['goodquality']
+            y = df['goodquality'].values
 
 
 

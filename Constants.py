@@ -1,3 +1,4 @@
+import enum
 
 # model training input param keys
 epoch = "epoch"
@@ -31,7 +32,7 @@ max_depth = "max_depth"
 
 # serialized model extns
 EXTN = ".sav"
-summary = "summaryWine_qualityDS_tf_privacy_05_11"
+summary = "summary" # WineQuality_LR Titanic_MLP_LR_rerun_tf_privacy_05_15
 TXT_EXTN = ".txt"
 
 # defined model names
@@ -43,3 +44,11 @@ model_basic_MLP_1 = "model_basic_MLP_1"
 # ml-privacy-attacks
 population = "population"
 reference = "reference"
+
+# model folders
+class ModelFolder() :
+    Texas100 = 'texas100_models'
+    Titanic = 'titanic_models'
+    WineQuality = 'wine_quality_models'
+    Purchase100 = 'purchase100_models'
+    AdultIncome = 'adult_income_models'

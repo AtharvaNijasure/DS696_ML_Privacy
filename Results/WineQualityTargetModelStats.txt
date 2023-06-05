@@ -1,0 +1,250 @@
+C:\Users\Atharva\AppData\Local\Programs\Python\Python39\python.exe E:\UMassAmherst\Spring_2023\CS696DS\DS696_ML_Privacy\WineQualityResultGeneration.py
+C:\Users\Atharva\AppData\Local\Programs\Python\Python39\lib\site-packages\requests\__init__.py:102: RequestsDependencyWarning: urllib3 (1.26.8) or chardet (5.1.0)/charset_normalizer (2.0.10) doesn't match a supported version!
+  warnings.warn("urllib3 ({}) or chardet ({})/charset_normalizer ({}) doesn't match a supported "
+Started sk_learn_KNN
+Started sk_learn_KNN for   batch_size = 64  l = 0
+Started attack THRESHOLD_ATTACK for sk_learn_KNN  l = 0
+getting data for training
+E:\UMassAmherst\Spring_2023\CS696DS\DS696_ML_Privacy\DatasetRepo.py:316: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df.append(df_white, ignore_index=True)
+2023-05-13 18:51:27.845567: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX AVX2
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+E:\UMassAmherst\Spring_2023\CS696DS\DS696_ML_Privacy\DatasetRepo.py:316: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df.append(df_white, ignore_index=True)
+data gathering succesful
+[-------------****-----------
+./wine_quality_models/sk_learn_KNNverbose_1model_hyper_param_Truenum_neigh_3.sav
+Target model Test Accuracy:0.8961538461538462  number samples : 1300, f1 :0.8283637046447421 precision :0.8401406825167349 recall : 0.8180434387495457
+Target model Train Accuracy:0.8722339811429671  number samples : 5197, f1 :0.7887543218703782 precision :0.8040574008948937 recall : 0.7761822135958656
+Generalization GAP:-0.02391986501087906
+Started sk_learn_KNN for   batch_size = 64  l = 1
+Started attack THRESHOLD_ATTACK for sk_learn_KNN  l = 1
+getting data for training
+E:\UMassAmherst\Spring_2023\CS696DS\DS696_ML_Privacy\DatasetRepo.py:316: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df.append(df_white, ignore_index=True)
+E:\UMassAmherst\Spring_2023\CS696DS\DS696_ML_Privacy\DatasetRepo.py:316: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df.append(df_white, ignore_index=True)
+data gathering succesful
+[-------------****-----------
+./wine_quality_models/sk_learn_KNNverbose_1model_hyper_param_Truenum_neigh_4.sav
+Target model Test Accuracy:0.796923076923077  number samples : 1300, f1 :0.72287797095276 precision :0.8588445190743559 recall : 0.6495192307692308
+Target model Train Accuracy:0.7952664999037906  number samples : 5197, f1 :0.7163008315002455 precision :0.8524653746543721 recall : 0.6439319840228084
+Generalization GAP:-0.0016565770192863427
+Started sk_learn_KNN for   batch_size = 64  l = 2
+Started attack THRESHOLD_ATTACK for sk_learn_KNN  l = 2
+getting data for training
+E:\UMassAmherst\Spring_2023\CS696DS\DS696_ML_Privacy\DatasetRepo.py:316: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df.append(df_white, ignore_index=True)
+E:\UMassAmherst\Spring_2023\CS696DS\DS696_ML_Privacy\DatasetRepo.py:316: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df.append(df_white, ignore_index=True)
+data gathering succesful
+[-------------****-----------
+./wine_quality_models/sk_learn_KNNverbose_1model_hyper_param_Truenum_neigh_5.sav
+Target model Test Accuracy:0.8530769230769231  number samples : 1300, f1 :0.7303639706321514 precision :0.7627779197546639 recall : 0.7095024273271191
+Target model Train Accuracy:0.8547238791610544  number samples : 5197, f1 :0.7442113311733247 precision :0.785557656011626 recall : 0.719708958623883
+Generalization GAP:0.0016469560841313458
+Started sk_learn_KNN for   batch_size = 64  l = 3
+Started attack THRESHOLD_ATTACK for sk_learn_KNN  l = 3
+getting data for training
+E:\UMassAmherst\Spring_2023\CS696DS\DS696_ML_Privacy\DatasetRepo.py:316: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df.append(df_white, ignore_index=True)
+E:\UMassAmherst\Spring_2023\CS696DS\DS696_ML_Privacy\DatasetRepo.py:316: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df.append(df_white, ignore_index=True)
+data gathering succesful
+[-------------****-----------
+./wine_quality_models/sk_learn_KNNverbose_1model_hyper_param_Truenum_neigh_10.sav
+Target model Test Accuracy:0.7838461538461539  number samples : 1300, f1 :0.5884357872068264 precision :0.7737032799389778 recall : 0.5606482125469467
+Target model Train Accuracy:0.7985376178564556  number samples : 5197, f1 :0.612985113042515 precision :0.7676582368522671 recall : 0.5774424363124654
+Generalization GAP:0.014691464010301747
+Started sk_learn_KNN for   batch_size = 64  l = 4
+Started attack THRESHOLD_ATTACK for sk_learn_KNN  l = 4
+getting data for training
+E:\UMassAmherst\Spring_2023\CS696DS\DS696_ML_Privacy\DatasetRepo.py:316: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df.append(df_white, ignore_index=True)
+E:\UMassAmherst\Spring_2023\CS696DS\DS696_ML_Privacy\DatasetRepo.py:316: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df.append(df_white, ignore_index=True)
+data gathering succesful
+[-------------****-----------
+./wine_quality_models/sk_learn_KNNverbose_1model_hyper_param_Truenum_neigh_15.sav
+Target model Test Accuracy:0.8123076923076923  number samples : 1300, f1 :0.6029361693604919 precision :0.7481957410579045 recall : 0.5894190197987667
+Target model Train Accuracy:0.8162401385414663  number samples : 5197, f1 :0.5875022824723823 precision :0.7040110474356254 recall : 0.5762927303426408
+Generalization GAP:0.0039324462337739785
+Done sk_learn_KNN
+Started sk_learn_MLP
+Started sk_learn_MLP for   batch_size = 64  l = 0
+Started attack THRESHOLD_ATTACK for sk_learn_MLP  l = 0
+getting data for training
+E:\UMassAmherst\Spring_2023\CS696DS\DS696_ML_Privacy\DatasetRepo.py:316: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df.append(df_white, ignore_index=True)
+E:\UMassAmherst\Spring_2023\CS696DS\DS696_ML_Privacy\DatasetRepo.py:316: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df.append(df_white, ignore_index=True)
+data gathering succesful
+[-------------****-----------
+./wine_quality_models/sk_learn_MLPverbose_1model_hyper_param_Truehidden_layers_32.sav
+Target model Test Accuracy:0.8284615384615385  number samples : 1300, f1 :0.6292879702304638 precision :0.7426394241768298 recall : 0.6077570364638747
+Target model Train Accuracy:0.8141235328073889  number samples : 5197, f1 :0.5991864772621567 precision :0.7453664655811799 recall : 0.5846629349414184
+Generalization GAP:-0.014338005654149555
+Started sk_learn_MLP for   batch_size = 64  l = 1
+Started attack THRESHOLD_ATTACK for sk_learn_MLP  l = 1
+getting data for training
+E:\UMassAmherst\Spring_2023\CS696DS\DS696_ML_Privacy\DatasetRepo.py:316: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df.append(df_white, ignore_index=True)
+E:\UMassAmherst\Spring_2023\CS696DS\DS696_ML_Privacy\DatasetRepo.py:316: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df.append(df_white, ignore_index=True)
+data gathering succesful
+[-------------****-----------
+./wine_quality_models/sk_learn_MLPverbose_1model_hyper_param_Truehidden_layers_64.sav
+Target model Test Accuracy:0.8338461538461538  number samples : 1300, f1 :0.6625330949740897 precision :0.7354245748689499 recall : 0.6365426837143227
+Target model Train Accuracy:0.8179719068693477  number samples : 5197, f1 :0.6596972710705888 precision :0.7364099213451754 recall : 0.6363324068184123
+Generalization GAP:-0.01587424697680606
+Started sk_learn_MLP for   batch_size = 64  l = 2
+Started attack THRESHOLD_ATTACK for sk_learn_MLP  l = 2
+getting data for training
+E:\UMassAmherst\Spring_2023\CS696DS\DS696_ML_Privacy\DatasetRepo.py:316: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df.append(df_white, ignore_index=True)
+E:\UMassAmherst\Spring_2023\CS696DS\DS696_ML_Privacy\DatasetRepo.py:316: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df.append(df_white, ignore_index=True)
+data gathering succesful
+[-------------****-----------
+./wine_quality_models/sk_learn_MLPverbose_1model_hyper_param_Truehidden_layers_(64, 128).sav
+Target model Test Accuracy:0.8084615384615385  number samples : 1300, f1 :0.6063324733397241 precision :0.7896000302434598 recall : 0.5750824420421935
+Target model Train Accuracy:0.7931498941697133  number samples : 5197, f1 :0.5765517278286848 precision :0.7624134508842105 recall : 0.5540942597437264
+Generalization GAP:-0.015311644291825188
+Started sk_learn_MLP for   batch_size = 64  l = 3
+Started attack THRESHOLD_ATTACK for sk_learn_MLP  l = 3
+getting data for training
+E:\UMassAmherst\Spring_2023\CS696DS\DS696_ML_Privacy\DatasetRepo.py:316: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df.append(df_white, ignore_index=True)
+E:\UMassAmherst\Spring_2023\CS696DS\DS696_ML_Privacy\DatasetRepo.py:316: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df.append(df_white, ignore_index=True)
+data gathering succesful
+[-------------****-----------
+./wine_quality_models/sk_learn_MLPverbose_1model_hyper_param_Truehidden_layers_(64, 128, 256).sav
+Target model Test Accuracy:0.8153846153846154  number samples : 1300, f1 :0.7017531230785381 precision :0.7260647435468397 recall : 0.6882166257166257
+Target model Train Accuracy:0.8154704637290745  number samples : 5197, f1 :0.6934013869391418 precision :0.7152432219092203 recall : 0.6807750439317553
+Generalization GAP:8.584834445912737e-05
+Started sk_learn_MLP for   batch_size = 64  l = 4
+Started attack THRESHOLD_ATTACK for sk_learn_MLP  l = 4
+getting data for training
+E:\UMassAmherst\Spring_2023\CS696DS\DS696_ML_Privacy\DatasetRepo.py:316: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df.append(df_white, ignore_index=True)
+E:\UMassAmherst\Spring_2023\CS696DS\DS696_ML_Privacy\DatasetRepo.py:316: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df.append(df_white, ignore_index=True)
+data gathering succesful
+[-------------****-----------
+./wine_quality_models/sk_learn_MLPverbose_1model_hyper_param_Truehidden_layers_(64, 128, 32).sav
+Target model Test Accuracy:0.8076923076923077  number samples : 1300, f1 :0.6455513039753116 precision :0.7468927690836813 recall : 0.620036049439231
+Target model Train Accuracy:0.8197036751972292  number samples : 5197, f1 :0.6564401365308179 precision :0.7389214612460537 recall : 0.6299376210550303
+Generalization GAP:0.012011367504921489
+Done sk_learn_MLP
+Started decisionTreeCLS
+Started decisionTreeCLS for   batch_size = 64  l = 0
+Started attack THRESHOLD_ATTACK for decisionTreeCLS  l = 0
+getting data for training
+E:\UMassAmherst\Spring_2023\CS696DS\DS696_ML_Privacy\DatasetRepo.py:316: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df.append(df_white, ignore_index=True)
+E:\UMassAmherst\Spring_2023\CS696DS\DS696_ML_Privacy\DatasetRepo.py:316: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df.append(df_white, ignore_index=True)
+data gathering succesful
+[-------------****-----------
+./wine_quality_models/decisionTreeCLSverbose_1model_hyper_param_Truemax_depth_3.sav
+Target model Test Accuracy:0.8115384615384615  number samples : 1300, f1 :0.6592996227157831 precision :0.6955829328464234 recall : 0.6418448422086327
+Target model Train Accuracy:0.8162401385414663  number samples : 5197, f1 :0.668107081538248 precision :0.7020772738426175 recall : 0.6504951869482231
+Generalization GAP:0.004701677003004723
+Started decisionTreeCLS for   batch_size = 64  l = 1
+Started attack THRESHOLD_ATTACK for decisionTreeCLS  l = 1
+getting data for training
+E:\UMassAmherst\Spring_2023\CS696DS\DS696_ML_Privacy\DatasetRepo.py:316: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df.append(df_white, ignore_index=True)
+E:\UMassAmherst\Spring_2023\CS696DS\DS696_ML_Privacy\DatasetRepo.py:316: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df.append(df_white, ignore_index=True)
+data gathering succesful
+[-------------****-----------
+./wine_quality_models/decisionTreeCLSverbose_1model_hyper_param_Truemax_depth_4.sav
+Target model Test Accuracy:0.8315384615384616  number samples : 1300, f1 :0.6022804265252553 precision :0.7652310924369747 recall : 0.5859657607118677
+Target model Train Accuracy:0.817009813353858  number samples : 5197, f1 :0.588169769800398 precision :0.7333666749320209 recall : 0.5775112370529607
+Generalization GAP:-0.014528648184603532
+Started decisionTreeCLS for   batch_size = 64  l = 2
+Started attack THRESHOLD_ATTACK for decisionTreeCLS  l = 2
+getting data for training
+E:\UMassAmherst\Spring_2023\CS696DS\DS696_ML_Privacy\DatasetRepo.py:316: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df.append(df_white, ignore_index=True)
+E:\UMassAmherst\Spring_2023\CS696DS\DS696_ML_Privacy\DatasetRepo.py:316: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df.append(df_white, ignore_index=True)
+data gathering succesful
+[-------------****-----------
+./wine_quality_models/decisionTreeCLSverbose_1model_hyper_param_Truemax_depth_5.sav
+Target model Test Accuracy:0.8438461538461538  number samples : 1300, f1 :0.7031412581906128 precision :0.7624770517440675 recall : 0.6759330646907129
+Target model Train Accuracy:0.8441408504906677  number samples : 5197, f1 :0.7011264070503318 precision :0.775582936593811 recall : 0.6714048968020627
+Generalization GAP:0.0002946966445138699
+Started decisionTreeCLS for   batch_size = 64  l = 3
+Started attack THRESHOLD_ATTACK for decisionTreeCLS  l = 3
+getting data for training
+E:\UMassAmherst\Spring_2023\CS696DS\DS696_ML_Privacy\DatasetRepo.py:316: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df.append(df_white, ignore_index=True)
+E:\UMassAmherst\Spring_2023\CS696DS\DS696_ML_Privacy\DatasetRepo.py:316: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df.append(df_white, ignore_index=True)
+data gathering succesful
+[-------------****-----------
+./wine_quality_models/decisionTreeCLSverbose_1model_hyper_param_Truemax_depth_10.sav
+Target model Test Accuracy:0.8969230769230769  number samples : 1300, f1 :0.8067800564615851 precision :0.8816738816738816 recall : 0.7639145533324838
+Target model Train Accuracy:0.8966711564364056  number samples : 5197, f1 :0.8250830037502246 precision :0.8784739330381441 recall : 0.7906748480721598
+Generalization GAP:-0.00025192048667133093
+Started decisionTreeCLS for   batch_size = 64  l = 4
+Started attack THRESHOLD_ATTACK for decisionTreeCLS  l = 4
+getting data for training
+E:\UMassAmherst\Spring_2023\CS696DS\DS696_ML_Privacy\DatasetRepo.py:316: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df.append(df_white, ignore_index=True)
+E:\UMassAmherst\Spring_2023\CS696DS\DS696_ML_Privacy\DatasetRepo.py:316: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df.append(df_white, ignore_index=True)
+data gathering succesful
+[-------------****-----------
+./wine_quality_models/decisionTreeCLSverbose_1model_hyper_param_Truemax_depth_15.sav
+Target model Test Accuracy:0.9661538461538461  number samples : 1300, f1 :0.948675977482328 precision :0.9489136319341682 recall : 0.9484385535391704
+Target model Train Accuracy:0.9593996536463344  number samples : 5197, f1 :0.9349794526769857 precision :0.937377238203136 recall : 0.9326277817564521
+Generalization GAP:-0.006754192507511747
+Done decisionTreeCLS
+Started sk_learn_LR
+Started sk_learn_LR for   batch_size = 64  l = 0
+Started attack THRESHOLD_ATTACK for sk_learn_LR  l = 0
+getting data for training
+E:\UMassAmherst\Spring_2023\CS696DS\DS696_ML_Privacy\DatasetRepo.py:316: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df.append(df_white, ignore_index=True)
+E:\UMassAmherst\Spring_2023\CS696DS\DS696_ML_Privacy\DatasetRepo.py:316: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df = df.append(df_white, ignore_index=True)
+Traceback (most recent call last):
+  File "E:\UMassAmherst\Spring_2023\CS696DS\DS696_ML_Privacy\AttackPipeline.py", line 136, in get_model
+    model = self.load_model(model_file)
+  File "E:\UMassAmherst\Spring_2023\CS696DS\DS696_ML_Privacy\AttackPipeline.py", line 96, in load_model
+    loaded_model = pickle.load(open(filename, 'rb'))
+FileNotFoundError: [Errno 2] No such file or directory: './wine_quality_models/sk_learn_LRverbose_1model_hyper_param_False.sav'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\UMassAmherst\Spring_2023\CS696DS\DS696_ML_Privacy\AttackPipeline.py", line 176, in get_model
+    epochs=model_training_params[epoch],
+KeyError: 'epoch'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\UMassAmherst\Spring_2023\CS696DS\DS696_ML_Privacy\WineQualityResultGeneration.py", line 97, in <module>
+    model = attack_pipeline_population.get_model(mod_name, model_training_params)
+  File "E:\UMassAmherst\Spring_2023\CS696DS\DS696_ML_Privacy\AttackPipeline.py", line 189, in get_model
+    hist = model.fit(self.x_train, self.y_train)
+  File "C:\Users\Atharva\AppData\Local\Programs\Python\Python39\lib\site-packages\sklearn\linear_model\_logistic.py", line 1508, in fit
+    X, y = self._validate_data(
+  File "C:\Users\Atharva\AppData\Local\Programs\Python\Python39\lib\site-packages\sklearn\base.py", line 581, in _validate_data
+    X, y = check_X_y(X, y, **check_params)
+  File "C:\Users\Atharva\AppData\Local\Programs\Python\Python39\lib\site-packages\sklearn\utils\validation.py", line 979, in check_X_y
+data gathering succesful
+
+    y = _check_y(y, multi_output=multi_output, y_numeric=y_numeric)
+  File "C:\Users\Atharva\AppData\Local\Programs\Python\Python39\lib\site-packages\sklearn\utils\validation.py", line 993, in _check_y
+    y = column_or_1d(y, warn=True)
+  File "C:\Users\Atharva\AppData\Local\Programs\Python\Python39\lib\site-packages\sklearn\utils\validation.py", line 1038, in column_or_1d
+    raise ValueError(
+ValueError: y should be a 1d array, got an array of shape (5197, 2) instead.
+
+Process finished with exit code 1

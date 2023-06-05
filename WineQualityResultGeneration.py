@@ -26,19 +26,20 @@ run_attack(target_model,attack_params)
 
 
 
-epoch_list = [30,40,50,60] # 10,20,
 batch_sizes =  [ 64 ] # 256
-num_neighs = [3,4,5,10,15]
-hidden_layers_l = [(32),(64), (64,128), (64,128, 256), (64,128,32)]
+num_neighs = [3,4,5,10,15, 20, 25, 30, 35, 40]
+hidden_layers_l = [(32),(64), (32,64) , (64,128), (32 ,64, 128), (64,128,32) , (64,128, 256)]
 
-model_names = [ "sk_learn_KNN", "sk_learn_MLP", "decisionTreeCLS", "sk_learn_LR" ] #
+model_names = [  "sk_learn_random_forest" ]
 # "sk_learn_KNN", "sk_learn_MLP", "decisionTreeCLS", "sk_learn_LR",
-# "model_basic_LR_1_titanic",model_basic_MLP_1 ,
+depths = [3,4,5,10,15, 20, 25, 30, 35, 40]
+
 dict =  {
-            "sk_learn_KNN" : [3,4,5,10,15],
-            "sk_learn_MLP" :[(32),(64), (64,128), (64,128, 256), (64,128,32)],
-            "decisionTreeCLS" : [3,4,5,10,15],
-            "sk_learn_LR" : [1]
+            "sk_learn_KNN" : num_neighs,
+            "sk_learn_MLP" : hidden_layers_l,
+            "decisionTreeCLS" : depths,
+            "sk_learn_LR" : [1],
+            "sk_learn_random_forest" : depths
 }
 
 
@@ -86,17 +87,18 @@ for mod_name in model_names :
                 model_training_params[hidden_layers] = nl
             if (mod_name == "decisionTreeCLS"):
                 model_training_params[max_depth] = nl
+            if (mod_name == "sk_learn_random_forest"):
+                model_training_params["depth"] = nl
             if (mod_name == "sk_learn_LR"):
                 model_training_params[model_hyper_param] = False
 
+            attack_pipeline_population = AttackPipeline(
+                RegisteredDataset.WINEQUALITY, dataset_parameters
+            )
+            model = attack_pipeline_population.get_model(mod_name, model_training_params)
             for att in attacks_tf_p :
-                print(f"Started attack {att} for {mod_name}  l = {l}") # epoch :{ep}  max_depth :{nl}
-                attack_pipeline_population = AttackPipeline(
-                    RegisteredDataset.WINEQUALITY, att, dataset_parameters
-                )
-                model = attack_pipeline_population.get_model(mod_name, model_training_params)
-                # break
+                print(f"Started attack {att} for {mod_name}  l = {l}")
                 model_file = attack_pipeline_population.get_model_file(mod_name, model_training_params)
-                attack_pipeline_population.run_attack(model, attack_parameters_titanic, model_file_name = model_file)
-            l+=1
+                attack_pipeline_population.run_attack(model,att, attack_parameters_titanic, model_file_name = model_file)
+            l +=1
     print(f"Done {mod_name}")
